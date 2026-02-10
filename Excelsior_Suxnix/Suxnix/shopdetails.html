@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Suxnix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style1.css"/>
+    <link rel="stylesheet" href="style2.css"/>
+    <link rel="stylesheet" href="style3.css"/>
+
+
+</head>
+<body>
+    <script src="script.js"></script>
+    <header class="site-header">
+    <div class="wrap">
+      <a href="#home" class="logo" aria-label="Suxnix home">
+        <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev">
+      </a>
+      <nav id="menu" class="menu" aria-label="Main">
+        <div class="has-dropdown">
+          <a id="homeTrigger" href="#home">Home</a>
+          <div id="homeDropdown" class="dropdown" role="menu" aria-label="Home pages">
+            <a href="index.html#home">Home One</a>
+            <a href="index.html#home">Home Two</a>
+            <a href="index.html#home">Home Three</a>
+          </div>
+        </div>
+        <a href="index.html#features" class="logo">Features</a>
+        <a href="index.html#product" class="logo">Product</a>
+        <a href="index.html#ingredient" class="logo">Ingredient</a>
+        <a href="index.html#pricing" class="logo">Pricing</a>
+        <div class="has-dropdown">
+          <a id="shopTrigger" href="index.html#shop" class="logo">Shop</a>
+          <div id="shopDropdown" class="dropdown" role="menu" aria-label="Shop pages">
+            <a href="ourshop.html">Our Shop</a>
+            <a href="shopdetails.html">Shop Details</a>
+            <a href="cartpage.html">Cart Page</a>
+            <a href="loginpage.html">Login Page</a>
+            <a href="register.html">Register</a>
+          </div>
+        </div>
+        <div class="has-dropdown">
+          <a id="newsTrigger" href="index.html#news" class="logo">News</a>
+          <div id="newsDropdown" class="dropdown" role="menu" aria-label="News pages">
+            <a href="index.html#news">Our Blog</a>
+            <a href="index.html#news">Blog Details</a>
+          </div>
+        </div>
+        <a href="contact.html" class="logo">Contacts</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btnSearch" aria-label="Search" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button id="btnApps" aria-label="Apps" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+        </button>
+        <button id="btnCart" aria-label="Cart" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M5,6h2l1,7h11l2-9H6"></path></svg>
+        </button>
+        <!-- hamburger removed as requested -->
+      </div>
+    </div>
+  </header>
+    
+  <section class="contact-hero" data-background="//suxnix-dev.myshopify.com/cdn/shop/files/video_bg_8112a5ce-2dd0-45f9-ac62-fd4d1b132944.jpg?v=1737135174">
+        <div class="hero-overlay">
+            <h1>SHOP DETAILS</h1>
+            <nav class="breadcrumb">
+                <a href="index.html#home" class="home-link">Home</a> <span>|</span> <a href="#">Shop</a>
+            </nav>
+        </div>
+        <div class="torn-divider"></div>
+    </section>
+
+   <section class="product-page">
+    <div class="container">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img id="current-img" src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb03.png?v=1738166857&amp;width=600" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">            
+            </div>
+            <div class="thumbnails">
+                <img class="thumb active" src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb03.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy" onclick="changeImage(this)">                
+                <img class="thumb" src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb07.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">                
+                <img class="thumb" src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb06.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+                <img class="thumb" src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb04.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+                </div>
+        </div>
+
+        <div class="product-details">
+            <h1>ANTIAGING AND LONGEVITY</h1>
+            <p class="vendor-info">Vendor: <span>Fashion Shofy Ecommerce</span> | ⭐⭐⭐⭐⭐ (4.5)</p>
+            <h2 class="price">TK 49.99 <span class="stock-status">- INSTOCK</span></h2>
+            
+            <p class="description">The true strength of Suxnix: Whey Protein Isolates (WPIs) are the purest form of whey protein that currently exists.</p>
+
+            <ul class="specs">
+                <li><strong>Title:</strong> Default Title</li>
+                <li><strong>Vendor:</strong> Fashion Shofy Ecommerce</li>
+                <li><strong>Type:</strong> Supplement</li>
+            </ul>
+
+            <div class="purchase-actions">
+                <div class="quantity-picker">
+                    <button type="button" onclick="updateQty(-1)">-</button>
+                    <input type="number" id="qty" value="1" min="1">
+                    <button type="button" onclick="updateQty(1)">+</button>
+                </div>
+                <button class="add-to-cart">ADD TO CART</button>
+            </div>
+            <div class="product-footer">
+        <div class="meta-row">
+        <span class="label">Tags:</span>
+        <div class="badges-shopdetails">
+            <span class="badge-sd">medicine</span>
+            <span class="badge-sd">Protin</span>
+        </div>
+    </div>
+    <div class="meta-row">
+        <span class="label">Categories:</span>
+        <div class="badges-shopdetails">
+            <span class="badge-sd">Nutrition</span>
+            <span class="badge-sd">Protein</span>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- ***************************************************************************************************************************************************************************** -->
+
+        <section class="product-info-section">
+            <!-- Tabs Navigation -->
+            <div class="tabs-nav">
+                <button class="tab-button active" data-tab="description">Description</button>
+                <button class="tab-button" data-tab="additional-info">Additional Information</button>
+            </div>
+
+            <!-- Description Tab Content -->
+            <div class="tab-content active" id="description">
+                <div class="description-content">
+                    <h2>THE TRUE STRENGTH OF SUXNIX :</h2>
+                    <p>
+                        Whey Protein Isolates (WPIs) are the purest form of whey protein that currently exists. WPIs are costly to use, but rate among the best proteins that money can buy. That's why they're the first ingredient you read on the Gold Standard 100% Whey™ label. By using WPI as the primary ingredient along with premium ultra-filtered whey protein concentrate (WPC), we're able to pack 24 grams of protein into every serving to support your muscle building needs after training. ON'attention to detail also extends to mixability. This superior quality powder has been instantized to mix easily using a shaker cup or just a glass and spoon. There's no doubt that this is the standard by which all other whey proteins are measured.
+                    </p>
+
+                    <h2>SUXNIX THE BASICS :</h2>
+                    <ul>
+                        <li>82% Protein by Weight (24g of Protein Per 31.5g Serving Size).</li>
+                        <li>Whey Protein Isolates (WPI) Main Ingredient.</li>
+                        <li>Whey Protein Micro-functions from Whey Protein Isolate and Ultra-Filtered Whey Protein Concentrate.</li>
+                        <li>Over 4g of Naturally Occurring Glutamine & Glutamic Acid in Each Serving.</li>
+                        <li>More than 5g of the Naturally Occurring Branched Chain Amino Acids (BCAAs) Leucine, Isoleucine, and Valine in Each Serving.</li>
+                        <li>The "Gold Standard" for Protein Quality.</li>
+                        <li>Banned Substance Tested Protein</li>
+                        <li>French Vanilla Creme Flavored Whey Protein Powder</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Additional Information Tab Content -->
+            <div class="tab-content" id="additional-info">
+                <div class="additional-info-content">
+                    <h2>ADDITIONAL INFORMATION</h2>
+                    <div class="info-table">
+                        <div class="info-row">
+                            <div class="info-label">Calories</div>
+                            <div class="info-value">110</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Total Fat</div>
+                            <div class="info-value">1kg</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Saturated Fat</div>
+                            <div class="info-value">0.5g</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Cholesterol</div>
+                            <div class="info-value">40mg</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Total Carbohydrate</div>
+                            <div class="info-value">2g</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Protein</div>
+                            <div class="info-value">24g</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Total Sugars</div>
+                            <div class="info-value">2g</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Sodium</div>
+                            <div class="info-value">100mg</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Calcium</div>
+                            <div class="info-value">140 mg</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Potassium</div>
+                            <div class="info-value">160 mg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- ***************************************************************************************************************************************************************************** -->
+
+<section class="related-products-section">
+            <h2 class="section-title">RELATED PRODUCTS</h2>
+            
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img class="product-image" src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.png?v=1738166347&amp;width=280" alt="SERIOUR MASS 2kg" width="auto" height="auto">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">SERIOUR MASS 2KG</h3>
+                        <p class="product-price">Tk 49.99</p>
+                        <p class="product-rating">(0)</p>
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart" aria-label="Add to cart"></button>
+                            <button class="btn-buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img class="product-image" src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857&amp;width=280" alt="Whey Protein Powder" width="auto" height="auto">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">WHEY PROTEIN POWDER</h3>
+                        <p class="product-price">Tk 49.99</p>
+                        <p class="product-rating">(0)</p>
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart" aria-label="Add to cart"></button>
+                            <button class="btn-buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img class="product-image" src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271&amp;width=280" alt="SERIOUR MASS 2kg" width="auto" height="auto">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">SERIOUR MASS 2KG</h3>
+                        <p class="product-price">Tk 49.99</p>
+                        <p class="product-rating">(0)</p>
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart" aria-label="Add to cart"></button>
+                            <button class="btn-buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination Dots -->
+            <div class="pagination-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+<!-- ***************************************************************************************************************************************************************************** -->
+
+
+<section class="testimonial-carousel">
+    <div class="torn-divider top"></div>
+    <div class="testimonial-inner">
+        <div class="carousel-track-container">
+            <ul class="carousel-track" id="testimonialTrack">
+                <li class="carousel-slide current-slide">
+                    <div class="testimonial-content">
+                    <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy">
+                    </a>
+                    <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                      <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                      <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                      <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                        </div>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <button class="carousel-button prev" id="prevBtn">&#10005;</button> 
+        <button class="carousel-button next" id="nextBtn">&#10005;</button>
+
+        <div class="carousel-nav">
+            <button class="indicator active"></button>
+            <button class="indicator"></button>
+            <button class="indicator"></button>
+        </div>
+    </div>
+    <div class="torn-divider bottom"></div>
+</section>
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col brand-col">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/white_logo.png?v=1737133588" alt="suxnix dev" height="auto" width="auto" loading="lazy">
+            <p>Making beauty especially relating complot especial common questions tend to recur through posts or queries standards vary orem donor command tei.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>ABOUT US</h3>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Product</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>SUPPORT</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Blog Post</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col contact-col">
+            <h3>CONTACT US</h3>
+            <p>4140 Parker Rd. Allentown, New Mexico 31134</p>
+            <p><span class="green-icon">📞</span> +1 31-5555-0114</p>
+            <p><span class="green-icon">✉</span> Suxnix@example.com</p>
+            <p><span class="green-icon">🌐</span> www.suxnixdomain.com</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © 2025 Suxnix All Rights Reserved.</p>
+        <div class="payment-icons">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/card_img_7d7d11a3-0daa-4469-956c-846a4c9b8acf.png?v=1737133834" alt="payment methods" width="auto" height="auto" loading="lazy">        </div>
+    </div>
+</footer>
+  </section>
+  
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top-btn" id="scrollTopBtn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+</body>
+</html>

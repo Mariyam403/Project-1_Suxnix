@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - suxnix dev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .checkout-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .cart-icon {
+            position: relative;
+            color: #2563eb;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .checkout-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            gap: 60px;
+        }
+
+        /* Left Column - Form */
+        .checkout-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .sign-in-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            float: right;
+        }
+
+        .sign-in-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 35px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        /* Shipping Method */
+        .shipping-method {
+            border: 2px solid #2563eb;
+            border-radius: 6px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            background: #f8faff;
+        }
+
+        .shipping-name {
+            font-size: 15px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .shipping-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            margin-top: 40px;
+        }
+
+        .payment-security {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .payment-disabled {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            opacity: 0.3;
+        }
+
+        .payment-message {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .pay-button {
+            width: 100%;
+            padding: 16px;
+            background: #e5e7eb;
+            color: #9ca3af;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: not-allowed;
+            margin-top: 30px;
+        }
+
+        .privacy-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Right Column - Order Summary */
+        .order-summary {
+            background: #fafafa;
+            padding: 30px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .product-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .product-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .product-image {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .product-quantity {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #1a1a1a;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-name {
+            font-size: 14px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* Summary Totals */
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .summary-label {
+            color: #666;
+        }
+
+        .summary-value {
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .summary-value.free {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .tax-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: help;
+        }
+
+        .info-icon {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e5e5e5;
+            margin: 20px 0;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .total-label {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .total-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .currency-code {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .order-summary {
+                position: static;
+                order: -1;
+            }
+
+            .checkout-form {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-form {
+                padding: 20px;
+            }
+
+            .order-summary {
+                padding: 20px;
+            }
+        }
+
+        /* Dropdown Animation */
+        .country-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background: #f3f4f6;
+        }
+
+        .dropdown-item.selected {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="checkout-header">
+        <div class="header-container">
+            <a href="#" class="logo">suxnix dev</a>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Checkout Container -->
+    <div class="checkout-container">
+        <!-- Left Column - Checkout Form -->
+        <div class="checkout-form">
+            <!-- Contact Section -->
+            <section>
+                <h2 class="section-title">
+                    Contact
+                    <a href="#" class="sign-in-link">Sign in</a>
+                </h2>
+                
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email or mobile phone number" id="contactEmail">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox-input" id="newsOffers">
+                    <label for="newsOffers" class="checkbox-label">Email me with news and offers</label>
+                </div>
+            </section>
+
+            <!-- Delivery Section -->
+            <section style="margin-top: 40px;">
+                <h2 class="section-title">Delivery</h2>
+                
+                <div class="form-group country-dropdown">
+                    <label class="form-label">Country/Region</label>
+                    <select class="form-select" id="countrySelect">
+                        <option value="bangladesh">Bangladesh</option>
+                        <option value="india">India</option>
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="canada">Canada</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="First name (optional)" id="firstName">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Last name" id="lastName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Address" id="address">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Apartment, suite, etc. (optional)" id="apartment">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="City" id="city">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Postal code (optional)" id="postalCode">
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox-input" id="saveInfo">
+                    <label for="saveInfo" class="checkbox-label">Save this information for next time</label>
+                </div>
+            </section>
+
+            <!-- Shipping Method -->
+            <section style="margin-top: 40px;">
+                <h2 class="section-title">Shipping method</h2>
+                <div class="shipping-method">
+                    <span class="shipping-name">Standard</span>
+                    <span class="shipping-price">FREE</span>
+                </div>
+            </section>
+
+            <!-- Payment Section -->
+            <section class="payment-section">
+                <h2 class="section-title">Payment</h2>
+                <p class="payment-security">All transactions are secure and encrypted.</p>
+                
+                <div class="payment-disabled">
+                    <svg class="payment-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="20" width="48" height="32" rx="4" stroke="#ccc" stroke-width="2"/>
+                        <path d="M8 28h48" stroke="#ccc" stroke-width="2"/>
+                        <circle cx="32" cy="16" r="2" fill="#ccc"/>
+                        <path d="M30 16L32 12L34 16" stroke="#ccc" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <p class="payment-message">This store can't accept payments right now.</p>
+                </div>
+
+                <button class="pay-button" disabled>Pay now</button>
+            </section>
+
+            <a href="#" class="privacy-link">Privacy policy</a>
+        </div>
+
+        <!-- Right Column - Order Summary -->
+        <aside class="order-summary">
+            <!-- Product 1 -->
+            <div class="product-item">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=150&h=150&fit=crop" alt="Amino Energy Health 2kg" class="product-image">
+                    <span class="product-quantity">1</span>
+                </div>
+                <div class="product-details">
+                    <div class="product-name">Amino Energy Health 2kg</div>
+                </div>
+                <div class="product-price">৳59.99</div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-item">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=150&h=150&fit=crop" alt="SERIOUR MASS 2kg" class="product-image">
+                    <span class="product-quantity">4</span>
+                </div>
+                <div class="product-details">
+                    <div class="product-name">SERIOUR MASS 2kg</div>
+                </div>
+                <div class="product-price">৳199.96</div>
+            </div>
+
+            <!-- Summary Calculations -->
+            <div style="margin-top: 30px;">
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal · 5 items</span>
+                    <span class="summary-value">৳259.95</span>
+                </div>
+
+                <div class="summary-row">
+                    <span class="summary-label">Shipping</span>
+                    <span class="summary-value free">FREE</span>
+                </div>
+
+                <div class="summary-row">
+                    <span class="summary-label tax-info">
+                        Estimated taxes
+                        <i class="fas fa-info-circle info-icon"></i>
+                    </span>
+                    <span class="summary-value">৳38.99</span>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="total-row">
+                    <span class="total-label">Total</span>
+                    <div>
+                        <span class="currency-code">BDT</span>
+                        <span class="total-amount">৳298.94</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Form validation
+        const form = {
+            contactEmail: document.getElementById('contactEmail'),
+            firstName: document.getElementById('firstName'),
+            lastName: document.getElementById('lastName'),
+            address: document.getElementById('address'),
+            city: document.getElementById('city'),
+            postalCode: document.getElementById('postalCode'),
+            countrySelect: document.getElementById('countrySelect')
+        };
+
+        // Email validation
+        form.contactEmail.addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value && !emailRegex.test(this.value)) {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '#d1d5db';
+            }
+        });
+
+        // Required field validation
+        const requiredFields = [form.contactEmail, form.lastName, form.address, form.city];
+        
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#ef4444';
+                } else {
+                    this.style.borderColor = '#d1d5db';
+                }
+            });
+
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = '#d1d5db';
+                }
+            });
+        });
+
+        // Country select change
+        form.countrySelect.addEventListener('change', function() {
+            console.log('Country changed to:', this.value);
+            // You can add logic here to update shipping costs based on country
+        });
+
+        // Save info checkbox
+        document.getElementById('saveInfo').addEventListener('change', function() {
+            if (this.checked) {
+                console.log('Save information for next time');
+                // Add logic to save form data
+            }
+        });
+
+        // News and offers checkbox
+        document.getElementById('newsOffers').addEventListener('change', function() {
+            if (this.checked) {
+                console.log('User opted in for news and offers');
+            }
+        });
+
+        // Pay button (currently disabled)
+        document.querySelector('.pay-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Payment is currently disabled for this store.');
+        });
+
+        // Auto-fill functionality (for demo purposes)
+        function autoFillDemo() {
+            form.contactEmail.value = 'customer@example.com';
+            form.firstName.value = 'John';
+            form.lastName.value = 'Doe';
+            form.address.value = '123 Main Street';
+            form.city.value = 'Dhaka';
+            form.postalCode.value = '1200';
+        }
+
+        // Input formatting
+        form.postalCode.addEventListener('input', function() {
+            // Remove non-alphanumeric characters
+            this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+        });
+
+        // Sign in link
+        document.querySelector('.sign-in-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Sign in functionality would be implemented here');
+        });
+
+        // Privacy policy link
+        document.querySelector('.privacy-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Privacy policy would be displayed here');
+        });
+
+        // Tax info icon tooltip
+        document.querySelector('.info-icon').addEventListener('click', function() {
+            alert('Estimated taxes are calculated based on your delivery address and local tax rates.');
+        });
+
+        // Form submission prevention
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+
+        // Smooth scroll to top on load
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Local storage for form data
+        function saveFormData() {
+            const formData = {
+                email: form.contactEmail.value,
+                firstName: form.firstName.value,
+                lastName: form.lastName.value,
+                address: form.address.value,
+                apartment: document.getElementById('apartment').value,
+                city: form.city.value,
+                postalCode: form.postalCode.value,
+                country: form.countrySelect.value
+            };
+            localStorage.setItem('checkoutFormData', JSON.stringify(formData));
+        }
+
+        function loadFormData() {
+            const savedData = localStorage.getItem('checkoutFormData');
+            if (savedData && document.getElementById('saveInfo').checked) {
+                const data = JSON.parse(savedData);
+                form.contactEmail.value = data.email || '';
+                form.firstName.value = data.firstName || '';
+                form.lastName.value = data.lastName || '';
+                form.address.value = data.address || '';
+                document.getElementById('apartment').value = data.apartment || '';
+                form.city.value = data.city || '';
+                form.postalCode.value = data.postalCode || '';
+                form.countrySelect.value = data.country || 'bangladesh';
+            }
+        }
+
+        // Auto-save on input
+        Object.values(form).forEach(field => {
+            field.addEventListener('input', saveFormData);
+        });
+
+        // Load saved data on page load
+        window.addEventListener('load', loadFormData);
+    </script>
+</body>
+</html>

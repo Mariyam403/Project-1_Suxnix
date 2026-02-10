@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suxnix – Power Supplement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --brand:#08C65B; --brand-dark:#0a9b4a; --text:#222; --muted:#666; --bg:#ffffff }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg)}
+
+    /* Header */
+    .site-header{position:sticky;top:0;background:#fff;z-index:80;border-bottom:1px solid #e5e7eb}
+    .site-header .wrap{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:10px;color:#0f172a;text-decoration:none;font-weight:800;font-size:20px}
+    .logo svg{width:159.96px;height:55.16px}
+    .menu{display:flex;align-items:center;gap:18px}
+    .menu a,.menu button{font-size:14px}
+    .menu .has-dropdown{position:relative}
+    .menu .has-dropdown>button,.menu .has-dropdown>a{background:transparent;border:none;color:#0f172a;font-weight:600;cursor:pointer;padding:0;font-family:inherit;text-decoration:none}
+    .menu .has-dropdown>button:hover,.menu .has-dropdown>a:hover{color:var(--brand)}
+    .menu .dropdown{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 12px 28px rgba(0,0,0,.12);padding:8px 0;min-width:200px;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s,transform .15s;z-index:90}
+    .menu .dropdown.open,.menu .has-dropdown:hover .dropdown,.menu .has-dropdown:focus-within .dropdown{opacity:1;transform:translateY(0);pointer-events:auto}
+    .menu .dropdown a{display:block;padding:12px 16px;color:#0f172a;text-decoration:none;font-weight:600}
+    .menu .dropdown a:hover{background:#f8fafc;color:var(--brand)}
+     .icon{width:18px;height:18px;display:inline-block;vertical-align:-2px}
+     .menu a .icon{margin-right:6px;stroke:currentColor}
+     section{padding:40px 0;border-top:1px solid #f1f1f1}
+     section h2{font-size:28px;font-weight:700;display:flex;align-items:center;gap:10px;margin:0 0 10px}
+     section p{color:var(--muted)}
+     section h2 .icon{stroke:var(--brand)}
+    .header-actions{display:flex;align-items:center;gap:12px}
+    .icon-btn{background:#fff;border:1px solid #e5e7eb;border-radius:10px;width:36px;height:36px;display:grid;place-items:center;color:#0f172a;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .icon-btn:hover{background:#f8fafc}
+    #btnApps.icon-btn{background:#14cc65;color:#fff;border-color:#14cc65}
+    #btnApps.icon-btn svg{stroke:#fff}
+    #btnApps.icon-btn:hover{filter:brightness(1.05)}
+
+    /* Panels & overlays */
+    .backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);backdrop-filter:blur(1px);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:95}
+    .backdrop.show{opacity:1;pointer-events:auto}
+    .close{border:none;background:var(--brand);color:#fff;border-radius:50%;width:36px;height:36px;cursor:pointer;position:absolute;top:12px;right:12px;box-shadow:0 8px 18px rgba(8,198,91,.18)}
+
+    .drawer{position:fixed;top:0;right:0;width:360px;max-width:90vw;height:100%;background:#fff;box-shadow:-10px 0 24px rgba(0,0,0,.12);transform:translateX(100%);transition:transform .25s ease;z-index:110;display:flex;flex-direction:column;border-left:1px solid #f1f1f1}
+    .drawer.open{transform:translateX(0)}
+    .drawer .head{position:relative;display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #f1f1f1}
+    .drawer .content{padding:16px;overflow:auto}
+
+    .search-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.96);width:min(700px,92vw);background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.18);z-index:120;opacity:0;pointer-events:none;transition:transform .2s ease,opacity .2s ease;border:1px solid #f1f1f1}
+    .search-modal.open{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+    .search-modal .row{display:flex;gap:10px;padding:20px}
+    .search-modal input{flex:1;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;outline:none;font-size:16px}
+    .search-modal button{background:var(--brand);color:#fff;border:none;border-radius:10px;padding:12px 16px;cursor:pointer}
+
+    .apps-menu{position:fixed;top:70px;right:24px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 20px 48px rgba(0,0,0,.12);width:240px;padding:44px 12px 12px;z-index:110;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .15s,transform .15s}
+    .apps-menu.open{opacity:1;transform:translateY(0);pointer-events:auto}
+    .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .apps-grid a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;border-radius:12px;text-decoration:none;color:#0f172a}
+    .apps-grid a:hover{background:#f8fafc}
+    .apps-menu .socials{display:flex;gap:8px;padding:6px 10px;margin-top:6px}
+    .apps-menu .social-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid #e5e7eb;color:#111;transition:background .15s,color .15s,border-color .15s}
+    .apps-menu .social-icon svg{width:12px;height:12px}
+    .apps-menu .social-icon:hover{background:#14cc65;color:#fff;border-color:#14cc65}
+
+     /* Mini cart popover */
+     .mini-cart{position:fixed;top:70px;right:24px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 20px 48px rgba(0,0,0,.12);width:280px;z-index:110;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .15s,transform .15s}
+     .mini-cart.open{opacity:1;transform:translateY(0);pointer-events:auto}
+     .mini-cart .title{margin:0 0 12px;color:#111;font-weight:600}
+     .mini-cart .line{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:#333}
+     .mini-cart .line span{color:#666}
+     .mini-cart .btn{display:block;width:100%;text-align:center;padding:10px 12px;border-radius:8px;font-weight:700;text-decoration:none;margin-top:10px}
+     .mini-cart .btn-view{background:#111;color:#fff}
+     .mini-cart .btn-checkout{background:var(--brand);color:#fff}
+     .mini-cart .btn-view:hover,.mini-cart .btn-checkout:hover{filter:brightness(1.05)}
+
+    /* Global social icon sizing */
+    .socials{display:flex;gap:6px}
+    .social-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid #e5e7eb;color:#111;transition:background .15s,color .15s,border-color .15s}
+    .social-icon svg{width:12px;height:12px}
+    .social-icon:hover{background:#14cc65;color:#fff;border-color:#14cc65}
+
+    /* Hero */
+    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+    .hero{padding:32px 0}
+    .eyebrow{text-align:center;color:#FAA432;margin:0 0 20px;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.095em}
+    .title{display:block;font-size:60px;font-weight:500;text-transform:uppercase;line-height:1.13;margin:0 0 40px;text-align:center}
+    .subtitle{max-width:720px;margin:0 auto 16px;text-align:center;color:#666}
+    .hero-cta{text-align:center}
+    .cta{background:var(--brand);color:#fff;padding:10px 16px;border-radius:24px;text-decoration:none;font-weight:600}
+    .cta:hover{background:var(--brand-dark)}
+    .green{color:var(--brand)}
+
+    /* Brand marquee */
+    .brands{padding:24px 0 10px;border-top:0}
+    .brands .wrap{max-width:1100px;margin:0 auto;text-align:center;padding:0 24px}
+    .brands-title{color:#1f2937;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+    .brand-marquee{position:relative;overflow:hidden;border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;padding:12px 0;background:#fff}
+    .brand-track{display:flex;gap:60px;width:max-content;animation:brandScroll 26s linear infinite}
+    .brand{color:#374151;opacity:.9;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+    .brand::before{content:'';width:22px;height:22px;border-radius:50%;border:1px solid #e5e7eb;background:#fff}
+    .brand-marquee:hover .brand-track{animation-play-state:paused}
+    @keyframes brandScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media (prefers-reduced-motion: reduce){.brand-track{animation:none}}
+
+    /* Product section */
+    .product-grid{display:grid;gap:40px}
+    .product-item{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}
+    .product-media img{width:100%;height:auto;max-width:540px;display:block}
+    .product-title{font-size:42px;font-weight:800;text-transform:uppercase;margin:0 0 10px}
+    .product-sub{color:#1f2937;font-weight:600;margin:0 0 10px}
+    .product-desc{color:#666;margin:0 0 16px;max-width:520px}
+    .product-actions{display:flex;align-items:center;gap:24px}
+    .price .current{color:#111;font-weight:700;font-size:24px}
+    .price .old{color:#f59e0b;text-decoration:line-through;margin-left:8px}
+
+    /* Product carousel */
+    .product-carousel{position:relative;margin-top:20px}
+    .product-viewport{overflow:hidden}
+    .product-track{display:flex;gap:24px;align-items:stretch}
+    .product-card{flex:0 0 260px;background:#fff;border:1px solid #f1f1f1;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:18px;display:flex;flex-direction:column}
+    .product-card .media{height:160px;display:flex;align-items:center;justify-content:center}
+    .product-card .media img{max-height:140px;width:auto;height:auto}
+    .product-card h4{font-size:18px;font-weight:800;text-transform:uppercase;margin:12px 0;color:#111}
+    .product-card .price{font-weight:700;color:#111;margin:8px 0}
+    .product-card .rating{display:flex;align-items:center;gap:6px;color:#f59e0b;margin:6px 0}
+    .product-card .rating .count{color:#666}
+    .product-card .action{margin-top:auto;display:flex;justify-content:flex-start}
+    .product-card .action .circle{background:var(--brand);color:#fff;border:none;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;box-shadow:0 8px 18px rgba(8,198,91,.18);cursor:pointer}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:none;background:#14cc65;color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 18px rgba(8,198,91,.18);z-index:2}
+    .carousel-btn.prev{left:-18px}
+    .carousel-btn.next{right:-18px}
+    .carousel-btn:hover{filter:brightness(1.05)}
+
+    @media (max-width:900px){
+      .menu{display:none}
+      .menu.mobile{display:grid;gap:10px;position:fixed;top:56px;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;padding:14px 20px}
+      .product-item{grid-template-columns:1fr;text-align:center}
+      .product-actions{justify-content:center}
+      .product-desc{margin:0 auto 16px}
+    }
+    #features {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.feature-card {
+  color: white;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.feature-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: #ffd700;
+  stroke-width: 2;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.feature-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.product-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image img {
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-image {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+.video-section {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+.brush-stroke {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+}
+
+.brush-stroke.top {
+  top: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="%23ffffff" d="M0,50 Q360,0 720,50 T1440,50 L1440,0 L0,0 Z" style="filter: url(%23roughen);"><animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,50 Q360,0 720,50 T1440,50 L1440,0 L0,0 Z; M0,30 Q360,70 720,30 T1440,30 L1440,0 L0,0 Z; M0,50 Q360,0 720,50 T1440,50 L1440,0 L0,0 Z"/></path></svg>');
+  transform: scaleY(-1);
+}
+
+.brush-stroke.bottom {
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="%23ffffff" d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z"/></svg>');
+}
+
+/* Alternative: Use actual brush stroke images */
+.brush-stroke.top {
+  background-image: url('brush-stroke-white.png');
+}
+
+.brush-stroke.bottom {
+  background-image: url('brush-stroke-white.png');
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* Play Button Styles */
+.popup-video {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  border-radius: 50%;
+  color: white;
+  font-size: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 40px rgba(46, 204, 113, 0.4);
+  cursor: pointer;
+}
+
+.popup-video i {
+  margin-left: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+.popup-video:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 50px rgba(46, 204, 113, 0.6);
+}
+
+/* Ripple Effect */
+.popup-video.ripple-white::before,
+.popup-video.ripple-white::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(46, 204, 113, 0.8);
+  animation: ripple 2s infinite;
+}
+
+.popup-video.ripple-white::after {
+  animation-delay: 1s;
+}
+
+@keyframes ripple {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}
+
+/* Leaf Decorations */
+.leaf-decoration {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: url('leaf-green.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.leaf-decoration.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  transform: rotate(-20deg);
+}
+
+.leaf-decoration.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  transform: rotate(20deg) scaleX(-1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-container {
+    height: 400px;
+  }
+
+  .popup-video {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+
+  .brush-stroke {
+    height: 50px;
+  }
+
+  .leaf-decoration {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container {
+    height: 300px;
+  }
+
+  .popup-video {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .leaf-decoration {
+    display: none;
+  }
+}
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+}
+
+.video-modal-close:hover {
+  color: #2ecc71;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.stats-section {
+  background: #f8f8f8;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.brush-stroke-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="%23ffffff" d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z"/></svg>');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.stats-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+  align-items: start;
+  justify-content: center;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Circular Progress */
+.stat-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.circle-svg {
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 8;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: #ff9800;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 2s ease-in-out;
+}
+
+.percentage-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+
+/* Stat Content */
+.stat-content {
+  flex: 1;
+}
+
+.stat-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-description {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Leaf Decorations */
+.leaf-decoration {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-image: url('leaf-green.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.leaf-decoration.left {
+  left: 0;
+  bottom: 50px;
+  transform: rotate(-15deg);
+}
+
+.leaf-decoration.right {
+  right: 0;
+  bottom: 50px;
+  transform: rotate(15deg) scaleX(-1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .stats-wrapper {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .stat-item {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 60px 20px;
+  }
+
+  .stat-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .circle-svg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .circle-bg,
+  .circle-progress {
+    stroke-width: 6;
+  }
+
+  .percentage-text {
+    font-size: 20px;
+  }
+
+  .stat-title {
+    font-size: 18px;
+  }
+
+  .stat-description {
+    font-size: 14px;
+  }
+
+  .leaf-decoration {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .leaf-decoration {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#home" class="logo" aria-label="Suxnix home">
+        <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev">
+      </a>
+      <nav id="menu" class="menu" aria-label="Main">
+        <div class="has-dropdown">
+          <a id="homeTrigger" href="#home">Home</a>
+          <div id="homeDropdown" class="dropdown" role="menu" aria-label="Home pages">
+            <a href="#home">Home One</a>
+            <a href="#home">Home Two</a>
+            <a href="#home">Home Three</a>
+          </div>
+        </div>
+        <a href="#features" class="logo">Features</a>
+        <a href="#product" class="logo">Product</a>
+        <a href="#ingredient" class="logo">Ingredient</a>
+        <a href="#pricing" class="logo">Pricing</a>
+        <div class="has-dropdown">
+          <a id="shopTrigger" href="#shop" class="logo">Shop</a>
+          <div id="shopDropdown" class="dropdown" role="menu" aria-label="Shop pages">
+            <a href="#shop">Our Shop</a>
+            <a href="#shop">Shop Details</a>
+            <a href="#shop">Cart Page</a>
+            <a href="#shop">Login Page</a>
+            <a href="#shop">Register</a>
+          </div>
+        </div>
+        <div class="has-dropdown">
+          <a id="newsTrigger" href="#news" class="logo">News</a>
+          <div id="newsDropdown" class="dropdown" role="menu" aria-label="News pages">
+            <a href="#news">Our Blog</a>
+            <a href="#news">Blog Details</a>
+          </div>
+        </div>
+        <a href="#contacts" class="logo">Contacts</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btnSearch" aria-label="Search" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button id="btnApps" aria-label="Apps" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+        </button>
+        <button id="btnCart" aria-label="Cart" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M5,6h2l1,7h11l2-9H6"></path></svg>
+        </button>
+        <!-- hamburger removed as requested -->
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="wrap">
+      <div class="eyebrow">.. INCREASED ENERGY WITH SUXNIX ..</div>
+      <h2 class="title">MIX PROTEIN PROVIDED WAY<br>TO GROWTH</h2>
+      <p class="subtitle">Premium nutrition for better performance and faster recovery.</p>
+      <div class="hero-cta"><a class="cta" href="#shop">Shop Now</a></div>
+      <div style="margin-top:28px">
+        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/banner_img01_4dfc6924-a7d3-4e69-abc4-4e1199127900.png?v=1736613086&amp;width=800" alt="" class="main-img" width="auto" height="auto" text-align="center">
+
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Brand marquee below hero -->
+  <section class="brands" aria-label="Featured brands">
+    <div class="wrap">
+      <div class="brands-title">PERFECT BRAND IS FEATURED ON</div>
+      <div class="brand-marquee" aria-hidden="false">
+        <div class="brand-track">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_05.png?v=1736574801" alt="" width="138" height="39" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_03.png?v=1736574801" alt="" width="109" height="27" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_04.png?v=1736574801" alt="" width="92" height="28" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_02.png?v=1736574801" alt="" width="110" height="48" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+          <!-- duplicate sequence to create seamless loop -->
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_05.png?v=1736574801" alt="" width="138" height="39" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_03.png?v=1736574801" alt="" width="109" height="27" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_04.png?v=1736574801" alt="" width="92" height="28" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_02.png?v=1736574801" alt="" width="110" height="48" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sections for navigation targets -->
+ <section id="features">
+  <div class="container">
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M32 10 C20 10, 20 20, 20 28 C20 36, 26 42, 32 48 C38 42, 44 36, 44 28 C44 20, 44 10, 32 10 Z"/>
+          </svg>
+        </div>
+        <h3>MULTI FRUITS FLAVOUR</h3>
+        <p>A thing added to something else in order to complete or enhance it.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="12" y="20" width="40" height="4"/>
+            <rect x="12" y="30" width="40" height="4"/>
+            <rect x="12" y="40" width="40" height="4"/>
+          </svg>
+        </div>
+        <h3>FLOWER FORMULA</h3>
+        <p>A thing added to something else in order to complete or enhance it.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="32" cy="32" r="18"/>
+            <line x1="42" y1="22" x2="48" y2="16"/>
+          </svg>
+        </div>
+        <h3>FISHBONE DIAGRAM</h3>
+        <p>A thing added to something else in order to complete or enhance it.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="32" cy="26" r="10"/>
+            <path d="M20 38 Q20 48, 32 48 Q44 48, 44 38"/>
+          </svg>
+        </div>
+        <h3>100% FAT BLASTING</h3>
+        <p>A thing added to something else in order to complete or enhance it.</p>
+      </div>
+    </div>
+
+    <!-- Product Image -->
+    <div class="product-image">
+      <img src="//suxnix-dev.myshopify.com/cdn/shop/files/features_img_00ec7c4b-95e1-4661-b180-7c2bd4db7ebb.png?v=1736613975" alt="" width="auto" height="auto" loading="lazy">
+    </div>
+  </div>
+</section>
+
+  <section id="product" aria-label="Products">
+    <div class="wrap">
+      <div class="product-carousel">
+        <button class="carousel-btn prev" aria-label="Previous">‹</button>
+        <button class="carousel-btn next" aria-label="Next">›</button>
+        <div class="product-viewport" tabindex="0">
+          <div class="product-track" id="productTrack">
+            <!-- Antiaging and Longevity -->
+            <article class="product-card">
+              <div class="media">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb01.png?v=1737721978" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+              </div>
+              <h4>Antiaging and Longevity</h4>
+              <div class="price">Tk 49.99</div>
+              <div class="rating"><span>★★★★★</span><span class="count">(30)</span></div>
+              <div class="action"><button class="circle" aria-label="Add to cart">+</button></div>
+            </article>
+            <!-- Box Full of Muscles -->
+            <article class="product-card">
+              <div class="media">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Box Full of Muscles" width="auto" height="auto" loading="lazy">
+              </div>
+              <h4>Box Full of Muscles</h4>
+              <div class="price">Tk 85.99</div>
+              <div class="rating"><span>★★★★★</span><span class="count">(30)</span></div>
+              <div class="action"><button class="circle" aria-label="Add to cart">+</button></div>
+            </article>
+            <!-- Protein Powder 2KG -->
+            <article class="product-card">
+              <div class="media">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb04.png?v=1738166199" alt="Protein Powder 2kg" width="auto" height="auto" loading="lazy">
+              </div>
+              <h4>Protein Powder 2KG</h4>
+              <div class="price">Tk 85.99</div>
+              <div class="rating"><span>★★★★★</span><span class="count">(30)</span></div>
+              <div class="action"><button class="circle" aria-label="Add to cart">+</button></div>
+            </article>
+            <!-- Whey Protein Powder -->
+            <article class="product-card">
+              <div class="media">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Whey Protein Powder" width="auto" height="auto" loading="lazy">
+              </div>
+              <h4>Whey Protein Powder</h4>
+              <div class="price">Tk 49.99</div>
+              <div class="rating"><span>★★★★★</span><span class="count">(30)</span></div>
+              <div class="action"><button class="circle" aria-label="Add to cart">+</button></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="video-section">
+  <!-- Brush stroke top edge -->
+  <div class="brush-stroke top"></div>
+  
+  <div class="video-container">
+    <!-- Background video or image -->
+    <div class="video-background">
+      <img src="workout-background.jpg" alt="Fitness Training Background">
+      <div class="video-overlay"></div>
+    </div>
+    
+    <!-- Play button -->
+    <a href="https://www.youtube.com/watch?v=HQfF5XRVXjU" class="popup-video ripple-white">
+      <i class="fas fa-play"></i>
+    </a>
+  </div>
+  
+  <!-- Brush stroke bottom edge -->
+  <div class="brush-stroke bottom"></div>
+  
+  <!-- Leaf decorations -->
+  <div class="leaf-decoration bottom-left"></div>
+  <div class="leaf-decoration bottom-right"></div>
+</section>
+<section class="stats-section">
+  <!-- Brush stroke top edge -->
+  <div class="brush-stroke-divider"></div>
+  
+  <div class="container">
+    <!-- Leaf decorations -->
+    <div class="leaf-decoration left"></div>
+    <div class="leaf-decoration right"></div>
+    
+    <div class="stats-wrapper">
+      
+      <!-- Stat 1 - Active Members -->
+      <div class="stat-item">
+        <div class="stat-circle" data-percentage="65">
+          <svg class="circle-svg" width="120" height="120">
+            <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="circle-progress" cx="60" cy="60" r="50"></circle>
+          </svg>
+          <div class="percentage-text">
+            <span class="counter" data-target="65">0</span>%
+          </div>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">ACTIVE MEMBERS</h3>
+          <p class="stat-description">Yes we did it asap software</p>
+        </div>
+      </div>
+      
+      <!-- Stat 2 - Projects Done -->
+      <div class="stat-item">
+        <div class="stat-circle" data-percentage="90">
+          <svg class="circle-svg" width="120" height="120">
+            <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="circle-progress" cx="60" cy="60" r="50"></circle>
+          </svg>
+          <div class="percentage-text">
+            <span class="counter" data-target="90">0</span>%
+          </div>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">PROJECTS DONE</h3>
+          <p class="stat-description">Yes we did it asap software</p>
+        </div>
+      </div>
+      
+      <!-- Stat 3 - Get Rewards -->
+      <div class="stat-item">
+        <div class="stat-circle" data-percentage="80">
+          <svg class="circle-svg" width="120" height="120">
+            <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="circle-progress" cx="60" cy="60" r="50"></circle>
+          </svg>
+          <div class="percentage-text">
+            <span class="counter" data-target="80">0</span>%
+          </div>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">GET REWARDS</h3>
+          <p class="stat-description">Yes we did it asap software</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+  </section>
+  <section id="ingredient"><div class="wrap"><h2>Ingredient</h2><p>High-quality protein sources with essential amino acids and natural flavors.</p></div></section>
+  <section id="pricing"><div class="wrap"><h2>Pricing</h2><p>Transparent pricing with bundle savings and subscriptions for consistent supply.</p></div></section>
+  <section id="shop"><div class="wrap"><h2>Shop</h2><p>Choose your flavor and pack size. Fast shipping available.</p></div></section>
+  <section id="news"><div class="wrap"><h2>News</h2><p>Training tips, nutrition guides, and product updates from Suxnix.</p></div></section>
+
+  <!-- interactive panels -->
+  <div id="backdrop" class="backdrop"></div>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="head"><strong>Your Cart</strong><button id="closeCart" class="close" aria-label="Close">✕</button></div>
+    <div class="content"><p>Your cart is empty.</p></div>
+  </aside>
+
+  <div id="searchModal" class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="row">
+      <input id="searchInput" type="text" placeholder="Search products..." />
+      <button id="doSearch">Search</button>
+    </div>
+  </div>
+
+  <div id="miniCart" class="mini-cart" aria-hidden="true">
+    <div style="padding:16px">
+      <p>Your cart is empty</p>
+      <div class="line"><strong>Subtotal:</strong><span>Tk 0.00</span></div>
+      <a href="#cart" class="btn btn-view">VIEW CART</a>
+      <a href="#checkout" class="btn btn-checkout">CHECKOUT</a>
+    </div>
+  </div>
+
+  <div id="appsMenu" class="apps-menu" aria-hidden="true">
+    <button id="closeApps" class="close" aria-label="Close apps">✕</button>
+    <div class="apps-grid">
+      <a href="#shop">Shop</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#news">News</a>
+      <a href="#features">Features</a>
+      <a href="#product">Product</a>
+      <a href="#contacts">Contacts</a>
+    </div>
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+      <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg></a>
+      <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 2a4.5 4.5 0 00-4.09 6.28A12.94 12.94 0 013 4s-4 9 5 13a13 13 0 0011 0 9 9 0 005-8.5v-1A10.5 10.5 0 0023 3z"></path></svg></a>
+      <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"></rect><polygon points="10,9 15,12 10,15"></polygon></svg></a>
+    </div>
+  </div>
+
+  <!-- Desktop info side panel -->
+  <aside id="infoPanel" class="drawer info-panel" aria-hidden="true">
+    <div class="head"><strong>Menu</strong><button id="closeInfo" class="close" aria-label="Close">✕</button></div>
+    <div class="content">
+      <h2 style="margin-top:0">Getting all of the <span class="green">nutrients</span> you need simply cannot be done without supplements.</h2>
+      <p>Nam libero tempore, cum soluta nobis eligendi cumque quod placeat facere possimus assumenda omnis dolor repellendus autem temporibus officiis.</p>
+      <p><strong>+1 599 162 4545</strong><br>info@example.com</p>
+      <p>5689 Lotaso Terrace, Culver City, CA, United States</p>
+      <div class="socials">
+        <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 2a4.5 4.5 0 00-4.09 6.28A12.94 12.94 0 013 4s-4 9 5 13a13 13 0 0011 0 9 9 0 005-8.5v-1A10.5 10.5 0 0023 3z"/></svg></a>
+        <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="3"/><polygon points="10,9 15,12 10,15"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const btnCart=document.getElementById('btnCart');
+    const btnSearch=document.getElementById('btnSearch');
+    const btnApps=document.getElementById('btnApps');
+    const backdrop=document.getElementById('backdrop');
+    const cartDrawer=document.getElementById('cartDrawer');
+    const miniCart=document.getElementById('miniCart');
+    const searchModal=document.getElementById('searchModal');
+    const appsMenu=document.getElementById('appsMenu');
+    const infoPanel=document.getElementById('infoPanel');
+    const menu=document.getElementById('menu');
+    const homeTrigger=document.getElementById('homeTrigger');
+    const homeDropdown=document.getElementById('homeDropdown');
+    const shopTrigger=document.getElementById('shopTrigger');
+    const shopDropdown=document.getElementById('shopDropdown');
+    const newsTrigger=document.getElementById('newsTrigger');
+    const newsDropdown=document.getElementById('newsDropdown');
+
+    function closeAll(){
+      cartDrawer.classList.remove('open');
+      miniCart.classList.remove('open');
+      searchModal.classList.remove('open');
+      appsMenu.classList.remove('open');
+      infoPanel.classList.remove('open');
+      homeDropdown?.classList.remove('open');
+      backdrop.classList.remove('show');
+    }
+
+    btnCart?.addEventListener('click',()=>{
+      closeAll();
+      miniCart.classList.add('open');
+      backdrop.classList.add('show');
+    });
+    btnSearch?.addEventListener('click',()=>{
+      closeAll();
+      searchModal.classList.add('open');
+      backdrop.classList.add('show');
+      document.getElementById('searchInput')?.focus();
+    });
+    btnApps?.addEventListener('click',()=>{
+      closeAll();
+      if(window.innerWidth>=1024){
+        infoPanel.classList.add('open');
+      }else{
+        appsMenu.classList.add('open');
+      }
+      backdrop.classList.add('show');
+    });
+
+    const closeCartBtn = document.getElementById('closeCart');
+    const closeInfoBtn = document.getElementById('closeInfo');
+    const closeAppsBtn = document.getElementById('closeApps');
+
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeAll);
+    if (closeInfoBtn) closeInfoBtn.addEventListener('click', closeAll);
+    if (closeAppsBtn) closeAppsBtn.addEventListener('click', closeAll);
+
+    if (backdrop) backdrop.addEventListener('click', closeAll);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+
+    menu?.querySelectorAll('a')?.forEach(a=>a.addEventListener('click',()=>{
+      if(menu?.classList?.contains('mobile')) menu?.classList?.remove('mobile');
+    }));
+
+    // Simple lightbox video popup
+document.addEventListener('DOMContentLoaded', function() {
+  const videoLinks = document.querySelectorAll('.popup-video');
+  
+  videoLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const videoUrl = this.getAttribute('href');
+      const videoId = getYouTubeVideoId(videoUrl);
+      
+      // Create modal
+      const modal = document.createElement('div');
+      modal.className = 'video-modal';
+      modal.innerHTML = `
+        <div class="video-modal-content">
+          <span class="video-modal-close">&times;</span>
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      
+      // Close modal
+      const closeBtn = modal.querySelector('.video-modal-close');
+      closeBtn.addEventListener('click', () => {
+        modal.remove();
+      });
+      
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.remove();
+        }
+      });
+    });
+  });
+  
+  function getYouTubeVideoId(url) {
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[7].length === 11) ? match[7] : false;
+  }
+});
+// Counter Animation and Circle Progress
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Intersection Observer for triggering animations
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateStats(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all stat items
+  const statItems = document.querySelectorAll('.stat-item');
+  statItems.forEach(item => observer.observe(item));
+
+  function animateStats(statItem) {
+    const circle = statItem.querySelector('.stat-circle');
+    const counter = statItem.querySelector('.counter');
+    const progressCircle = statItem.querySelector('.circle-progress');
+    
+    const percentage = parseInt(circle.getAttribute('data-percentage'));
+    const target = parseInt(counter.getAttribute('data-target'));
+    
+    // Animate circle progress
+    const circumference = 2 * Math.PI * 50; // radius = 50
+    const offset = circumference - (percentage / 100) * circumference;
+    progressCircle.style.strokeDashoffset = offset;
+    
+    // Animate counter
+    animateCounter(counter, 0, target, 2000);
+  }
+
+  function animateCounter(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        element.textContent = end;
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+    }, 16);
+  }
+});
+
+    // Links should navigate; dropdowns open via hover/focus using existing CSS.
+    // No JS click toggles needed for Home, Shop, or News triggers.
+  </script>
+</body>
+</html>

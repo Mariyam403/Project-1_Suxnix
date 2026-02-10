@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Suxnix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style1.css"/>
+    <link rel="stylesheet" href="style2.css"/>
+
+
+</head>
+<body>
+    <script src="script.js"></script>
+    <header class="site-header">
+    <div class="wrap">
+      <a href="#home" class="logo" aria-label="Suxnix home">
+        <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev">
+      </a>
+      <nav id="menu" class="menu" aria-label="Main">
+        <div class="has-dropdown">
+          <a id="homeTrigger" href="#home">Home</a>
+          <div id="homeDropdown" class="dropdown" role="menu" aria-label="Home pages">
+            <a href="index.html#home">Home One</a>
+            <a href="index.html#home">Home Two</a>
+            <a href="index.html#home">Home Three</a>
+          </div>
+        </div>
+        <a href="index.html#features" class="logo">Features</a>
+        <a href="index.html#product" class="logo">Product</a>
+        <a href="index.html#ingredient" class="logo">Ingredient</a>
+        <a href="index.html#pricing" class="logo">Pricing</a>
+        <div class="has-dropdown">
+          <a id="shopTrigger" href="index.html#shop" class="logo">Shop</a>
+          <div id="shopDropdown" class="dropdown" role="menu" aria-label="Shop pages">
+            <a href="ourshop.html">Our Shop</a>
+            <a href="shopdetails.html">Shop Details</a>
+            <a href="cartpage.html">Cart Page</a>
+            <a href="loginpage.html">Login Page</a>
+            <a href="register.html">Register</a>
+          </div>
+        </div>
+        <div class="has-dropdown">
+          <a id="newsTrigger" href="index.html#news" class="logo">News</a>
+          <div id="newsDropdown" class="dropdown" role="menu" aria-label="News pages">
+            <a href="ourblog.html">Our Blog</a>
+            <a href="blogdetails.html">Blog Details</a>
+          </div>
+        </div>
+        <a href="contact.html" class="logo">Contacts</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btnSearch" aria-label="Search" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button id="btnApps" aria-label="Apps" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+        </button>
+        <button id="btnCart" aria-label="Cart" class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M5,6h2l1,7h11l2-9H6"></path></svg>
+        </button>
+        <!-- hamburger removed as requested -->
+      </div>
+    </div>
+  </header>
+    
+  <section class="contact-hero" data-background="//suxnix-dev.myshopify.com/cdn/shop/files/video_bg_8112a5ce-2dd0-45f9-ac62-fd4d1b132944.jpg?v=1737135174">
+        <div class="hero-overlay">
+            <h1>OUR SHOP</h1>
+            <nav class="breadcrumb">
+                <a href="index.html#home" class="home-link">Home</a> <span>|</span> <a href="#">Shop</a>
+            </nav>
+        </div>
+        <div class="torn-divider"></div>
+    </section>
+
+   <main class="main-content">
+        <div class="ourshop-container">
+            <div class="content-wrapper">
+                <!-- Products Section -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <p class="results-count">Showing <span id="showing-count">1-8</span> of <span id="total-count">8</span> results</p>
+                        <div class="sort-dropdown">
+                            <select id="sortSelect">
+                                <option value="featured">Featured</option>
+                                <option value="best-selling">Best selling</option>
+                                <option value="alphabetically-az">Alphabetically, A-Z</option>
+                                <option value="alphabetically-za">Alphabetically, Z-A</option>
+                                <option value="price-low-high">Price, low to high</option>
+                                <option value="price-high-low">Price, high to low</option>
+                                <option value="date-old-new">Date, old to new</option>
+                                <option value="date-new-old">Date, new to old</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Product 1 -->
+                        <div id="fatburners"class="product-card" data-category="fat-burners" data-tags="supplement" data-price="59.99" data-name="AMINO ENERGY HEALTH 2KG">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Amino Energy Health 2kg" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Fat Burners</span>
+                                <h3 class="product-title">AMINO ENERGY HEALTH 2KG</h3>
+                                <p class="product-price">Tk 59.99</p>
+                            </div>
+                            <button class="add-to-cart" href="checkout.html">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div id="nutrition" class="product-card" data-category="nutrition fat-burners" data-tags="supplement" data-price="49.99" data-name="ANTIAGING AND LONGEVITY">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb01.png?v=1737721978" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Nutrition</span>
+                                <h3 class="product-title">ANTIAGING AND LONGEVITY</h3>
+                                <p class="product-price">Tk 49.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div id="burners" class="product-card" data-category="burners" data-tags="supplement" data-price="85.99" data-name="BOX FULL OF MUSCLES">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Box Full of Muscles" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Burners</span>
+                                <h3 class="product-title">BOX FULL OF MUSCLES</h3>
+                                <p class="product-price">Tk 85.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div id="medicine" class="product-card" data-category="medicine" data-tags="medicine protin" data-price="85.99" data-name="PROTEIN POWDER 2KG">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb04.png?v=1738166199" alt="Protein Powder 2kg" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Medicine</span>
+                                <h3 class="product-title">PROTEIN POWDER 2KG</h3>
+                                <p class="product-price">Tk 85.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div id="fatburners" class="product-card" data-category="fat-burners nutrition" data-tags="supplement" data-price="49.99" data-name="SERIOUR MASS 2KG">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271" alt="SERIOUR MASS 2kg" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Fat Burners</span>
+                                <h3 class="product-title">SERIOUR MASS 2KG</h3>
+                                <p class="product-price">Tk 49.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div id="nutrition" class="product-card" data-category="nutrition" data-tags="protin" data-price="49.99" data-name="SERIOUR MASS 2KG">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.png?v=1738166347" alt="SERIOUR MASS 2kg" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Nutrition</span>
+                                <h3 class="product-title">SERIOUR MASS 2KG</h3>
+                                <p class="product-price">Tk 49.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div id="nutrition" class="product-card" data-category="nutrition" data-tags="supplement" data-price="29.99" data-name="SUXNIX NATURAL VITAMIN SUPPLEMENT">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Suxnix Natural Vitamin Supplement" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Nutrition</span>
+                                <h3 class="product-title">SUXNIX NATURAL VITAMIN SUPPLEMENT</h3>
+                                <p class="product-price">Tk 29.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div id="nutrition" class="product-card" data-category="nutrition protein" data-tags="protin" data-price="49.99" data-name="WHEY PROTEIN POWDER">
+                            <div class="product-image">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Whey Protein Powder" width="auto" height="auto" loading="lazy" class="product-image">                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Nutrition</span>
+                                <h3 class="product-title">WHEY PROTEIN POWDER</h3>
+                                <p class="product-price">Tk 49.99</p>
+                            </div>
+                            <button class="add-to-cart">
+                                <span class="cart-icon-btn"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Price Filter -->
+                    <div class="filter-section">
+                        <h3>FILTER BY PRICE</h3>
+                        <div class="price-slider">
+                            <input type="range" id="minPrice" min="0" max="280" value="120" step="1">
+                            <input type="range" id="maxPrice" min="0" max="280" value="280" step="1">
+                            <div class="slider-track"></div>
+                        </div>
+                        <div class="price-display">
+                            <span>Price: $<span id="minPriceDisplay">120</span> - $<span id="maxPriceDisplay">280</span></span>
+                            <button class="filter-btn" id="filterBtn">FILTER</button>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="filter-section">
+                        <h3>CATEGORIES</h3>
+                        <ul class="category-list">
+                            <li>
+                                <button class="category-btn" data-category="burners">BURNERS</button>
+                                <span class="arrow">»</span>
+                            </li>
+                            <li>
+                                <button class="category-btn" data-category="fat-burners">FAT BURNERS</button>
+                                <span class="arrow">»</span>
+                            </li>
+                            <li>
+                                <button class="category-btn" data-category="medicine">MEDICINE</button>
+                                <span class="arrow">»</span>
+                            </li>
+                            <li>
+                                <button class="category-btn" data-category="nutrition">NUTRITION</button>
+                                <span class="arrow">»</span>
+                            </li>
+                            <li>
+                                <button class="category-btn" data-category="protein">PROTEIN</button>
+                                <span class="arrow">»</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Latest Products -->
+                    <div class="filter-section">
+                        <h3>LATEST PRODUCTS</h3>
+                        <div class="latest-products">
+                            <div class="latest-product">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.png?v=1738166347&amp;width=80" alt="SERIOUR MASS 2kg" width="auto" height="auto" loading="lazy">                                <div class="latest-product-info">
+                                    <div class="rating">★★★★★</div>
+                                    <h4>SERIOUR MASS 2KG</h4>
+                                    <p class="price">Tk 49.99</p>
+                                </div>
+                            </div>
+                            <div class="latest-product">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857&amp;width=80" alt="Whey Protein Powder" width="auto" height="auto" loading="lazy">                                <div class="latest-product-info">
+                                    <div class="rating">★★★★★</div>
+                                    <h4>WHEY PROTEIN POWDER</h4>
+                                    <p class="price">Tk 49.99</p>
+                                </div>
+                            </div>
+                            <div class="latest-product">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271&amp;width=80" alt="SERIOUR MASS 2kg" width="auto" height="auto" loading="lazy">                                <div class="latest-product-info">
+                                    <div class="rating">★★★★★</div>
+                                    <h4>SERIOUR MASS 2KG</h4>
+                                    <p class="price">Tk 49.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Tags -->
+                    <div class="filter-section">
+                        <h3>PRODUCT TAGS</h3>
+                        <div class="tags">
+                            <button class="tag-btn" data-tag="medicine">medicine</button>
+                            <button class="tag-btn" data-tag="protin">Protin</button>
+                            <button class="tag-btn" data-tag="supplement">Supplement</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+
+  <section class="testimonial-carousel">
+    <div class="torn-divider top"></div>
+    <div class="testimonial-inner">
+        <div class="carousel-track-container">
+            <ul class="carousel-track" id="testimonialTrack">
+                <li class="carousel-slide current-slide">
+                    <div class="testimonial-content">
+                    <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy">
+                    </a>
+                    <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                      <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                      <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                      <a href="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" class="popup-image" tabindex="0">
+                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy">
+                      </a>
+                        </div>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <button class="carousel-button prev" id="prevBtn">&#10005;</button> 
+        <button class="carousel-button next" id="nextBtn">&#10005;</button>
+
+        <div class="carousel-nav">
+            <button class="indicator active"></button>
+            <button class="indicator"></button>
+            <button class="indicator"></button>
+        </div>
+    </div>
+    <div class="torn-divider bottom"></div>
+</section>
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-col brand-col">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/white_logo.png?v=1737133588" alt="suxnix dev" height="auto" width="auto" loading="lazy">
+            <p>Making beauty especially relating complot especial common questions tend to recur through posts or queries standards vary orem donor command tei.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>ABOUT US</h3>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Product</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>SUPPORT</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Blog Post</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col contact-col">
+            <h3>CONTACT US</h3>
+            <p>4140 Parker Rd. Allentown, New Mexico 31134</p>
+            <p><span class="green-icon">📞</span> +1 31-5555-0114</p>
+            <p><span class="green-icon">✉</span> Suxnix@example.com</p>
+            <p><span class="green-icon">🌐</span> www.suxnixdomain.com</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © 2025 Suxnix All Rights Reserved.</p>
+        <div class="payment-icons">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/card_img_7d7d11a3-0daa-4469-956c-846a4c9b8acf.png?v=1737133834" alt="payment methods" width="auto" height="auto" loading="lazy">        </div>
+    </div>
+</footer>
+  </section>
+  
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top-btn" id="scrollTopBtn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+</body>
+</html>
