@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="style1.css"/>
     <link rel="stylesheet" href="style2.css"/>
+    <style>
+        .product-image img{
+            width: 100%;
+        }
+        .latest-product img{
+            height: 100px;
+        }
+    </style>
 
 
 </head>
@@ -395,5 +403,31 @@
     </svg>
   </button>
 
+
+  <!-- ****************************************************************************************************************************** -->
+
+  <script>
+    function updateSliderTrack() {
+    const minVal = parseInt(minPriceSlider.value);
+    const maxVal = parseInt(maxPriceSlider.value);
+
+    const min = parseInt(minPriceSlider.min);
+    const max = parseInt(minPriceSlider.max);
+
+    const minPercent = ((minVal - min) / (max - min)) * 100;
+    const maxPercent = ((maxVal - min) / (max - min)) * 100;
+
+    sliderTrack.style.background = `linear-gradient(
+        to right,
+        #e0e0e0 0%,
+        #e0e0e0 ${minPercent}%,
+        #2ecc71 ${minPercent}%,
+        #2ecc71 ${maxPercent}%,
+        #e0e0e0 ${maxPercent}%,
+        #e0e0e0 100%
+    )`;
+}
+
+  </script>
 </body>
 </html>
