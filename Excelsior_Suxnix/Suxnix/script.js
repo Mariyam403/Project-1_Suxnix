@@ -864,7 +864,7 @@ function initializePriceFilter() {
         const minVal = parseInt(this.value);
         const maxVal = parseInt(maxPriceSlider.value);
         
-        if (minVal >= maxVal) {
+        if (minVal >= maxVal - 10) {
             this.value = maxVal - 10;
         }
         
@@ -876,7 +876,7 @@ function initializePriceFilter() {
         const minVal = parseInt(minPriceSlider.value);
         const maxVal = parseInt(this.value);
         
-        if (maxVal <= minVal) {
+        if (maxVal <= minVal + 10) {
             this.value = minVal + 10;
         }
         
@@ -890,17 +890,32 @@ function initializePriceFilter() {
     });
     
     function updateSliderTrack() {
-        const minVal = parseInt(minPriceSlider.value);
-        const maxVal = parseInt(maxPriceSlider.value);
-        const minPercent = (minVal / 280) * 100;
-        const maxPercent = (maxVal / 280) * 100;
-        
-        sliderTrack.style.background = `linear-gradient(to right, #e0e0e0 ${minPercent}%, #2ecc71 ${minPercent}%, #2ecc71 ${maxPercent}%, #e0e0e0 ${maxPercent}%)`;
-    }
+    const minVal = parseInt(minPriceSlider.value);
+    const maxVal = parseInt(maxPriceSlider.value);
+
+    const min = parseInt(minPriceSlider.min);
+    const max = parseInt(minPriceSlider.max);
+
+    const minPercent = ((minVal - min) / (max - min)) * 100;
+    const maxPercent = ((maxVal - min) / (max - min)) * 100;
+
+    sliderTrack.style.background = `linear-gradient(
+        to right,
+        #e0e0e0 0%,
+        #e0e0e0 ${minPercent}%,
+        #2ecc71 ${minPercent}%,
+        #2ecc71 ${maxPercent}%,
+        #e0e0e0 ${maxPercent}%,
+        #e0e0e0 100%
+    )`;
+}
+
     
     function applyPriceFilter() {
         const minPrice = parseInt(minPriceSlider.value);
         const maxPrice = parseInt(maxPriceSlider.value);
+        
+        const allProducts = document.querySelectorAll('.product-item'); // Adjust selector as needed
         
         allProducts.forEach(product => {
             const productPrice = parseFloat(product.dataset.price);
@@ -916,13 +931,17 @@ function initializePriceFilter() {
         
         // Re-apply current sort
         const sortSelect = document.getElementById('sortSelect');
-        sortSelect.dispatchEvent(new Event('change'));
+        if (sortSelect) {
+            sortSelect.dispatchEvent(new Event('change'));
+        }
     }
     
-    // Initialize slider track
+    // Initialize slider track on load
     updateSliderTrack();
 }
 
+// Call this when DOM is ready
+document.addEventListener('DOMContentLoaded', initializePriceFilter);
 // Category Filter
 function initializeCategoryFilter() {
     const categoryButtons = document.querySelectorAll('.category-btn');
