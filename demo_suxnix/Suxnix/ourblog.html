@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suxnix - Power Supplement</title>
+    
+    <!-- Bootstrap 5.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('//suxnix-dev.myshopify.com/cdn/shop/files/video_bg_fc243aec-f2b9-451a-87dd-84dc29514d83.jpg?v=1736693977');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .hero-title { font-size: 3.5rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 0; }
+        
+        /* The "Torn Paper" Effect Divider */
+        .divider-shape {
+            position: absolute;
+            bottom: -2px;
+            width: 100%;
+            height: 60px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f8f9fa" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+       :root {
+      --green: #2bbb4f;
+      --dark: #111;
+      --muted: #777;
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      color: #333;
+      background: #f9f9f9;
+    }
+
+    /* ── LAYOUT ── */
+    .main-wrap { padding: 3rem 0 4rem; }
+
+    /* ── POST CARD ── */
+    .post-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(0,0,0,.07);
+      margin-bottom: 2rem;
+      height: 814px;
+    }
+    .post-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+    .post-card .post-body { padding: 1.6rem 1.8rem 2rem; }
+
+    .tag {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .28rem .75rem;
+      border-radius: 4px;
+      margin-bottom: .9rem;
+    }
+
+    .post-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: .8rem;
+    }
+
+    .post-meta {
+      display: flex;
+      gap: 1.2rem;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .post-meta i { color: var(--green); margin-right: .25rem; }
+
+    .post-excerpt {
+      font-size: .93rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 1.3rem;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .author-info { display: flex; align-items: center; gap: .6rem; }
+    .author-info img {
+      width: 38px; height: 38px;
+      border-radius: 50%; object-fit: cover;
+    }
+    .author-info small { font-size: .82rem; color: var(--muted); }
+    .author-info strong { font-size: .88rem; color: var(--dark); }
+
+    .read-more {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .read-more:hover { color: var(--green); }
+
+    /* ── SIDEBAR ── */
+    .sidebar-widget {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 14px rgba(0,0,0,.07);
+      padding: 1.5rem 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+    .widget-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      border-left: 3px solid var(--green);
+      padding-left: .65rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* About */
+    .about-avatar {
+      width: 140px; height: 140px;
+      border-radius: 50%; object-fit: cover;
+    }
+    .about-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin: .6rem 0 .3rem;
+    }
+    .about-desc { font-size: .83rem; color: var(--muted); line-height: 1.55; }
+    .social-links a {
+      color: #ccc;
+      font-size: 1rem;
+      margin: 0 .3rem;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .social-links a:hover { color: var(--green); }
+
+    /* Search */
+    .search-input {
+      border: 1px solid #e0e0e0;
+      border-radius: 5px 0 0 5px;
+      font-size: .88rem;
+      padding: .55rem .85rem;
+    }
+    .search-input:focus { box-shadow: none; border-color: var(--green); }
+    .btn-search {
+      background: var(--green);
+      border: none;
+      color: #fff;
+      padding: .55rem 1rem;
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* Popular feeds */
+    .feed-item { display: flex; gap: .8rem; margin-bottom: 1rem; }
+    .feed-item:last-child { margin-bottom: 0; }
+    .feed-item img {
+      width: 68px; height: 60px;
+      object-fit: cover; border-radius: 6px; flex-shrink: 0;
+    }
+    .feed-item-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: .3rem;
+    }
+    .feed-date { font-size: .77rem; color: var(--muted); }
+    .feed-date i { color: var(--green); margin-right: .2rem; }
+
+    /* ── CATEGORIES ── */
+    .category-list { margin: 0; }
+    .category-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .65rem .9rem;
+      background: #f5f5f5;
+      border-radius: 5px;
+      margin-bottom: .5rem;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      font-size: .9rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .category-item:last-child { margin-bottom: 0; }
+    .category-item:hover { background: var(--green); color: #fff; }
+    .category-item:hover .cat-count { background: #fff; color: var(--green); }
+    .cat-count {
+      background: var(--green);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      min-width: 28px; height: 28px;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s;
+    }
+
+    /* ── NEVER MISS NEWS ── */
+    .nmn-icon {
+      width: 42px; height: 42px;
+      border: 1.5px solid #ddd;
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #555;
+      text-decoration: none;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .nmn-icon:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+    /* ── TWITTER FEEDS ── */
+    .twitter-feed-item {
+      padding-bottom: .9rem;
+      margin-bottom: .9rem;
+      border-bottom: 1px solid #eee;
+    }
+    .twitter-icon { color: #1da1f2; font-size: 1rem; flex-shrink: 0; }
+
+    /* ── INSTAGRAM FEEDS ── */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .insta-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
+      display: block;
+    }
+    .insta-item img {
+      width: 100%; aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s;
+    }
+    .insta-overlay {
+      position: absolute; inset: 0;
+      background: rgba(43,187,79,.75);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.3rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .insta-item:hover img { transform: scale(1.08); }
+    .insta-item:hover .insta-overlay { opacity: 1; }
+
+    /* ── POPULAR TAGS ── */
+    .pop-tag {
+      display: inline-block;
+      border: 1.5px solid #ddd;
+      border-radius: 4px;
+      padding: .3rem .75rem;
+      font-size: .82rem;
+      color: #444;
+      text-decoration: none;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .pop-tag:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+    /* ── SCROLL TO TOP ── */
+    #scrollTop {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: none;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 14px rgba(43,187,79,.4);
+    }
+    #scrollTop.show { display: flex; }
+
+    /* ── FOOTER ── */
+    footer { background: #1a1a1a; color: #fff; padding-top: 0; position: relative; overflow: hidden; }
+    .footer-link { color: #999; font-size: 14px; text-decoration: none; transition: color .3s; }
+    .footer-link:hover { color: var(--green); }
+    .footer-social {
+      width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center; text-decoration: none;
+      color: #fff; transition: background .3s;
+    }
+    .footer-social:hover { background: var(--green); color: #fff; }
+
+    /* Instagram carousel */
+    .insta-carousel-wrap { background: #000; overflow: hidden; }
+    .insta-carousel { display: flex; width: max-content; animation: scrollCarousel 20s linear infinite; }
+    .insta-carousel:hover { animation-play-state: paused; }
+    @keyframes scrollCarousel { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .insta-carousel-item { width: 260px; height: 260px; flex-shrink: 0; position: relative; }
+    .insta-carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+    .insta-carousel-item .insta-hover-overlay {
+      position: absolute; inset: 0; background: rgba(20,204,101,.9);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s;
+    }
+    .insta-carousel-item:hover .insta-hover-overlay { opacity: 1; }
+    </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+
+    <!-- Header -->
+    <header class="sticky-top bg-white border-bottom" style="z-index: 1000;">
+        <div class="container-fluid" style="max-width: 1400px;">
+            <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                <!-- Logo -->
+                <a href="#" class="text-decoration-none d-flex align-items-center gap-3">
+                    <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev" height="55.16" width="159.96">
+                </a>    
+
+                <!-- Desktop Navigation -->
+                <nav class="d-none d-lg-flex gap-5 align-items-center">
+
+                    <div class="dropdown">
+                        <button href="index.html#home" class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            Home
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#home">Home 1</a></li>
+                            <li><a class="dropdown-item" href="#home2">Home 2</a></li>
+                            <li><a class="dropdown-item" href="#home3">Home 3</a></li>
+                        </ul>
+                    </div>
+                    <a href="index.html#features" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Features</a>
+
+                    <a href="index.html#product" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Product</a>
+                    <a href="index.html#ingredient" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Ingredient</a>
+                    <a href="index.html#pricing" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Pricing</a>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            Shop
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourshop.html">Our Shop</a></li>
+                            <li><a class="dropdown-item" href="shopdetails.html">Shop Details</a></li>
+                            <li><a class="dropdown-item" href="cartpage.html">Cart page</a></li>
+                            <li><a class="dropdown-item" href="loginpage.html">Login Page</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            News
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourblog.html">Our Blog</a></li>
+                            <li><a class="dropdown-item" href="blogdetails.html">Blog Details</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="contact.html" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Contacts</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-light rounded-3 p-0" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    
+                    <button class="btn btn-light rounded-3 p-0 position-relative" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="bi bi-bell"></i>
+                        <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px; display: none;">0</span>
+                    </button>
+                    
+                    <button class="btn rounded-3 p-0 text-white" style="width: 36px; height: 36px; background: #14cc65; border: 1px solid #14cc65;" data-bs-toggle="offcanvas" data-bs-target="#appsOffcanvas">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </button>
+
+                    <button class="btn btn-light rounded-3 p-0 d-lg-none" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div>
+            <h1 class="hero-title">OUR BLOG</h1>
+            <p href="index.html">Home | <span class="text-muted">Blog</span></p>
+        </div>
+        <div class="divider-shape"></div>
+    </div>
+
+    <!-- ══════════ MAIN ══════════ -->
+<div class="main-wrap">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- ── POSTS COLUMN ── -->
+      <div class="col-lg-8">
+
+        <!-- POST 1 -->
+        <article class="post-card">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb03.jpg?v=1737015386" alt="Laboris nisi ut aliquip ex ea commodo consequat, Duis aute irure dolor." height="auto" width="auto">
+          <div class="post-body">
+            <span class="tag">Business</span>
+            <h2 class="post-title">Laboris nisi ut aliquip ex ea commodo consequat, duis aute irure dolor.</h2>
+            <div class="post-meta">
+              <span><i class="bi bi-eye"></i> 232 Views</span>
+              <span><i class="bi bi-chat"></i> 35 Comments</span>
+              <span><i class="bi bi-calendar3"></i> 16 Jan, 2025</span>
+            </div>
+            <p class="post-excerpt">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat[...]
+            </p>
+            <div class="post-footer">
+              <div class="author-info">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/t/2/assets/blog-avatar.png?v=110430019567864864141738334084" alt="img" width="40" height="40">
+                <div>
+                  <small>By</small>
+                  <strong class="d-block">Web Developer</strong>
+                </div>
+              </div>
+              <a href="#" class="read-more">
+                <i class="bi bi-arrow-right"></i> Read More
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 2 -->
+        <article class="post-card">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb02.jpg?v=1737015311" alt="Adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore." height="auto" width="auto">
+          <div class="post-body">
+            <span class="tag">Fitness</span>
+            <h2 class="post-title">Adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore.</h2>
+            <div class="post-meta">
+              <span><i class="bi bi-eye"></i> 232 Views</span>
+              <span><i class="bi bi-chat"></i> 35 Comments</span>
+              <span><i class="bi bi-calendar3"></i> 16 Jan, 2025</span>
+            </div>
+            <p class="post-excerpt">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum[...]
+            </p>
+            <div class="post-footer">
+              <div class="author-info">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/t/2/assets/blog-avatar.png?v=110430019567864864141738334084" alt="img" width="40" height="40">
+                <div>
+                  <small>By</small>
+                  <strong class="d-block">Web Developer</strong>
+                </div>
+              </div>
+              <a href="#" class="read-more">
+                <i class="bi bi-arrow-right"></i> Read More
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 3 -->
+        <article class="post-card">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb01.jpg?v=1737015111" alt="Lorem ipsum dolor sit amet consecte cing elit sed do eiusmod tempor." height="auto" width="auto">
+          <div class="post-body">
+            <span class="tag">Fitness</span>
+            <h2 class="post-title">Adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore.</h2>
+            <div class="post-meta">
+              <span><i class="bi bi-eye"></i> 232 Views</span>
+              <span><i class="bi bi-chat"></i> 35 Comments</span>
+              <span><i class="bi bi-calendar3"></i> 16 Jan, 2025</span>
+            </div>
+            <p class="post-excerpt">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum[...]
+            </p>
+            <div class="post-footer">
+              <div class="author-info">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/t/2/assets/blog-avatar.png?v=110430019567864864141738334084" alt="img" width="40" height="40">
+                <div>
+                  <small>By</small>
+                  <strong class="d-block">Web Developer</strong>
+                </div>
+              </div>
+              <a href="#" class="read-more">
+                <i class="bi bi-arrow-right"></i> Read More
+              </a>
+            </div>
+          </div>
+        </article>
+
+
+      </div><!-- /col posts -->
+
+      <!-- ── SIDEBAR ── -->
+      <div class="col-lg-4">
+
+        <!-- About Me -->
+        <div class="sidebar-widget text-center">
+          <h3 class="widget-title text-start">About Me</h3>
+          <img class="about-avatar" src="//suxnix-dev.myshopify.com/cdn/shop/files/me.png?v=1737556294" alt="Rosalina D. Willaimson" width="auto" height="auto" loading="lazy">
+          <p class="about-name">Rosalina D. Willaimson</p>
+          <p class="about-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>
+          <div class="social-links mt-2">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-pinterest"></i></a>
+            <a href="#"><i class="bi bi-behance"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Search -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Search Objects</h3>
+          <div class="input-group">
+            <input type="text" class="form-control search-input" placeholder="Search your keyword..."/>
+            <button class="btn-search"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+
+        <!-- Popular Feeds -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Popular Feeds</h3>
+
+          <div class="feed-item">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb03.jpg?v=1737015386" alt="Laboris nisi ut aliquip ex ea commodo consequat, Duis aute irure dolor." height="auto" width="auto">
+            <div>
+              <p class="feed-item-title">Laboris nisi ut aliquip ex ea...</p>
+              <p class="feed-date mb-0"><i class="bi bi-calendar3"></i> 16 January 2025</p>
+            </div>
+          </div>
+
+          <div class="feed-item">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb02.jpg?v=1737015311" alt="Adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore." height="auto" width="auto">
+            <div>
+              <p class="feed-item-title">Adipisicing elit sed do eiusmod tempor...</p>
+              <p class="feed-date mb-0"><i class="bi bi-calendar3"></i> 16 January 2025</p>
+            </div>
+          </div>
+
+          <div class="feed-item">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb01.jpg?v=1737015111" alt="Lorem ipsum dolor sit amet consecte cing elit sed do eiusmod tempor." height="auto" width="auto">
+            <div>
+              <p class="feed-item-title">Lorem ipsum dolor sit amet consecte...</p>
+              <p class="feed-date mb-0"><i class="bi bi-calendar3"></i> 16 January 2025</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Categories</h3>
+          <ul class="category-list list-unstyled mb-0">
+            <li class="category-item">
+              <span>Burners</span>
+              <span class="cat-count">0</span>
+            </li>
+            <li class="category-item">
+              <span>Fat Burners</span>
+              <span class="cat-count">0</span>
+            </li>
+            <li class="category-item">
+              <span>Medicine</span>
+              <span class="cat-count">0</span>
+            </li>
+            <li class="category-item">
+              <span>Nutrition</span>
+              <span class="cat-count">0</span>
+            </li>
+            <li class="category-item">
+              <span>Protein</span>
+              <span class="cat-count">0</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Never Miss News -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Never Miss News</h3>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="#" class="nmn-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="nmn-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="nmn-icon">Be</a>
+            <a href="#" class="nmn-icon"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="nmn-icon"><i class="bi bi-pinterest"></i></a>
+          </div>
+        </div>
+
+        <!-- Twitter Feeds -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Twitter Feeds</h3>
+          <div class="twitter-feed-item">
+            <div class="d-flex gap-2">
+              <i class="bi bi-twitter-x twitter-icon mt-1"></i>
+              <p class="mb-1 small text-muted">Rescue - #Gutenberg ready @ wordpress Theme for Creative Bloggers available on @ ThemeForest <a href="#" class="text-success">https://t.co/2r1POjOjgV</a></p>
+            </div>
+            <p class="mb-0" style="font-size:.78rem;font-weight:700;color:#333;">November 29, 2024</p>
+          </div>
+          <div class="twitter-feed-item">
+            <div class="d-flex gap-2">
+              <i class="bi bi-twitter-x twitter-icon mt-1"></i>
+              <p class="mb-1 small text-muted">Rescue - #Gutenberg ready @ wordpress Theme for Creative Bloggers available on @ ThemeForest <a href="#" class="text-success">https://t.co/2r1POjOjgV</a></p>
+            </div>
+            <p class="mb-0" style="font-size:.78rem;font-weight:700;color:#333;">November 29, 2024</p>
+          </div>
+          <div class="twitter-feed-item border-0 pb-0 mb-0">
+            <div class="d-flex gap-2">
+              <i class="bi bi-twitter-x twitter-icon mt-1"></i>
+              <p class="mb-1 small text-muted">Rescue - #Gutenberg ready @ wordpress Theme for Creative Bloggers available on @ ThemeForest <a href="#" class="text-success">https://t.co/2r1POjOjgV</a></p>
+            </div>
+            <p class="mb-0" style="font-size:.78rem;font-weight:700;color:#333;">November 29, 2024</p>
+          </div>
+        </div>
+
+        <!-- Instagram Feeds -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Instagram Feeds</h3>
+          <div class="insta-grid">
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post01.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post02.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post03.jpg?v=1737641665" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post04.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post05.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post06.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post07.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post08.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+            <a href="#" class="insta-item">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/insta_post09.jpg?v=1737641666" alt="" height="auto" width="auto">
+              <div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Popular Tags -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Popular Tags</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#" class="pop-tag">Business</a>
+            <a href="#" class="pop-tag">Consult</a>
+            <a href="#" class="pop-tag">Desgin</a>
+            <a href="#" class="pop-tag">Develop</a>
+            <a href="#" class="pop-tag">Icon</a>
+            <a href="#" class="pop-tag">Keyboard</a>
+            <a href="#" class="pop-tag">Popular</a>
+            <a href="#" class="pop-tag">Usability</a>
+            <a href="#" class="pop-tag">Ux</a>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+</div>
+
+<!-- ══════════ SCROLL TO TOP ══════════ -->
+<button id="scrollTop" title="Back to top"><i class="bi bi-chevron-up"></i></button>
+
+    <!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <!-- Wave top -->
+  <div class="position-relative" style="height:60px;margin-top:-1px;">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <path d="M0 30 Q50 10,100 35 Q150 50,200 25 Q250 5,300 38 Q350 52,400 22 Q450 8,500 35 Q550 48,600 26 Q650 10,700 38 Q750 50,800 24 Q850 8,900 36 Q950 50,1000 28 Q1050 10,1100 35 Q1150 48,1200 26 Q1250 10,1300 38 Q1350 50,1400 28 Q1420 20,1440 32 L1440 0 L0 0 Z" fill="#f9f9f9"/>
+    </svg>
+  </div>
+
+  <!-- Instagram Carousel -->
+  <div class="insta-carousel-wrap">
+    <div class="insta-carousel">
+      <!-- Original set -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+    </div>
+  </div>
+
+  <!-- Footer Content -->
+  <div class="container py-5" style="position:relative;z-index:10;">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+         <img src="//suxnix-dev.myshopify.com/cdn/shop/files/white_logo.png?v=1737133588" alt="suxnix dev" height="auto" width="auto" loading="lazy">
+        </div>
+        <p style="color:#999;font-size:14px;line-height:1.8;">Making beauty especially relating complot especial common questions tend to recur through posts or queries standards vary orem donor command tei.</p>
+        <div class="d-flex gap-3 mt-4">
+          <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-pinterest"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">About Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Shop</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Product</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Support</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Home</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blog Post</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Contact Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3" style="color:#999;font-size:14px;">4140 Parker Rd. Allentown, New Mexico 31134</li>
+          <li class="mb-3"><a href="tel:+13165550116" class="footer-link" style="color:var(--green);"><i class="bi bi-telephone-fill me-2"></i>+1 31-6555-0116</a></li>
+          <li class="mb-3"><a href="mailto:Suxnix@example.com" class="footer-link" style="color:var(--green);"><i class="bi bi-envelope-fill me-2"></i>Suxnix@example.com</a></li>
+          <li class="mb-3"><a href="#" class="footer-link" style="color:var(--green);"><i class="bi bi-globe me-2"></i>www.suxnixdomain.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="border-top py-4" style="border-color:rgba(255,255,255,.1)!important;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+          <p class="mb-0" style="color:#999;font-size:13px;">Copyright © 2025 Suxnix. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/card_img_7d7d11a3-0daa-4469-956c-846a4c9b8acf.png?v=1737133834" alt="payment methods" width="auto" height="auto" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- ******************************************************************************************************************************* -->
+    <!-- Shopping Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItems" class="mb-3"></div>
+            <div class="border-top pt-3 mt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <strong>Subtotal:</strong>
+                    <strong id="cartSubtotal">Tk 0.00</strong>
+                </div>
+                <a href="cartpage.html" class="btn btn-dark w-100 mb-2 rounded-3">View Cart</a>
+                <a href="checkout.html" class="btn btn-success w-100 rounded-3">Checkout</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-body p-4">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <div class="d-flex gap-2 mt-4">
+                        <input type="search" class="form-control rounded-3" placeholder="Enter your keyword..." id="searchInput">
+                        <button class="btn btn-success rounded-3" onclick="performSearch()">
+                            <i class="bi bi-search me-2"></i>Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Apps/Social Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="appsOffcanvas" style="width: 500px;">
+    <div class="offcanvas-header position-absolute top-0 end-0 p-3" style="z-index: 10;">
+        <button type="button" class="btn rounded-circle border-0" data-bs-dismiss="offcanvas"
+            style="width: 45px; height: 45px; background-color: #f0faf4; color: #14cc65; font-size: 18px;">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-4 pt-5 d-flex flex-column justify-content-center">
+
+        <!-- Heading -->
+        <h1 class="fw-black text-uppercase mb-4" style="font-size: 2.4rem; line-height: 1.15; letter-spacing: 1px;">
+            GETTING ALL OF THE
+            <span style="color: #14cc65;">NUTRIENTS</span> YOU NEED
+            SIMPLY CANNOT BE DONE
+            WITHOUT SUPPLEMENTS.
+        </h1>
+
+        <!-- Description -->
+        <p class="text-muted mb-5" style="font-size: 0.95rem; line-height: 1.7;">
+            Nam libero tempore, cum soluta nobis eligendi cumque quod placeat facere possimus assumenda omnis dolor
+            repellendu sautem temporibus officiis
+        </p>
+
+        <!-- Contact Info -->
+        <div class="mt-3">
+            <h3 class="fw-bold mb-1" style="font-size: 1.8rem;">+1 599 162 4545</h3>
+            <h4 class="fw-bold text-uppercase mb-3" style="font-size: 1.2rem;">INFO@EXAMPLE.COM</h4>
+            <p class="text-muted mb-4" style="font-size: 0.9rem;">5689 Lotaso Terrace, Culver City, CA, United States</p>
+
+            <!-- Social Icons -->
+            <div class="d-flex gap-2">
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-vimeo"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!-- Mobile Navigation Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav" style="width: 280px; max-width: 100%;">
+    
+    <!-- Header with Logo + Close -->
+    <div class="offcanvas-header border-bottom pb-3">
+        <a href="#" class="text-decoration-none d-flex align-items-center gap-2">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="Suxnix" height="45" style="max-width: 130px;">
+        </a>
+        <button type="button" data-bs-dismiss="offcanvas"
+            style="background: none; border: none; font-size: 1.4rem; color: #f97316; line-height: 1; cursor: pointer;">
+            ✕
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-0" style="overflow-y: auto;">
+        <ul class="list-unstyled mb-0">
+
+            <!-- Home (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileHome">
+                    Home
+                    <i class="bi bi-chevron-left" id="homeArrow" style="font-size: .75rem; color: #888; transition: transform .2s;"></i>
+                </button>
+                <div class="collapse" id="mobileHome">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="index.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home One</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home Two</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Home Three</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Features -->
+            <li class="border-bottom">
+                <a href="index.html#features" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Features</a>
+            </li>
+
+            <!-- Product -->
+            <li class="border-bottom">
+                <a href="index.html#product" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Product</a>
+            </li>
+
+            <!-- Ingredient -->
+            <li class="border-bottom">
+                <a href="index.html#ingredient" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Ingredient</a>
+            </li>
+
+            <!-- Pricing -->
+            <li class="border-bottom">
+                <a href="index.html#pricing" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Pricing</a>
+            </li>
+
+            <!-- Shop (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileShop">
+                    Shop
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileShop">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourshop.html"     class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Shop</a></li>
+                        <li><a href="shopdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Shop Details</a></li>
+                        <li><a href="cartpage.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Cart Page</a></li>
+                        <li><a href="loginpage.html"   class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Login Page</a></li>
+                        <li><a href="register.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Register</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- News (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileNews">
+                    News
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileNews">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourblog.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Blog</a></li>
+                        <li><a href="blogdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Blog Details</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Contacts -->
+            <li>
+                <a href="contact.html" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Contacts</a>
+            </li>
+
+        </ul>
+
+        <!-- Social Icons at Bottom -->
+        <div class="d-flex gap-2 justify-content-center py-4 border-top mt-2">
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-vimeo"></i></a>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Toast Container -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="toastContainer"></div>
+    </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

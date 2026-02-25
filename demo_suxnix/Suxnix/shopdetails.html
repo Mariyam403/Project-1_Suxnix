@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suxnix - Power Supplement</title>
+    
+    <!-- Bootstrap 5.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+      --green:       #1eaf52;
+      --green-dark:  #159140;
+      --green-light: #e8f8ee;
+      --orange:      #f97316;
+      --text:        #1a1a2e;
+      --muted:       #6b7280;
+      --border:      #e5e7eb;
+    }
+
+    /* ── BREADCRUMB STRIP ── */
+    .breadstrip { background:#fff; border-bottom:1px solid var(--border); padding:10px 0; font-size:.83rem; }
+    .breadstrip a { color:var(--muted); text-decoration:none; }
+    .breadstrip a:hover { color:var(--green); }
+    .breadstrip .sep { color:var(--border); margin:0 6px; }
+    .breadstrip .current { color:var(--text); font-weight:600; }
+
+    /* ── PRODUCT SECTION ── */
+    .product-section { background:#fff; border-radius:18px; border:1px solid var(--border);
+      padding:40px; margin:30px 0; box-shadow:0 2px 16px rgba(0,0,0,.06); }
+
+    /* ── IMAGE AREA ── */
+    .main-img-wrap { background:white; border-radius:14px; height:480px;
+      display:flex; align-items:center; justify-content:center; overflow:hidden; padding:30px; }
+    .main-img-wrap img { max-height:420px; max-width:100%; object-fit:contain; transition:transform .4s; }
+    .main-img-wrap img:hover { transform:scale(1.04); }
+
+    .thumb-row { display:flex; gap:12px; margin-top:16px; }
+    .thumb { width:80px; height:80px; border-radius:10px; border:2px solid var(--border); cursor:pointer;
+      background:white; display:flex; align-items:center; justify-content:center;
+      overflow:hidden; transition:border-color .2s; padding:4px; }
+    .thumb:hover, .thumb.active { border-color:var(--green); }
+    .thumb img { width:100%; height:100%; object-fit:contain; }
+
+    /* ── PRODUCT INFO ── */
+    .product-title { font-size:2.4rem; font-weight:800; letter-spacing:.03em; line-height:1.1; margin-bottom:16px; text-transform:uppercase; }
+
+    .meta-row { display:flex; align-items:center; flex-wrap:wrap; gap:12px; font-size:.88rem;
+      color:var(--muted); border-bottom:1px solid var(--border); padding-bottom:14px; margin-bottom:18px; }
+    .meta-row .vendor { font-weight:700; color:var(--text); }
+    .meta-row .stars { color:#facc15; font-size:.95rem; }
+    .meta-row .rating-val { color:var(--text); font-weight:600; }
+    .meta-row .sep { color:var(--border); }
+    .meta-row .prod-id { font-size:.8rem; }
+
+    .price-row { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+    .price-val { font-family:'Barlow Condensed',sans-serif; font-size:2.6rem; font-weight:800; color:var(--text); line-height:1; }
+    .instock-badge { background:var(--green-light); color:var(--green); font-size:.78rem; font-weight:700;
+      border-radius:20px; padding:4px 12px; letter-spacing:.04em; border:1px solid #c3e8d1; }
+
+    .description { font-size:.93rem; color:var(--muted); line-height:1.7; margin-bottom:22px; }
+
+    /* ── INFO LIST ── */
+    .info-list { list-style:none; padding:0; margin-bottom:24px; }
+    .info-list li { display:flex; align-items:center; gap:10px; font-size:.9rem; margin-bottom:10px; }
+    .info-list li .icon { color:var(--green); font-size:1.1rem; flex-shrink:0; }
+    .info-list li .label { color:var(--muted); min-width:60px; }
+    .info-list li .val { font-weight:600; color:var(--text); }
+
+    /* ── QUANTITY + ADD TO CART ── */
+    .qty-cart-row { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:28px; }
+    .qty-box { display:flex; align-items:center; border:2px solid var(--border); border-radius:10px; overflow:hidden; }
+    .qty-box button { background:#f9fafb; border:none; width:40px; height:48px; font-size:1.2rem;
+      font-weight:700; color:var(--text); cursor:pointer; transition:background .2s; }
+    .qty-box button:hover { background:var(--green-light); color:var(--green); }
+    .qty-box input { border:none; width:54px; height:48px; text-align:center; font-size:1rem;
+      font-weight:700; outline:none; background:#fff; }
+    .btn-add-cart { background:var(--green); color:#fff; border:none; border-radius:10px;
+      padding:0 32px; height:48px; font-weight:700; font-size:.95rem; letter-spacing:.04em;
+      text-transform:uppercase; transition:background .2s, transform .15s; flex:1; max-width:260px; }
+    .btn-add-cart:hover { background:var(--green-dark); transform:translateY(-1px); }
+    .btn-add-cart:active { transform:scale(.98); }
+
+    /* ── TAGS & CATEGORIES ── */
+    .tags-row, .cats-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; font-size:.88rem; }
+    .tags-row .label, .cats-row .label { color:var(--muted); font-weight:600; min-width:82px; }
+    .tag-chip { border:1.5px solid var(--border); border-radius:6px; padding:4px 14px;
+      font-size:.8rem; font-weight:600; color:var(--text); cursor:pointer; transition:background .2s, color .2s, border-color .2s; }
+    .tag-chip:hover { background:var(--green); color:#fff; border-color:var(--green); }
+    .cat-chip { border:1.5px solid var(--border); border-radius:6px; padding:4px 14px;
+      font-size:.8rem; font-weight:600; color:var(--text); }
+
+    /* ── TOAST ── */
+    .toast-wrap { position:fixed; bottom:28px; right:28px; z-index:9999; }
+    .toast { background:#1a1a2e; color:#fff; border:none; border-radius:12px; min-width:280px; }
+    .toast .btn-close { filter:invert(1); }
+    .toast-body { display:flex; align-items:center; gap:10px; font-size:.9rem; font-weight:500; }
+    .toast-body .icon { color:var(--green); font-size:1.3rem; }
+    .toast-body .go-cart { color:var(--green); font-weight:700; text-decoration:none; margin-left:auto; font-size:.85rem; }
+    .toast-body .go-cart:hover { text-decoration:underline; }
+
+    /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('//suxnix-dev.myshopify.com/cdn/shop/files/video_bg_fc243aec-f2b9-451a-87dd-84dc29514d83.jpg?v=1736693977');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .hero-title { font-size: 3.5rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 0; }
+        
+        /* The "Torn Paper" Effect Divider */
+        .divider-shape {
+            position: absolute;
+            bottom: -2px;
+            width: 100%;
+            height: 60px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f8f9fa" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+    /* ── DESCRIPTION / ADDITIONAL INFO TABS ── */
+    .tabs-section { background:#fff; border-radius:18px; border:1px solid var(--border);
+      margin-bottom:30px; box-shadow:0 2px 16px rgba(0,0,0,.06); overflow:hidden; }
+
+    .tab-nav { display:flex; border-bottom:1px solid var(--border); padding:0 32px; }
+    .tab-btn { background:none; border:none; border-bottom:3px solid transparent;
+      padding:18px 0; margin-right:36px; font-family:'DM Sans',sans-serif; font-size:.97rem;
+      font-weight:600; color:var(--muted); cursor:pointer; transition:color .2s, border-color .2s;
+      white-space:nowrap; }
+    .tab-btn:hover { color:var(--text); }
+    .tab-btn.active { color:var(--text); border-bottom-color:var(--green); }
+
+    .tab-content-wrap { padding:36px 32px; }
+    .tab-pane { display:none; }
+    .tab-pane.active { display:block; }
+
+    /* Description pane */
+    .desc-heading { font-family:'Barlow Condensed',sans-serif; font-size:1.35rem; font-weight:800;
+      letter-spacing:.04em; text-transform:uppercase; margin-bottom:14px; color:var(--text); }
+    .desc-body { font-size:.93rem; color:#374151; line-height:1.85; margin-bottom:28px; }
+    .desc-list { list-style:none; padding:0; margin:0; }
+    .desc-list li { display:flex; align-items:flex-start; gap:10px; font-size:.92rem;
+      color:#374151; line-height:1.6; margin-bottom:10px; }
+    .desc-list li::before { content:'•'; color:var(--text); font-size:1.2rem; line-height:1.3; flex-shrink:0; }
+
+    /* Additional info pane */
+    .info-table { width:100%; border-collapse:collapse; }
+    .info-table tr { border-bottom:1px solid var(--border); }
+    .info-table tr:last-child { border-bottom:none; }
+    .info-table td { padding:18px 20px; font-size:.92rem; }
+    .info-table td:first-child { font-weight:700; color:var(--text); width:240px; background:#fafafa; }
+    .info-table td:last-child { color:var(--muted); font-style:italic; }
+
+
+    .related-section { padding: 40px 0 20px; }
+  .related-title { font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:800;
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:30px; }
+
+  .rel-card { background:#fff; border:1px solid #e5e7eb; border-radius:4px;
+    text-align:center; padding:0 0 24px; overflow:hidden; }
+  .rel-img-wrap { position:relative; display:flex; justify-content:center;
+    align-items:flex-end; height:260px; margin-bottom:24px; background:#fff; }
+  .rel-img-wrap::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:220px; height:110px; background:#8dc63f; border-radius:50% 50% 0 0; z-index:0; }
+  .rel-img-wrap img { position:relative; z-index:1; max-height:230px; max-width:85%;
+    object-fit:contain; transform:translateY(-10px); transition:transform .3s; }
+  .rel-card:hover .rel-img-wrap img { transform:translateY(-18px); }
+
+  .rel-name { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700;
+    letter-spacing:.03em; text-transform:uppercase; margin:0 16px 6px; color:#1a1a2e; }
+  .rel-price { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:800;
+    color:#1a1a2e; margin-bottom:4px; }
+  .rel-reviews { font-size:.82rem; color:#6b7280; margin-bottom:16px; }
+
+  .rel-actions { display:flex; align-items:center; justify-content:center;
+    gap:12px; padding:0 24px; }
+  .rel-btn-add { background:#1eaf52; color:#fff; border:none; border-radius:50%;
+    width:42px; height:42px; display:flex; align-items:center; justify-content:center;
+    font-size:1rem; flex-shrink:0; cursor:pointer; transition:background .2s; }
+  .rel-btn-add:hover { background:#159140; }
+  .rel-btn-buy { background:#f97316; color:#fff; border:none; border-radius:22px;
+    padding:9px 22px; font-weight:700; font-size:.88rem; cursor:pointer;
+    transition:background .25s; }
+  .rel-btn-buy:hover { background:#1eaf52; }
+
+  /* Carousel dots */
+  .rel-dots { display:flex; justify-content:center; gap:6px; margin-top:24px; }
+  .rel-dot { width:28px; height:8px; border-radius:4px; background:#e5e7eb; border:none;
+    cursor:pointer; transition:background .2s; padding:0; }
+  .rel-dot.active { background:#f97316; }
+
+  /* ── FOOTER ── */
+    footer { background: #1a1a1a; color: #fff; padding-top: 0; position: relative; overflow: hidden; }
+    .footer-link { color: #999; font-size: 14px; text-decoration: none; transition: color .3s; }
+    .footer-link:hover { color: var(--green); }
+    .footer-social {
+      width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center; text-decoration: none;
+      color: #fff; transition: background .3s;
+    }
+    .footer-social:hover { background: var(--green); color: #fff; }
+
+    /* Instagram carousel */
+    .insta-carousel-wrap { background: #000; overflow: hidden; }
+    .insta-carousel { display: flex; width: max-content; animation: scrollCarousel 20s linear infinite; }
+    .insta-carousel:hover { animation-play-state: paused; }
+    @keyframes scrollCarousel { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .insta-carousel-item { width: 260px; height: 260px; flex-shrink: 0; position: relative; }
+    .insta-carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+    .insta-carousel-item .insta-hover-overlay {
+      position: absolute; inset: 0; background: rgba(20,204,101,.9);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s;
+    }
+    .insta-carousel-item:hover .insta-hover-overlay { opacity: 1; }
+
+
+  </style>
+  </head>
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+
+    <!-- Header -->
+    <header class="sticky-top bg-white border-bottom" style="z-index: 1000;">
+        <div class="container-fluid" style="max-width: 1400px;">
+            <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                <!-- Logo -->
+                <a href="#" class="text-decoration-none d-flex align-items-center gap-3">
+                    <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev" height="55.16" width="159.96">
+                </a>    
+
+                <!-- Desktop Navigation -->
+                <nav class="d-none d-lg-flex gap-5 align-items-center">
+
+                    <div class="dropdown">
+                        <button href="index.html#home" class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            Home
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#home">Home 1</a></li>
+                            <li><a class="dropdown-item" href="#home2">Home 2</a></li>
+                            <li><a class="dropdown-item" href="#home3">Home 3</a></li>
+                        </ul>
+                    </div>
+                    <a href="index.html#features" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Features</a>
+
+                    <a href="index.html#product" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Product</a>
+                    <a href="index.html#ingredient" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Ingredient</a>
+                    <a href="index.html#pricing" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Pricing</a>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            Shop
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourshop.html">Our Shop</a></li>
+                            <li><a class="dropdown-item" href="shopdetails.html">Shop Details</a></li>
+                            <li><a class="dropdown-item" href="cartpage.html">Cart page</a></li>
+                            <li><a class="dropdown-item" href="loginpage.html">Login Page</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            News
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourblog.html">Our Blog</a></li>
+                            <li><a class="dropdown-item" href="blogdetails.html">Blog Details</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="contact.html" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Contacts</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-light rounded-3 p-0" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    
+                    <button class="btn btn-light rounded-3 p-0 position-relative" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="bi bi-bell"></i>
+                        <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px; display: none;">0</span>
+                    </button>
+                    
+                    <button class="btn rounded-3 p-0 text-white" style="width: 36px; height: 36px; background: #14cc65; border: 1px solid #14cc65;" data-bs-toggle="offcanvas" data-bs-target="#appsOffcanvas">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </button>
+
+                    <button class="btn btn-light rounded-3 p-0 d-lg-none" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div>
+            <h1 class="hero-title">SHOP DETAILS</h1>
+            <p href="index.html">Home | <span class="text-muted">Shop</span></p>
+        </div>
+        <div class="divider-shape"></div>
+    </div>
+
+<!-- ══════════ PRODUCT ══════════ -->
+<div class="container-xl">
+  <div class="product-section">
+    <div class="row g-5">
+
+      <!-- LEFT: Images -->
+      <div class="col-lg-6">
+        <div class="main-img-wrap">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb03.png?v=1738166857&amp;width=600" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+        </div>
+        <div class="thumb-row">
+          <div class="thumb active" onclick="switchImg(this, 'https://suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb03.png?v=1738166857&amp;width=100')">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb03.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">          
+          </div>
+          <div class="thumb" onclick="switchImg(this, '//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb07.png?v=1738166857&amp;width=100')">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb07.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">          
+          </div>
+          <div class="thumb" onclick="switchImg(this, '//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb06.png?v=1738166857&amp;width=100')">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb06.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+          </div>
+          <div class="thumb" onclick="switchImg(this, '//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb04.png?v=1738166857&amp;width=100')">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/shop-details-thumb04.png?v=1738166857&amp;width=100" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Info -->
+      <div class="col-lg-6">
+
+        <h1 class="product-title">Antiaging and Longevity</h1>
+
+        <!-- Meta row -->
+        <div class="meta-row">
+          <span>Vendor: <span class="vendor">Fashion Shofy Ecommerce</span></span>
+          <span class="sep">|</span>
+          <span class="stars">★★★★<span style="color:#d1d5db;">★</span></span>
+          <span class="rating-val">(4.5)</span>
+          <span class="sep">|</span>
+          <span class="prod-id">Id : 7827143852089</span>
+        </div>
+
+        <!-- Price -->
+        <div class="price-row">
+          <span class="price-val">TK 49.99</span>
+          <span class="instock-badge">– INSTOCK</span>
+        </div>
+
+        <!-- Description -->
+        <p class="description">
+          The true strength of Suxnix : Whey Protein Isolates (WPIs) are the purest form of whey
+          protein that currently exists. WPIs are costly to use, but rate among the best sources of
+          protein available. Each serving delivers premium nutrients to support muscle recovery and
+          performance.
+        </p>
+
+        <!-- Info list -->
+        <ul class="info-list">
+          <li>
+            <i class="bi bi-arrow-right-circle-fill icon"></i>
+            <span class="label">Title:</span>
+            <span class="val">Default Title</span>
+          </li>
+          <li>
+            <i class="bi bi-arrow-right-circle-fill icon"></i>
+            <span class="label">Vendor:</span>
+            <span class="val">Fashion Shofy Ecommerce</span>
+          </li>
+          <li>
+            <i class="bi bi-arrow-right-circle-fill icon"></i>
+            <span class="label">Type:</span>
+            <span class="val">Supplement</span>
+          </li>
+        </ul>
+
+        <!-- Quantity + Add to Cart -->
+        <div class="qty-cart-row">
+          <div class="qty-box">
+            <button onclick="changeQty(-1)" type="button">−</button>
+            <input type="number" id="qtyInput" value="1" min="1" max="99" readonly>
+            <button onclick="changeQty(1)" type="button">+</button>
+          </div>
+          <button class="btn-add-cart" id="btnAddCart" onclick="addToCart()">
+            <i class="bi bi-bag-plus me-2"></i>ADD TO CART
+          </button>
+        </div>
+
+        <!-- Tags -->
+        <div class="tags-row">
+          <span class="label">Tags:</span>
+          <span class="tag-chip">medicine</span>
+          <span class="tag-chip">Protin</span>
+        </div>
+
+        <!-- Categories -->
+        <div class="tags-row">
+          <span class="label">Categories:</span>
+          <span class="tag-chip">Nutrition</span>
+          <span class="tag-chip">Protein</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ DESCRIPTION / ADDITIONAL INFO TABS ══════════ -->
+<div class="container-xl">
+  <div class="tabs-section">
+
+    <!-- Tab nav -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('description', this)">Description</button>
+      <button class="tab-btn"        onclick="switchTab('additional',   this)">Additional Information</button>
+    </div>
+
+    <div class="tab-content-wrap">
+
+      <!-- ── DESCRIPTION PANE ── -->
+      <div class="tab-pane active" id="tab-description">
+
+        <div class="desc-heading">The True Strength of Suxnix :</div>
+        <p class="desc-body">
+          Whey Protein Isolates (WPIs) are the purest form of whey protein that currently exists.
+          WPIs are costly to use, but rate among the best proteins that money can buy. That's why
+          they're the first ingredient you read on the Gold Standard 100% Whey™ label. By using WPI
+          as the primary ingredient along with premium ultra-filtered whey protein concentrate (WPC),
+          we're able to pack 24 grams of protein into every serving to support your muscle building
+          needs after training. ON's attention to detail also extends to mixability. This superior
+          quality powder has been instantized to mix easily using a shaker cup or just a glass and
+          spoon. There's no doubt that this is the standard by which all other whey proteins are measured.
+        </p>
+
+        <div class="desc-heading">Suxnix The Basics :</div>
+        <ul class="desc-list">
+          <li>82% Protein by Weight (24g of Protein Per 31.5g Serving Size).</li>
+          <li>Whey Protein Isolates (WPI) Main Ingredient.</li>
+          <li>Whey Protein Micro-functions from Whey Protein Isolate and Ultra-Filtered Whey Protein Concentrate.</li>
+          <li>Over 4g of Naturally Occurring Glutamine &amp; Glutamic Acid in Each Serving.</li>
+          <li>More than 5g of the Naturally Occurring Branched Chain Amino Acids (BCAAs) Leucine, Isoleucine, and Valine in Each Serving.</li>
+          <li>The "Gold Standard" for Protein Quality.</li>
+          <li>Banned Substance Tested Protein</li>
+          <li>French Vanilla Creme Flavored Whey Protein Powder</li>
+        </ul>
+
+      </div>
+
+      <!-- ── ADDITIONAL INFORMATION PANE ── -->
+      <div class="tab-pane" id="tab-additional">
+
+        <div class="desc-heading">Additional Information</div>
+        <table class="info-table">
+          <tbody>
+            <tr><td>Calories</td>        <td>110</td></tr>
+            <tr><td>Total Fat</td>       <td>1kg</td></tr>
+            <tr><td>Saturated Fat</td>   <td>0.5g</td></tr>
+            <tr><td>Cholesterol</td>     <td>40mg</td></tr>
+            <tr><td>Total Carbohydrate</td><td>2g</td></tr>
+            <tr><td>Protein</td>         <td>24g</td></tr>
+            <tr><td>Total Sugars</td>    <td>2g</td></tr>
+            <tr><td>Sodium</td>          <td>100mg</td></tr>
+            <tr><td>Calcium</td>         <td>140 mg</td></tr>
+            <tr><td>Potassium</td>       <td>160 mg</td></tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div><!-- /tab-content-wrap -->
+  </div><!-- /tabs-section -->
+</div>
+
+<div class="container-xl related-section">
+  <h2 class="related-title">Related Products</h2>
+
+  <!-- Carousel wrapper -->
+  <div id="relCarousel" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="rel-card">
+              <div class="rel-img-wrap">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.png?v=1738166347&amp;width=280" alt="SERIOUR MASS 2kg" width="auto" height="auto">
+              </div>
+              <div class="rel-name">Seriour Mass 2KG</div>
+              <div class="rel-price">Tk 49.99</div>
+              <div class="rel-reviews">(0)</div>
+              <div class="rel-actions">
+                <button class="rel-btn-add" title="Add to cart" onclick="relAddToCart('seriour-mass','Seriour Mass 2KG',49.99)">
+                  <i class="bi bi-bag-plus"></i>
+                </button>
+                <button class="rel-btn-buy">Buy Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="rel-card">
+              <div class="rel-img-wrap">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857&amp;width=280" alt="Whey Protein Powder" width="auto" height="auto">
+              </div>
+              <div class="rel-name">Whey Protein Powder</div>
+              <div class="rel-price">Tk 49.99</div>
+              <div class="rel-reviews">(0)</div>
+              <div class="rel-actions">
+                <button class="rel-btn-add" title="Add to cart" onclick="relAddToCart('whey-protein','Whey Protein Powder',49.99)">
+                  <i class="bi bi-bag-plus"></i>
+                </button>
+                <button class="rel-btn-buy">Buy Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="rel-card">
+              <div class="rel-img-wrap">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271&amp;width=280" alt="SERIOUR MASS 2kg" width="auto" height="auto">
+              </div>
+              <div class="rel-name">Seriour Mass 2KG</div>
+              <div class="rel-price">Tk 49.99</div>
+              <div class="rel-reviews">(0)</div>
+              <div class="rel-actions">
+                <button class="rel-btn-add" title="Add to cart" onclick="relAddToCart('seriour-mass-2','Seriour Mass 2KG',49.99)">
+                  <i class="bi bi-bag-plus"></i>
+                </button>
+                <button class="rel-btn-buy">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="rel-card">
+              <div class="rel-img-wrap">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857&amp;width=280" alt="Whey Protein Powder" width="auto" height="auto">
+              </div>
+              <div class="rel-name">Amino Energy Health</div>
+              <div class="rel-price">Tk 59.99</div>
+              <div class="rel-reviews">(0)</div>
+              <div class="rel-actions">
+                <button class="rel-btn-add" title="Add to cart" onclick="relAddToCart('amino-energy','Amino Energy Health',59.99)">
+                  <i class="bi bi-bag-plus"></i>
+                </button>
+                <button class="rel-btn-buy">Buy Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="rel-card">
+              <div class="rel-img-wrap">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857&amp;width=280" alt="Whey Protein Powder" width="auto" height="auto">
+              </div>
+              <div class="rel-name">Protein Powder 2KG</div>
+              <div class="rel-price">Tk 85.99</div>
+              <div class="rel-reviews">(0)</div>
+              <div class="rel-actions">
+                <button class="rel-btn-add" title="Add to cart" onclick="relAddToCart('protein-powder','Protein Powder 2KG',85.99)">
+                  <i class="bi bi-bag-plus"></i>
+                </button>
+                <button class="rel-btn-buy">Buy Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="rel-card">
+              <div class="rel-img-wrap">
+                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271&amp;width=280" alt="SERIOUR MASS 2kg" width="auto" height="auto">
+              </div>
+              <div class="rel-name">Natural Vitamin Supplement</div>
+              <div class="rel-price">Tk 29.99</div>
+              <div class="rel-reviews">(0)</div>
+              <div class="rel-actions">
+                <button class="rel-btn-add" title="Add to cart" onclick="relAddToCart('vitamin-supplement','Natural Vitamin Supplement',29.99)">
+                  <i class="bi bi-bag-plus"></i>
+                </button>
+                <button class="rel-btn-buy">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /carousel-inner -->
+
+    <!-- Custom dot indicators -->
+    <div class="rel-dots">
+      <button class="rel-dot active" onclick="goSlide(0)"></button>
+      <button class="rel-dot"        onclick="goSlide(1)"></button>
+    </div>
+
+  </div><!-- /carousel -->
+</div>
+
+
+<!-- ══════════ TOAST ══════════ -->
+<div class="toast-wrap">
+  <div id="cartToast" class="toast align-items-center" role="alert" aria-live="assertive" data-bs-autohide="true" data-bs-delay="3000">
+    <div class="toast-body">
+      <i class="bi bi-check-circle-fill icon"></i>
+      <span>Added to cart!</span>
+      <a href="cartpage.html" class="go-cart">View Cart →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <!-- Wave top -->
+  <div class="position-relative" style="height:60px;margin-top:-1px;">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <path d="M0 30 Q50 10,100 35 Q150 50,200 25 Q250 5,300 38 Q350 52,400 22 Q450 8,500 35 Q550 48,600 26 Q650 10,700 38 Q750 50,800 24 Q850 8,900 36 Q950 50,1000 28 Q1050 10,1100 35 Q1150 48,1200 26 Q1250 10,1300 38 Q1350 50,1400 28 Q1420 20,1440 32 L1440 0 L0 0 Z" fill="#f9f9f9"/>
+    </svg>
+  </div>
+
+  <!-- Instagram Carousel -->
+  <div class="insta-carousel-wrap">
+    <div class="insta-carousel">
+      <!-- Original set -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+    </div>
+  </div>
+
+  <!-- Footer Content -->
+  <div class="container py-5" style="position:relative;z-index:10;">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+         <img src="//suxnix-dev.myshopify.com/cdn/shop/files/white_logo.png?v=1737133588" alt="suxnix dev" height="auto" width="auto" loading="lazy">
+        </div>
+        <p style="color:#999;font-size:14px;line-height:1.8;">Making beauty especially relating complot especial common questions tend to recur through posts or queries standards vary orem donor command tei.</p>
+        <div class="d-flex gap-3 mt-4">
+          <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-pinterest"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">About Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Shop</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Product</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Support</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Home</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blog Post</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Contact Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3" style="color:#999;font-size:14px;">4140 Parker Rd. Allentown, New Mexico 31134</li>
+          <li class="mb-3"><a href="tel:+13165550116" class="footer-link" style="color:var(--green);"><i class="bi bi-telephone-fill me-2"></i>+1 31-6555-0116</a></li>
+          <li class="mb-3"><a href="mailto:Suxnix@example.com" class="footer-link" style="color:var(--green);"><i class="bi bi-envelope-fill me-2"></i>Suxnix@example.com</a></li>
+          <li class="mb-3"><a href="#" class="footer-link" style="color:var(--green);"><i class="bi bi-globe me-2"></i>www.suxnixdomain.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="border-top py-4" style="border-color:rgba(255,255,255,.1)!important;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+          <p class="mb-0" style="color:#999;font-size:13px;">Copyright © 2025 Suxnix. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/card_img_7d7d11a3-0daa-4469-956c-846a4c9b8acf.png?v=1737133834" alt="payment methods" width="auto" height="auto" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- ******************************************************************************************************************************* -->
+    <!-- Shopping Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItems" class="mb-3"></div>
+            <div class="border-top pt-3 mt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <strong>Subtotal:</strong>
+                    <strong id="cartSubtotal">Tk 0.00</strong>
+                </div>
+                <a href="cartpage.html" class="btn btn-dark w-100 mb-2 rounded-3">View Cart</a>
+                <a href="checkout.html" class="btn btn-success w-100 rounded-3">Checkout</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-body p-4">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <div class="d-flex gap-2 mt-4">
+                        <input type="search" class="form-control rounded-3" placeholder="Enter your keyword..." id="searchInput">
+                        <button class="btn btn-success rounded-3" onclick="performSearch()">
+                            <i class="bi bi-search me-2"></i>Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apps/Social Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="appsOffcanvas" style="width: 500px;">
+    <div class="offcanvas-header position-absolute top-0 end-0 p-3" style="z-index: 10;">
+        <button type="button" class="btn rounded-circle border-0" data-bs-dismiss="offcanvas"
+            style="width: 45px; height: 45px; background-color: #f0faf4; color: #14cc65; font-size: 18px;">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-4 pt-5 d-flex flex-column justify-content-center">
+
+        <!-- Heading -->
+        <h1 class="fw-black text-uppercase mb-4" style="font-size: 2.4rem; line-height: 1.15; letter-spacing: 1px;">
+            GETTING ALL OF THE
+            <span style="color: #14cc65;">NUTRIENTS</span> YOU NEED
+            SIMPLY CANNOT BE DONE
+            WITHOUT SUPPLEMENTS.
+        </h1>
+
+        <!-- Description -->
+        <p class="text-muted mb-5" style="font-size: 0.95rem; line-height: 1.7;">
+            Nam libero tempore, cum soluta nobis eligendi cumque quod placeat facere possimus assumenda omnis dolor
+            repellendu sautem temporibus officiis
+        </p>
+
+        <!-- Contact Info -->
+        <div class="mt-3">
+            <h3 class="fw-bold mb-1" style="font-size: 1.8rem;">+1 599 162 4545</h3>
+            <h4 class="fw-bold text-uppercase mb-3" style="font-size: 1.2rem;">INFO@EXAMPLE.COM</h4>
+            <p class="text-muted mb-4" style="font-size: 0.9rem;">5689 Lotaso Terrace, Culver City, CA, United States</p>
+
+            <!-- Social Icons -->
+            <div class="d-flex gap-2">
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-vimeo"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Mobile Navigation Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav" style="width: 280px; max-width: 100%;">
+    
+    <!-- Header with Logo + Close -->
+    <div class="offcanvas-header border-bottom pb-3">
+        <a href="#" class="text-decoration-none d-flex align-items-center gap-2">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="Suxnix" height="45" style="max-width: 130px;">
+        </a>
+        <button type="button" data-bs-dismiss="offcanvas"
+            style="background: none; border: none; font-size: 1.4rem; color: #f97316; line-height: 1; cursor: pointer;">
+            ✕
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-0" style="overflow-y: auto;">
+        <ul class="list-unstyled mb-0">
+
+            <!-- Home (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileHome">
+                    Home
+                    <i class="bi bi-chevron-left" id="homeArrow" style="font-size: .75rem; color: #888; transition: transform .2s;"></i>
+                </button>
+                <div class="collapse" id="mobileHome">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="index.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home One</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home Two</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Home Three</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Features -->
+            <li class="border-bottom">
+                <a href="index.html#features" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Features</a>
+            </li>
+
+            <!-- Product -->
+            <li class="border-bottom">
+                <a href="index.html#product" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Product</a>
+            </li>
+
+            <!-- Ingredient -->
+            <li class="border-bottom">
+                <a href="index.html#ingredient" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Ingredient</a>
+            </li>
+
+            <!-- Pricing -->
+            <li class="border-bottom">
+                <a href="index.html#pricing" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Pricing</a>
+            </li>
+
+            <!-- Shop (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileShop">
+                    Shop
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileShop">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourshop.html"     class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Shop</a></li>
+                        <li><a href="shopdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Shop Details</a></li>
+                        <li><a href="cartpage.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Cart Page</a></li>
+                        <li><a href="loginpage.html"   class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Login Page</a></li>
+                        <li><a href="register.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Register</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- News (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileNews">
+                    News
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileNews">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourblog.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Blog</a></li>
+                        <li><a href="blogdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Blog Details</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Contacts -->
+            <li>
+                <a href="contact.html" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Contacts</a>
+            </li>
+
+        </ul>
+
+        <!-- Social Icons at Bottom -->
+        <div class="d-flex gap-2 justify-content-center py-4 border-top mt-2">
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-vimeo"></i></a>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Toast Container -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="toastContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+    // shopdetails.html
+
+
+/* ── Product data ── */
+  const PRODUCT = {
+    id:    'antiaging-longevity',
+    name:  'Antiaging and Longevity',
+    price: 49.99,
+    img:   'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200&h=200&fit=crop&auto=format',
+    category: 'Nutrition'
+  };
+
+  /* ── Quantity controls ── */
+  function changeQty(delta) {
+    const inp = document.getElementById('qtyInput');
+    let val = parseInt(inp.value) + delta;
+    if (val < 1) val = 1;
+    if (val > 99) val = 99;
+    inp.value = val;
+  }
+
+  /* ── Thumbnail switcher ── */
+  function switchImg(el, src) {
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  /* ── Cart (localStorage) ── */
+  function getCart() {
+    return JSON.parse(localStorage.getItem('suxnix_cart') || '[]');
+  }
+  function saveCart(cart) {
+    localStorage.setItem('suxnix_cart', JSON.stringify(cart));
+  }
+  function updateCartBadge() {
+    const cart = getCart();
+    const total = cart.reduce((s, i) => s + i.qty, 0);
+    document.getElementById('cartCount').textContent = total;
+  }
+
+  function addToCart() {
+    const qty = parseInt(document.getElementById('qtyInput').value);
+    const cart = getCart();
+    const existing = cart.find(i => i.id === PRODUCT.id);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({ ...PRODUCT, qty });
+    }
+    saveCart(cart);
+    updateCartBadge();
+
+    // Show toast
+    const toastEl = document.getElementById('cartToast');
+    bootstrap.Toast.getOrCreateInstance(toastEl).show();
+
+    // Button feedback
+    const btn = document.getElementById('btnAddCart');
+    btn.innerHTML = '<i class="bi bi-check-lg me-2"></i>ADDED!';
+    btn.style.background = '#159140';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="bi bi-bag-plus me-2"></i>ADD TO CART';
+      btn.style.background = '';
+    }, 2000);
+  }
+
+  /* ── Init ── */
+  updateCartBadge();
+
+  /* ── Tab switching ── */
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+
+  /* ── Quantity controls ── */
+  function changeQty(delta) {
+    const inp = document.getElementById('qtyInput');
+    let val = parseInt(inp.value) + delta;
+    if (val < 1) val = 1;
+    if (val > 99) val = 99;
+    inp.value = val;
+  }
+
+  /* ── Thumbnail switcher ── */
+  function switchImg(el, src) {
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  /* ── Related products carousel dots ── */
+  function goSlide(idx) {
+    const car = bootstrap.Carousel.getOrCreateInstance(document.getElementById('relCarousel'));
+    car.to(idx);
+    document.querySelectorAll('.rel-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+  document.getElementById('relCarousel').addEventListener('slid.bs.carousel', function (e) {
+    document.querySelectorAll('.rel-dot').forEach((d, i) => d.classList.toggle('active', i === e.to));
+  });
+
+  /* ── Add related product to cart ── */
+  function relAddToCart(id, name, price) {
+    const cart = getCart();
+    const existing = cart.find(i => i.id === id);
+    if (existing) { existing.qty += 1; }
+    else { cart.push({ id, name, price, qty: 1, category: 'Supplement',
+      img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200&h=200&fit=crop&auto=format' }); }
+    saveCart(cart);
+    updateCartBadge();
+    bootstrap.Toast.getOrCreateInstance(document.getElementById('cartToast')).show();
+  }
+
+</script>
+
+</body>
+</html>

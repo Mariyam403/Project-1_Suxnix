@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suxnix - Power Supplement</title>
+    
+    <!-- Bootstrap 5.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+      --green: #1eaf52;
+      --green-dark: #159140;
+      --green-light: #e8f8ee;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Barlow Condensed', sans-serif; }
+
+    /* ---- SORT BAR ---- */
+    .sort-bar { background:#fff; border-bottom:1px solid var(--border); padding:12px 0; }
+    .results-count { font-size:.9rem; color: var(--muted); }
+    .sort-select { border: 1.5px solid var(--border); border-radius:8px; font-size:.9rem; padding:6px 14px; cursor:pointer; background:#fff; }
+    .sort-select:focus { outline:none; border-color:var(--green); box-shadow:0 0 0 3px rgba(30,175,82,.15); }
+
+    /* ---- SIDEBAR CARD ---- */
+    .sidebar-card { background:#fff; border-radius:14px; padding:22px; margin-bottom:20px; border:1px solid var(--border); }
+    .sidebar-title { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; border-bottom:2px solid var(--green); padding-bottom:8px; margin-bottom:16px; }
+
+    /* ---- RANGE SLIDER ---- */
+    .range-wrap { position:relative; height:6px; background:#e5e7eb; border-radius:10px; margin:24px 8px 10px; }
+    .range-track { position:absolute; height:100%; background:var(--green); border-radius:10px; top:0; left:0; right:0; }
+    .range-wrap input[type=range] { -webkit-appearance:none; appearance:none; position:absolute; width:100%; height:6px; top:0; left:0; opacity:0; cursor:pointer; margin:0; padding:0; pointer-events:none; background:transparent; }
+    .range-wrap input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; cursor:pointer; pointer-events:all; }
+    .range-wrap input[type=range]::-moz-range-thumb { width:22px; height:22px; cursor:pointer; pointer-events:all; border:none; }
+    #rangeMin { z-index: 3; }
+    #rangeMax { z-index: 4; }
+    .thumb { position:absolute; top:50%; transform:translate(-50%,-50%); width:18px; height:18px; background:var(--green); border:2px solid #fff; border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,.25); pointer-events:none; }
+    .price-display { font-size:.88rem; font-weight:600; color:var(--text); margin-top:8px; }
+    .btn-filter { background:var(--green); color:#fff; border:none; border-radius:8px; padding:9px 18px; font-weight:600; font-size:.85rem; width:100%; margin-top:12px; transition: background .2s; }
+    .btn-filter:hover { background:var(--green-dark); color:#fff; }
+
+    /* ---- CATEGORIES ---- */
+    .cat-item { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); cursor:pointer; font-size:.9rem; transition:color .2s; user-select:none; }
+    .cat-item:last-child { border:none; }
+    .cat-item:hover, .cat-item.active { color:var(--green); font-weight:600; }
+    .cat-dot { width:9px; height:9px; border-radius:50%; background:var(--green); display:inline-block; margin-right:8px; }
+    .cat-arrow { font-size:.7rem; color:var(--muted); }
+
+    /* ---- TAGS ---- */
+    .tag-pill { display:inline-block; background:var(--green-light); color:var(--green-dark); border:1px solid #c3e8d1; border-radius:20px; padding:5px 14px; font-size:.8rem; font-weight:600; cursor:pointer; margin:3px 2px; transition: background .2s, color .2s; user-select:none; }
+    .tag-pill:hover, .tag-pill.active { background:var(--green); color:#fff; border-color:var(--green); }
+
+    /* ---- PRODUCT CARD ---- */
+    .product-col.hidden { display: none !important; }
+    .product-card { background:#fff; border-radius:16px; border:1px solid var(--border); overflow:hidden; transition: box-shadow .25s, transform .25s; height:100%; }
+    .product-card:hover { box-shadow:0 8px 32px rgba(30,175,82,.15); transform:translateY(-3px); }
+    .product-card .img-wrap { background:white; height:210px; display:flex; align-items:center; justify-content:center; padding:20px; overflow:hidden; }
+    .product-card .img-wrap img { max-height:170px; max-width:100%; object-fit:contain; transition: transform .35s; }
+    .product-card:hover .img-wrap img { transform: scale(1.07); }
+    .product-card .card-body { padding:18px; }
+    .product-cat { font-size:.75rem; font-weight:600; color:var(--green); text-transform:uppercase; letter-spacing:.06em; }
+    .product-title { font-family:'Barlow Condensed',sans-serif; font-size:1.3rem; font-weight:700; letter-spacing:.02em; margin:4px 0 8px; line-height:1.2; }
+    .product-price { font-size:1.15rem; font-weight:700; color:var(--text); }
+    .card-foot { display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
+    .btn-add { background:var(--green); color:#fff; border:none; border-radius:50%; width:42px; height:42px; display:flex;align-items:center;justify-content:center; font-size:1.05rem; transition: background .2s; flex-shrink:0; }
+    .btn-add:hover { background:var(--green-dark); }
+    .btn-buynow { background:#f97316; color:#fff; border:none; border-radius:22px; padding:8px 22px; font-weight:600; font-size:.88rem; transition: background .25s; }
+    .btn-buynow:hover { background: var(--green) !important; color:#fff !important; }
+
+    /* ---- NO RESULTS ---- */
+    .no-results { display:none; text-align:center; padding:60px 20px; color:var(--muted); font-size:1.05rem; }
+    .no-results i { font-size:2.8rem; display:block; margin-bottom:12px; color:var(--green); }
+
+    /* ---- LATEST PRODUCTS ---- */
+    .latest-item { display:flex; gap:30px; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); }
+    .latest-item:last-child { border:none; }
+    .latest-item img { width:40px; height:59px; object-fit:full; background:var(--green-light); border-radius:8px; flex-shrink:0; }
+    .latest-item .l-title { font-size:.96rem; font-weight:700; }
+    .latest-item .l-price { font-size:.8rem; color:var(--green); font-weight:600; }
+    .stars { color:#facc15; font-size:.75rem; }
+
+    /* ---- DROPDOWN ---- */
+    .dropdown-menu { border-radius:10px; border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.1); }
+    .dropdown-item:hover { background:var(--green-light); color:var(--green); }
+
+    /* Hero Section */
+    .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('//suxnix-dev.myshopify.com/cdn/shop/files/video_bg_fc243aec-f2b9-451a-87dd-84dc29514d83.jpg?v=1736693977');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
+    }
+    .hero-title { font-size: 3.5rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 0; }
+    .divider-shape {
+        position: absolute;
+        bottom: -2px;
+        width: 100%;
+        height: 60px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f8f9fa" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+        background-size: cover;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: #1a1a1a; color: #fff; padding-top: 0; position: relative; overflow: hidden; }
+    .footer-link { color: #999; font-size: 14px; text-decoration: none; transition: color .3s; }
+    .footer-link:hover { color: var(--green); }
+    .footer-social { width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; transition: background .3s; }
+    .footer-social:hover { background: var(--green); color: #fff; }
+
+    /* Instagram carousel */
+    .insta-carousel-wrap { background: #000; overflow: hidden; }
+    .insta-carousel { display: flex; width: max-content; animation: scrollCarousel 20s linear infinite; }
+    .insta-carousel:hover { animation-play-state: paused; }
+    @keyframes scrollCarousel { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .insta-carousel-item { width: 260px; height: 260px; flex-shrink: 0; position: relative; }
+    .insta-carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+    .insta-carousel-item .insta-hover-overlay { position: absolute; inset: 0; background: rgba(20,204,101,.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .3s; }
+    .insta-carousel-item:hover .insta-hover-overlay { opacity: 1; }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+
+    <!-- Header -->
+    <header class="sticky-top bg-white border-bottom" style="z-index: 1000;">
+        <div class="container-fluid" style="max-width: 1400px;">
+            <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                <a href="#" class="text-decoration-none d-flex align-items-center gap-3">
+                    <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev" height="55.16" width="159.96">
+                </a>    
+                <nav class="d-none d-lg-flex gap-5 align-items-center">
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">Home</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#home">Home 1</a></li>
+                            <li><a class="dropdown-item" href="#home2">Home 2</a></li>
+                            <li><a class="dropdown-item" href="#home3">Home 3</a></li>
+                        </ul>
+                    </div>
+                    <a href="index.html#features" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Features</a>
+                    <a href="index.html#product" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Product</a>
+                    <a href="index.html#ingredient" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Ingredient</a>
+                    <a href="index.html#pricing" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Pricing</a>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">Shop</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourshop.html">Our Shop</a></li>
+                            <li><a class="dropdown-item" href="shopdetails.html">Shop Details</a></li>
+                            <li><a class="dropdown-item" href="cartpage.html">Cart page</a></li>
+                            <li><a class="dropdown-item" href="loginpage.html">Login Page</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">News</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourblog.html">Our Blog</a></li>
+                            <li><a class="dropdown-item" href="blogdetails.html">Blog Details</a></li>
+                        </ul>
+                    </div>
+                    <a href="contact.html" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Contacts</a>
+                </nav>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-light rounded-3 p-0" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-light rounded-3 p-0 position-relative" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="bi bi-bell"></i>
+                        <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px; display: none;">0</span>
+                    </button>
+                    <button class="btn rounded-3 p-0 text-white" style="width: 36px; height: 36px; background: #14cc65; border: 1px solid #14cc65;" data-bs-toggle="offcanvas" data-bs-target="#appsOffcanvas"><i class="bi bi-arrow-repeat"></i></button>
+                    <button class="btn btn-light rounded-3 p-0 d-lg-none" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#mobileNav"><i class="bi bi-list"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div>
+            <h1 class="hero-title">OUR SHOP</h1>
+            <p>Home | <span class="text-muted">Our shop</span></p>
+        </div>
+        <div class="divider-shape"></div>
+    </div>
+
+<!-- ==================== SORT BAR ==================== -->
+<div class="sort-bar">
+  <div class="container-xl d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <span class="results-count" id="resultsCount">Showing 1–8 of 8 results</span>
+    <div class="d-flex align-items-center gap-2">
+      <label class="results-count mb-0" for="sortSelect">Sort by:</label>
+      <select class="sort-select" id="sortSelect">
+        <option value="featured">Featured</option>
+        <option value="best_selling">Best Selling</option>
+        <option value="alpha_az">Alphabetically, A-Z</option>
+        <option value="alpha_za">Alphabetically, Z-A</option>
+        <option value="price_low">Price, low to high</option>
+        <option value="price_high">Price, high to low</option>
+        <option value="date_old">Date, old to new</option>
+        <option value="date_new">Date, new to old</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MAIN ==================== -->
+<div class="container-xl py-4">
+  <div class="row g-4">
+
+    <!-- ========== PRODUCT GRID ========== -->
+    <div class="col-lg-8">
+      <div class="row g-3" id="productGrid">
+
+        <!-- CARD 1 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Fat Burners" data-price="59.99"
+             data-name="Amino Energy Health 2KG" data-date="1"
+             data-bestseller="0" data-tags="supplement burner fatburner">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Amino Energy Health 2kg" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Fat Burners</span>
+              <div class="product-title">AMINO ENERGY HEALTH 2KG</div>
+              <div class="product-price">Tk 59.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Nutrition" data-price="49.99"
+             data-name="Antiaging and Longevity" data-date="2"
+             data-bestseller="1" data-tags="nutrition supplement">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb01.png?v=1737721978" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Nutrition</span>
+              <div class="product-title">ANTIAGING AND LONGEVITY</div>
+              <div class="product-price">Tk 49.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Burners" data-price="85.99"
+             data-name="Box Full of Muscles" data-date="3"
+             data-bestseller="1" data-tags="burner supplement">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Box Full of Muscles" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Burners</span>
+              <div class="product-title">BOX FULL OF MUSCLES</div>
+              <div class="product-price">Tk 85.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Medicine" data-price="85.99"
+             data-name="Protein Powder 2KG" data-date="4"
+             data-bestseller="0" data-tags="medicine protein">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb04.png?v=1738166199" alt="Protein Powder 2kg" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Medicine</span>
+              <div class="product-title">PROTEIN POWDER 2KG</div>
+              <div class="product-price">Tk 85.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Fat Burners" data-price="49.99"
+             data-name="Seriour Mass 2KG A" data-date="5"
+             data-bestseller="1" data-tags="supplement protein fatburner">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271" alt="SERIOUR MASS 2kg" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Fat Burners</span>
+              <div class="product-title">SERIOUR MASS 2KG</div>
+              <div class="product-price">Tk 49.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Nutrition" data-price="49.99"
+             data-name="Seriour Mass 2KG B" data-date="6"
+             data-bestseller="0" data-tags="nutrition protein">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.png?v=1738166347" alt="SERIOUR MASS 2kg" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Nutrition</span>
+              <div class="product-title">SERIOUR MASS 2KG</div>
+              <div class="product-price">Tk 49.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Medicine" data-price="29.99"
+             data-name="Suxnix Natural Vitamin Supplement" data-date="7"
+             data-bestseller="0" data-tags="medicine supplement">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Suxnix Natural Vitamin Supplement" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Medicine</span>
+              <div class="product-title">SUXNIX NATURAL VITAMIN SUPPLEMENT</div>
+              <div class="product-price">Tk 29.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="col-sm-6 col-md-4 product-col"
+             data-category="Nutrition" data-price="49.99"
+             data-name="Whey Protein Powder" data-date="8"
+             data-bestseller="1" data-tags="protein nutrition">
+          <div class="product-card">
+            <div class="img-wrap">
+              <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Whey Protein Powder" width="auto" height="auto" loading="lazy">
+            </div>
+            <div class="card-body">
+              <span class="product-cat">Nutrition</span>
+              <div class="product-title">WHEY PROTEIN POWDER</div>
+              <div class="product-price">Tk 49.99</div>
+              <div class="card-foot">
+                <button class="btn-add" onclick="addToCart()" title="Add to cart"><i class="bi bi-bag-plus"></i></button>
+                <button class="btn-buynow">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row#productGrid -->
+
+      <!-- No-results state -->
+      <div class="no-results" id="noResults">
+        <i class="bi bi-search"></i>
+        No products match your current filters.<br>
+        <small style="font-size:.85rem;margin-top:6px;display:block;">Try adjusting the price range or clearing a filter.</small>
+      </div>
+    </div>
+
+    <!-- ========== SIDEBAR ========== -->
+    <div class="col-lg-4">
+
+      <!-- FILTER BY PRICE -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Filter by Price</div>
+        <div class="range-wrap" id="rangeWrap">
+          <div class="range-track" id="rangeTrack"></div>
+          <div class="thumb" id="thumbMin"></div>
+          <div class="thumb" id="thumbMax"></div>
+          <input type="range" id="rangeMin" min="0" max="200" value="0" step="1">
+          <input type="range" id="rangeMax" min="0" max="200" value="200" step="1">
+        </div>
+        <div class="price-display">
+          Price:&nbsp;<strong id="priceMinLabel">$0</strong>&nbsp;&ndash;&nbsp;<strong id="priceMaxLabel">$200</strong>
+        </div>
+        <button class="btn-filter" id="btnFilter">FILTER</button>
+      </div>
+
+      <!-- CATEGORIES -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Categories</div>
+        <div class="cat-item active" data-cat="all" onclick="filterByCategory('all',this)">
+          <span><span class="cat-dot"></span>All</span>
+          <i class="bi bi-chevron-right cat-arrow"></i>
+        </div>
+        <div class="cat-item" data-cat="Burners" onclick="filterByCategory('Burners',this)">
+          <span><span class="cat-dot"></span>Burners</span>
+          <i class="bi bi-chevron-right cat-arrow"></i>
+        </div>
+        <div class="cat-item" data-cat="Fat Burners" onclick="filterByCategory('Fat Burners',this)">
+          <span><span class="cat-dot"></span>Fat Burners</span>
+          <i class="bi bi-chevron-right cat-arrow"></i>
+        </div>
+        <div class="cat-item" data-cat="Medicine" onclick="filterByCategory('Medicine',this)">
+          <span><span class="cat-dot"></span>Medicine</span>
+          <i class="bi bi-chevron-right cat-arrow"></i>
+        </div>
+        <div class="cat-item" data-cat="Nutrition" onclick="filterByCategory('Nutrition',this)">
+          <span><span class="cat-dot"></span>Nutrition</span>
+          <i class="bi bi-chevron-right cat-arrow"></i>
+        </div>
+        <div class="cat-item" data-cat="Nutrition" onclick="filterByCategory('Nutrition',this)">
+          <span><span class="cat-dot"></span>Protein</span>
+          <i class="bi bi-chevron-right cat-arrow"></i>
+        </div>
+      </div>
+
+      <!-- LATEST PRODUCTS -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Latest Products</div>
+        <div class="latest-item">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.png?v=1738166347&width=80" alt="SERIOUR MASS 2kg" width="40px" height="59px" loading="lazy">
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="l-title">SERIOUR MASS 2KG</div>
+            <div class="l-price">Tk 49.99</div>
+          </div>
+        </div>
+        <div class="latest-item">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857&width=80" alt="Whey Protein Powder" width="40px" height="59px" loading="lazy">
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="l-title">WHEY PROTEIN POWDER</div>
+            <div class="l-price">Tk 49.99</div>
+          </div>
+        </div>
+        <div class="latest-item">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb05.png?v=1738166271&width=80" alt="SERIOUR MASS 2kg" width="40px" height="59px" loading="lazy">
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="l-title">SERIOUR MASS 2KG</div>
+            <div class="l-price">Tk 49.99</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT TAGS -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Product Tags</div>
+        <div>
+          <span class="tag-pill" data-tag="medicine"   onclick="filterByTag('medicine',this)">medicine</span>
+          <span class="tag-pill" data-tag="protein"    onclick="filterByTag('protein',this)">Protein</span>
+          <span class="tag-pill" data-tag="supplement" onclick="filterByTag('supplement',this)">Supplement</span>
+          <span class="tag-pill" data-tag="nutrition"  onclick="filterByTag('nutrition',this)">Nutrition</span>
+          <span class="tag-pill" data-tag="burner"     onclick="filterByTag('burner',this)">Burner</span>
+          <span class="tag-pill" data-tag="fatburner"  onclick="filterByTag('fatburner',this)">Fat Burner</span>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /row -->
+</div><!-- /container -->
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="position-relative" style="height:60px;margin-top:-1px;">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <path d="M0 30 Q50 10,100 35 Q150 50,200 25 Q250 5,300 38 Q350 52,400 22 Q450 8,500 35 Q550 48,600 26 Q650 10,700 38 Q750 50,800 24 Q850 8,900 36 Q950 50,1000 28 Q1050 10,1100 35 Q1150 48,1200 26 Q1250 10,1300 38 Q1350 50,1400 28 Q1420 20,1440 32 L1440 0 L0 0 Z" fill="#f9f9f9"/>
+    </svg>
+  </div>
+  <div class="insta-carousel-wrap">
+    <div class="insta-carousel">
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <!-- Duplicates for seamless loop -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+    </div>
+  </div>
+  <div class="container py-5" style="position:relative;z-index:10;">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/white_logo.png?v=1737133588" alt="suxnix dev" height="auto" width="auto" loading="lazy">
+        </div>
+        <p style="color:#999;font-size:14px;line-height:1.8;">Making beauty especially relating complot especial common questions tend to recur through posts or queries standards vary orem donor command tei.</p>
+        <div class="d-flex gap-3 mt-4">
+          <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-pinterest"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">About Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Shop</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Product</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Support</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Home</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blog Post</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Contact Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3" style="color:#999;font-size:14px;">4140 Parker Rd. Allentown, New Mexico 31134</li>
+          <li class="mb-3"><a href="tel:+13165550116" class="footer-link" style="color:var(--green);"><i class="bi bi-telephone-fill me-2"></i>+1 31-6555-0116</a></li>
+          <li class="mb-3"><a href="mailto:Suxnix@example.com" class="footer-link" style="color:var(--green);"><i class="bi bi-envelope-fill me-2"></i>Suxnix@example.com</a></li>
+          <li class="mb-3"><a href="#" class="footer-link" style="color:var(--green);"><i class="bi bi-globe me-2"></i>www.suxnixdomain.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-top py-4" style="border-color:rgba(255,255,255,.1)!important;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+          <p class="mb-0" style="color:#999;font-size:13px;">Copyright © 2025 Suxnix. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/card_img_7d7d11a3-0daa-4469-956c-846a4c9b8acf.png?v=1737133834" alt="payment methods" width="auto" height="auto" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- Shopping Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItems" class="mb-3"></div>
+            <div class="border-top pt-3 mt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <strong>Subtotal:</strong>
+                    <strong id="cartSubtotal">Tk 0.00</strong>
+                </div>
+                <a href="cartpage.html" class="btn btn-dark w-100 mb-2 rounded-3">View Cart</a>
+                <a href="checkout.html" class="btn btn-success w-100 rounded-3">Checkout</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-body p-4">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <div class="d-flex gap-2 mt-4">
+                        <input type="search" class="form-control rounded-3" placeholder="Enter your keyword..." id="searchInput">
+                        <button class="btn btn-success rounded-3"><i class="bi bi-search me-2"></i>Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apps/Social Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="appsOffcanvas" style="width: 500px;">
+    <div class="offcanvas-header position-absolute top-0 end-0 p-3" style="z-index: 10;">
+        <button type="button" class="btn rounded-circle border-0" data-bs-dismiss="offcanvas"
+            style="width: 45px; height: 45px; background-color: #f0faf4; color: #14cc65; font-size: 18px;">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-4 pt-5 d-flex flex-column justify-content-center">
+
+        <!-- Heading -->
+        <h1 class="fw-black text-uppercase mb-4" style="font-size: 2.4rem; line-height: 1.15; letter-spacing: 1px;">
+            GETTING ALL OF THE
+            <span style="color: #14cc65;">NUTRIENTS</span> YOU NEED
+            SIMPLY CANNOT BE DONE
+            WITHOUT SUPPLEMENTS.
+        </h1>
+
+        <!-- Description -->
+        <p class="text-muted mb-5" style="font-size: 0.95rem; line-height: 1.7;">
+            Nam libero tempore, cum soluta nobis eligendi cumque quod placeat facere possimus assumenda omnis dolor
+            repellendu sautem temporibus officiis
+        </p>
+
+        <!-- Contact Info -->
+        <div class="mt-3">
+            <h3 class="fw-bold mb-1" style="font-size: 1.8rem;">+1 599 162 4545</h3>
+            <h4 class="fw-bold text-uppercase mb-3" style="font-size: 1.2rem;">INFO@EXAMPLE.COM</h4>
+            <p class="text-muted mb-4" style="font-size: 0.9rem;">5689 Lotaso Terrace, Culver City, CA, United States</p>
+
+            <!-- Social Icons -->
+            <div class="d-flex gap-2">
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-vimeo"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Mobile Navigation Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav" style="width: 280px; max-width: 100%;">
+    
+    <!-- Header with Logo + Close -->
+    <div class="offcanvas-header border-bottom pb-3">
+        <a href="#" class="text-decoration-none d-flex align-items-center gap-2">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="Suxnix" height="45" style="max-width: 130px;">
+        </a>
+        <button type="button" data-bs-dismiss="offcanvas"
+            style="background: none; border: none; font-size: 1.4rem; color: #f97316; line-height: 1; cursor: pointer;">
+            ✕
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-0" style="overflow-y: auto;">
+        <ul class="list-unstyled mb-0">
+
+            <!-- Home (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileHome">
+                    Home
+                    <i class="bi bi-chevron-left" id="homeArrow" style="font-size: .75rem; color: #888; transition: transform .2s;"></i>
+                </button>
+                <div class="collapse" id="mobileHome">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="index.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home One</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home Two</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Home Three</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Features -->
+            <li class="border-bottom">
+                <a href="index.html#features" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Features</a>
+            </li>
+
+            <!-- Product -->
+            <li class="border-bottom">
+                <a href="index.html#product" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Product</a>
+            </li>
+
+            <!-- Ingredient -->
+            <li class="border-bottom">
+                <a href="index.html#ingredient" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Ingredient</a>
+            </li>
+
+            <!-- Pricing -->
+            <li class="border-bottom">
+                <a href="index.html#pricing" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Pricing</a>
+            </li>
+
+            <!-- Shop (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileShop">
+                    Shop
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileShop">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourshop.html"     class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Shop</a></li>
+                        <li><a href="shopdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Shop Details</a></li>
+                        <li><a href="cartpage.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Cart Page</a></li>
+                        <li><a href="loginpage.html"   class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Login Page</a></li>
+                        <li><a href="register.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Register</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- News (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileNews">
+                    News
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileNews">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourblog.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Blog</a></li>
+                        <li><a href="blogdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Blog Details</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Contacts -->
+            <li>
+                <a href="contact.html" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Contacts</a>
+            </li>
+
+        </ul>
+
+        <!-- Social Icons at Bottom -->
+        <div class="d-flex gap-2 justify-content-center py-4 border-top mt-2">
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-vimeo"></i></a>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Toast Container -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="toastContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+/* =====================================================
+   STATE — declared first so all functions below can use it
+===================================================== */
+const state = {
+  category : 'all',
+  tag      : null,
+  minPrice : 0,
+  maxPrice : 200,
+  sort     : 'featured',
+  cartCount: 0
+};
+
+/* =====================================================
+   CAPTURE ALL PRODUCT COLUMNS ONCE
+===================================================== */
+const allCols = Array.from(document.querySelectorAll('.product-col'));
+
+// Store original DOM index so "featured" sort always restores original order
+let initIdx = 0;
+while (initIdx < allCols.length) {
+  allCols[initIdx].dataset.origIndex = initIdx;
+  initIdx++;
+}
+
+/* =====================================================
+   MASTER APPLY FUNCTION
+   Uses: while loop to iterate + if-else for all decisions
+===================================================== */
+function applyAll() {
+  const grid    = document.getElementById('productGrid');
+  const noRes   = document.getElementById('noResults');
+  const count   = document.getElementById('resultsCount');
+  const visible = [];
+
+  /* ── STEP 1: Loop every card, check filters with if-else ── */
+  let idx = 0;
+  while (idx < allCols.length) {
+    const col   = allCols[idx];
+    const price = parseFloat(col.dataset.price);
+    const cat   = col.dataset.category;
+    const tags  = col.dataset.tags.split(' ');  // space-separated tags in HTML
+    const name  = col.dataset.name;
+    const date  = parseInt(col.dataset.date);
+    const best  = parseInt(col.dataset.bestseller);
+    const orig  = parseInt(col.dataset.origIndex);
+
+    /* Category check */
+    let catOk;
+    if (state.category === 'all') {
+      catOk = true;
+    } else if (cat === state.category) {
+      catOk = true;
+    } else {
+      catOk = false;
+    }
+
+    /* Tag check */
+    let tagOk;
+    if (state.tag === null) {
+      tagOk = true;
+    } else if (tags.indexOf(state.tag) !== -1) {
+      tagOk = true;
+    } else {
+      tagOk = false;
+    }
+
+    /* Price check */
+    let priceOk;
+    if (price >= state.minPrice && price <= state.maxPrice) {
+      priceOk = true;
+    } else {
+      priceOk = false;
+    }
+
+    /* Show or hide the card */
+    if (catOk && tagOk && priceOk) {
+      col.classList.remove('hidden');
+      visible.push({ col, price, name, date, best, orig });
+    } else {
+      col.classList.add('hidden');
+    }
+
+    idx++;
+  }
+
+  /* ── STEP 2: Sort visible items using if-else chain ── */
+  visible.sort(function(a, b) {
+    if (state.sort === 'best_selling') {
+      return b.best - a.best;
+    } else if (state.sort === 'alpha_az') {
+      return a.name.localeCompare(b.name);
+    } else if (state.sort === 'alpha_za') {
+      return b.name.localeCompare(a.name);
+    } else if (state.sort === 'price_low') {
+      return a.price - b.price;
+    } else if (state.sort === 'price_high') {
+      return b.price - a.price;
+    } else if (state.sort === 'date_old') {
+      return a.date - b.date;
+    } else if (state.sort === 'date_new') {
+      return b.date - a.date;
+    } else {
+      return a.orig - b.orig;   // featured = original HTML order
+    }
+  });
+
+  /* ── STEP 3: Re-append sorted visible cards to grid using while loop ── */
+  let j = 0;
+  while (j < visible.length) {
+    grid.appendChild(visible[j].col);
+    j++;
+  }
+
+  /* ── STEP 4: Update results count / no-results message ── */
+  if (visible.length === 0) {
+    noRes.style.display = 'block';
+    count.textContent = 'Showing 0 results';
+  } else {
+    noRes.style.display = 'none';
+    count.textContent = 'Showing 1\u2013' + visible.length + ' of ' + visible.length + ' results';
+  }
+}
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+function filterByCategory(cat, el) {
+  state.category = cat;
+  const catItems = document.querySelectorAll('.cat-item');
+  let k = 0;
+  while (k < catItems.length) {
+    catItems[k].classList.remove('active');
+    k++;
+  }
+  el.classList.add('active');
+  applyAll();
+}
+
+/* =====================================================
+   TAG FILTER (click same tag again to deselect)
+===================================================== */
+function filterByTag(tag, el) {
+  if (state.tag === tag) {
+    state.tag = null;
+    el.classList.remove('active');
+  } else {
+    state.tag = tag;
+    const pills = document.querySelectorAll('.tag-pill');
+    let p = 0;
+    while (p < pills.length) {
+      pills[p].classList.remove('active');
+      p++;
+    }
+    el.classList.add('active');
+  }
+  applyAll();
+}
+
+/* =====================================================
+   SORT DROPDOWN
+===================================================== */
+document.getElementById('sortSelect').addEventListener('change', function () {
+  state.sort = this.value;
+  applyAll();
+});
+
+/* =====================================================
+   PRICE RANGE SLIDER
+===================================================== */
+const rangeMin      = document.getElementById('rangeMin');
+const rangeMax      = document.getElementById('rangeMax');
+const thumbMin      = document.getElementById('thumbMin');
+const thumbMax      = document.getElementById('thumbMax');
+const rangeTrack    = document.getElementById('rangeTrack');
+const priceMinLabel = document.getElementById('priceMinLabel');
+const priceMaxLabel = document.getElementById('priceMaxLabel');
+const MAX_VAL       = parseInt(rangeMin.max);
+
+function updateSliderUI() {
+  const lo  = parseInt(rangeMin.value);
+  const hi  = parseInt(rangeMax.value);
+  const pLo = (lo / MAX_VAL) * 100;
+  const pHi = (hi / MAX_VAL) * 100;
+
+  rangeTrack.style.left  = pLo + '%';
+  rangeTrack.style.right = (100 - pHi) + '%';
+  thumbMin.style.left    = pLo + '%';
+  thumbMax.style.left    = pHi + '%';
+
+  priceMinLabel.textContent = '$' + lo;
+  priceMaxLabel.textContent = '$' + hi;
+}
+
+rangeMin.addEventListener('input', function () {
+  if (parseInt(this.value) >= parseInt(rangeMax.value) - 5) {
+    this.value = parseInt(rangeMax.value) - 5;
+  }
+  if (parseInt(rangeMin.value) > 150) {
+    rangeMin.style.zIndex = 5;
+  } else {
+    rangeMin.style.zIndex = 3;
+  }
+  updateSliderUI();
+});
+
+rangeMax.addEventListener('input', function () {
+  if (parseInt(this.value) <= parseInt(rangeMin.value) + 5) {
+    this.value = parseInt(rangeMin.value) + 5;
+  }
+  updateSliderUI();
+});
+
+/* FILTER button — reads slider into state then runs applyAll */
+document.getElementById('btnFilter').addEventListener('click', function () {
+  state.minPrice = parseFloat(rangeMin.value);
+  state.maxPrice = parseFloat(rangeMax.value);
+  applyAll();
+});
+
+/* =====================================================
+   CART COUNTER
+===================================================== */
+function addToCart() {
+  state.cartCount++;
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = state.cartCount;
+  badge.style.display = 'inline-block';
+}
+
+/* =====================================================
+   INIT
+===================================================== */
+updateSliderUI();
+applyAll();
+
+    </script>
+</body>
+</html>

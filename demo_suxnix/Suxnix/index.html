@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suxnix - Power Supplement</title>
+    
+    <!-- Bootstrap 5.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Brand marquee */
+    .brands{padding:24px 0 10px;border-top:0}
+    .brands .wrap{max-width:1100px;margin:0 auto;text-align:center;padding:0 24px}
+    .brands-title{color:#1f2937;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+    .brand-marquee{position:relative;overflow:hidden;border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;padding:12px 0;background:#fff}
+    .brand-track{display:flex;gap:60px;width:max-content;animation:brandScroll 26s linear infinite}
+    .brand{color:#374151;opacity:.9;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+    .brand::before{content:'';width:22px;height:22px;border-radius:50%;border:1px solid #e5e7eb;background:#fff}
+    .brand-marquee:hover .brand-track{animation-play-state:paused}
+    @keyframes brandScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media (prefers-reduced-motion: reduce){.brand-track{animation:none}}
+
+    .hero-wrapper {
+    position: relative;
+}
+
+.bg-shape {
+    display: block;
+}
+
+.product-img {
+    bottom: 0;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* ── FOOTER ── */
+    footer { background: #1a1a1a; color: #fff; padding-top: 0; position: relative; overflow: hidden; }
+    .footer-link { color: #999; font-size: 14px; text-decoration: none; transition: color .3s; }
+    .footer-link:hover { color: var(--green); }
+    .footer-social {
+      width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center; text-decoration: none;
+      color: #fff; transition: background .3s;
+    }
+    .footer-social:hover { background: var(--green); color: #fff; }
+
+    /* Instagram carousel */
+    .insta-carousel-wrap { background: #000; overflow: hidden; }
+    .insta-carousel { display: flex; width: max-content; animation: scrollCarousel 20s linear infinite; }
+    .insta-carousel:hover { animation-play-state: paused; }
+    @keyframes scrollCarousel { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .insta-carousel-item { width: 260px; height: 260px; flex-shrink: 0; position: relative; }
+    .insta-carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+    .insta-carousel-item .insta-hover-overlay {
+      position: absolute; inset: 0; background: rgba(20,204,101,.9);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s;
+    }
+    .insta-carousel-item:hover .insta-hover-overlay { opacity: 1; }
+
+    </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+
+    <!-- Header -->
+    <header class="sticky-top bg-white border-bottom" style="z-index: 1000;">
+        <div class="container-fluid" style="max-width: 1400px;">
+            <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                <!-- Logo -->
+                <a href="#" class="text-decoration-none d-flex align-items-center gap-3">
+                    <img style="max-width: 150" src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="suxnix dev" height="55.16" width="159.96">
+                </a>    
+
+                <!-- Desktop Navigation -->
+                <nav class="d-none d-lg-flex gap-5 align-items-center">
+
+                    <div class="dropdown">
+                        <button href="#home" class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            Home
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#home">Home 1</a></li>
+                            <li><a class="dropdown-item" href="#home">Home 2</a></li>
+                            <li><a class="dropdown-item" href="#home">Home 3</a></li>
+                        </ul>
+                    </div>
+                    <a href="#features" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Features</a>
+
+                    <a href="#product" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Product</a>
+                    <a href="#ingredient" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Ingredient</a>
+                    <a href="#pricing" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Pricing</a>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            Shop
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourshop.html">Our Shop</a></li>
+                            <li><a class="dropdown-item" href="shopdetails.html">Shop Details</a></li>
+                            <li><a class="dropdown-item" href="cartpage.html">Cart page</a></li>
+                            <li><a class="dropdown-item" href="loginpage.html">Login Page</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-link text-decoration-none fw-semibold p-0 dropdown-toggle" style="color: #0f172a; font-size: 14px;" data-bs-toggle="dropdown">
+                            News
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ourblog.html">Our Blog</a></li>
+                            <li><a class="dropdown-item" href="blogdetails.html">Blog Details</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="contact.html" class="text-decoration-none fw-semibold" style="color: #0f172a; font-size: 14px;">Contacts</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-light rounded-3 p-0" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    
+                    <button class="btn btn-light rounded-3 p-0 position-relative" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="bi bi-bell"></i>
+                        <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px; display: none;">0</span>
+                    </button>
+                    
+                    <button class="btn rounded-3 p-0 text-white" style="width: 36px; height: 36px; background: #14cc65; border: 1px solid #14cc65;" data-bs-toggle="offcanvas" data-bs-target="#appsOffcanvas">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </button>
+
+                    <button class="btn btn-light rounded-3 p-0 d-lg-none" style="width: 36px; height: 36px; border: 1px solid #e5e7eb;" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-5" style="background: linear-gradient(to bottom, #ffffff 0%, #f8fdf9 100%);">
+        <div class="container" style="max-width: 1100px;">
+            <p class="text-center fw-bold mb-3" style="color: #faa432; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase;">
+                .. INCREASED ENERGY WITH SUXNIX ..
+            </p>
+            <h1 class="text-center fw-medium mb-4" style="font-size: clamp(32px, 5vw, 60px); text-transform: uppercase; line-height: 1.2;">
+                MIX PROTEIN PROVIDED WAY<br>
+                TO <span style="color: #14cc65;">GROWTH</span>
+            </h1>
+            <p class="text-center mx-auto mb-4" style="max-width: 720px; color: #666; line-height: 1.6;">
+                Nam libero tempore, cum soluta nobis eligendi cumque quod placeat facere possimus assumenda omnis dolor repellendu sautem temporibus officiis
+            </p>
+            <div class="text-center">
+                <a href="#shop" class="btn text-white fw-semibold px-4 py-2" style="background: #14cc65; border-radius: 24px; text-decoration: none;">
+                    Shop Now
+                </a>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="text-center mt-5">
+    <div class="hero-wrapper position-relative mx-auto" 
+         style="max-width: 900px; width: 100%;">
+
+        <!-- Background Shape -->
+        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/banner_round_bg_b113813b-23c3-450b-846b-d4d4d9541856.png?v=1736613043&amp;width=1200"
+             alt="background shape"
+             class="bg-shape img-fluid w-100">
+
+        <!-- Product Image -->
+        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/banner_img01_4dfc6924-a7d3-4e69-abc4-4e1199127900.png?v=1736613086&amp;width=800"
+             alt="product"
+             class="product-img position-absolute start-50 translate-middle-x">
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <!-- Brand marquee below hero -->
+  <section class="brands" aria-label="Featured brands">
+    <div class="wrap">
+      <div class="brands-title">PERFECT BRAND IS FEATURED ON</div>
+      <div class="brand-marquee" aria-hidden="false">
+        <div class="brand-track">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_05.png?v=1736574801" alt="" width="138" height="39" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_03.png?v=1736574801" alt="" width="109" height="27" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_04.png?v=1736574801" alt="" width="92" height="28" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_02.png?v=1736574801" alt="" width="110" height="48" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+          <!-- duplicate sequence to create seamless loop -->
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_05.png?v=1736574801" alt="" width="138" height="39" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_03.png?v=1736574801" alt="" width="109" height="27" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_04.png?v=1736574801" alt="" width="92" height="28" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_02.png?v=1736574801" alt="" width="110" height="48" loading="lazy">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+     <!-- Brand Marquee 
+    <section class="py-4 border-top">
+        <div class="container" style="max-width: 1100px;">
+            <h3 class="text-center fw-bold mb-3" style="font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #1f2937;">
+                PERFECT BRAND IS FEATURED ON
+            </h3>
+        </div>
+        <div class="overflow-hidden border-top border-bottom py-3" style="background: #fff;">
+            <div class="d-flex gap-5" style="animation: scroll 26s linear infinite; width: max-content;">
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_05.png?v=1736574801" alt="" width="138" height="39" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_02.png?v=1736574801" alt="" width="110" height="48" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_04.png?v=1736574801" alt="" width="92" height="28" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_03.png?v=1736574801" alt="" width="109" height="27" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">                
+                </span>
+
+                 Duplicate for seamless scroll
+
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_05.png?v=1736574801" alt="" width="138" height="39" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_02.png?v=1736574801" alt="" width="110" height="48" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_04.png?v=1736574801" alt="" width="92" height="28" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_03.png?v=1736574801" alt="" width="109" height="27" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_01.png?v=1736574801" alt="" width="89" height="33" loading="lazy">
+                </span>
+                <span class="d-flex align-items-center gap-2 fw-bold" style="font-size: 18px; color: #374151; white-space: nowrap;">
+                    <span class="d-inline-block rounded-circle border" style="width: 22px; height: 22px; background: #fff;"></span>
+                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/brand_06.png?v=1736574801" alt="" width="125" height="36" loading="lazy">                
+                </span>
+            </div>
+        </div>
+    </section> -->
+
+
+
+    <!-- Features Section -->
+    <section id="features" class="position-relative overflow-hidden" style="background: linear-gradient(135deg, #14cc65 0%, #0fb757 100%); padding: 80px 0; min-height: 600px;">
+        <div class="container" style="max-width: 1400px;">
+            <div class="row align-items-center">
+                <!-- Left Side - Features Grid -->
+                <div class="col-xxl-6 col-lg-7">
+                    <div class="row g-4">
+                        <!-- Feature 1: Multi Fruits Flavour -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column" style="color: white;">
+                                <div class="mb-3" style="width: 60px; height: 60px; border: 3px solid #FAA432; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-heart" style="font-size: 32px; color: #FAA432;"></i>
+                                </div>
+                                <h3 class="fw-bold text-uppercase mb-3" style="font-size: 24px; letter-spacing: 0.5px;">
+                                    MULTI FRUITS FLAVOUR
+                                </h3>
+                                <p style="font-size: 15px; line-height: 1.6; opacity: 0.95;">
+                                    A thing added to something else in order to complete or enhance it.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2: Flower Formula -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column" style="color: white;">
+                                <div class="mb-3 position-relative" style="width: 60px; height: 60px;">
+                                    <div style="position: absolute; top: 15px; left: 0; right: 0; height: 3px; background: #FAA432;"></div>
+                                    <div style="position: absolute; top: 28px; left: 0; right: 0; height: 3px; background: #FAA432;"></div>
+                                    <div style="position: absolute; top: 41px; left: 0; right: 0; height: 3px; background: #FAA432;"></div>
+                                </div>
+                                <h3 class="fw-bold text-uppercase mb-3" style="font-size: 24px; letter-spacing: 0.5px;">
+                                    FLOWER FORMULA
+                                </h3>
+                                <p style="font-size: 15px; line-height: 1.6; opacity: 0.95;">
+                                    A thing added to something else in order to complete or enhance it.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3: Fishbone Diagram -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column" style="color: white;">
+                                <div class="mb-3" style="width: 60px; height: 60px; border: 3px solid #FAA432; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative;">
+                                    <div style="width: 30px; height: 30px; border: 3px solid #FAA432; border-radius: 50%;"></div>
+                                </div>
+                                <h3 class="fw-bold text-uppercase mb-3" style="font-size: 24px; letter-spacing: 0.5px;">
+                                    FISHBONE DIAGRAM
+                                </h3>
+                                <p style="font-size: 15px; line-height: 1.6; opacity: 0.95;">
+                                    A thing added to something else in order to complete or enhance it.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 4: 100% Fat Blasting -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column" style="color: white;">
+                                <div class="mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-person" style="font-size: 42px; color: #FAA432; stroke: #FAA432; stroke-width: 1px;"></i>
+                                </div>
+                                <h3 class="fw-bold text-uppercase mb-3" style="font-size: 24px; letter-spacing: 0.5px;">
+                                    100% FAT BLASTING
+                                </h3>
+                                <p style="font-size: 15px; line-height: 1.6; opacity: 0.95;">
+                                    A thing added to something else in order to complete or enhance it.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Product Image -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="position-relative d-flex justify-content-center align-items-center" style="min-height: 500px;">
+                        <!-- White Circle Bowl -->
+                        <div class="position-relative" style="width: 100%; max-width: 500px;">
+                            <div class="rounded-circle bg-white shadow-lg position-relative overflow-hidden" style="width:512px; height:512px; padding-bottom: 100%;">
+                                <!-- Green Powder Background -->
+                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                    <!-- Leaf Decoration -->
+                                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/features_img_00ec7c4b-95e1-4661-b180-7c2bd4db7ebb.png?v=1736613975" alt="" width=512 height=512 loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Wave Bottom -->
+        <div class="position-absolute bottom-0 start-0 w-100" style="height: 100px; overflow: hidden;">
+            <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                <path d="M0 50 Q360 0, 720 50 T1440 50 L1440 100 L0 100 Z" fill="white" opacity="0.1"/>
+                <path d="M0 70 Q360 30, 720 70 T1440 70 L1440 100 L0 100 Z" fill="white" opacity="0.1"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="product" class="py-5 border-top">
+        <div class="container" style="max-width: 1100px;">
+            
+            <!-- Product Grid -->
+            <div class="row g-4 mb-5">
+                <div class="col-12">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6">
+                            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/features_product01.png?v=1736660782" alt="" width="auto" height="auto" loading="lazy">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="fw-bold text-uppercase mb-2" style="font-size: clamp(28px, 4vw, 42px);">SERIOUR MASS</h3>
+                            <p class="fw-semibold mb-2" style="color: #1f2937;">High-strength ,  5000 IU</p>
+                            <p class="text-muted mb-3" style="line-height: 1.6;">
+                                Premium whey protein isolate for maximum muscle growth and recovery. Perfect for post-workout nutrition with enhanced absorption.
+                            </p>
+                            <div class="d-flex flex-wrap align-items-center gap-3">
+                                <div>
+                                    <span class="fw-bold" style="font-size: 24px;">Tk 89.99</span>
+                                    <span class="text-decoration-line-through ms-2" style="color: #f59e0b;">Tk 117.99</span>
+                                </div>
+                                <button class="btn btn-success rounded-pill px-4" onclick="addToCart('Seriour mass',89.99)">
+                                    <i></i>Shop Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6 order-md-2">
+                            <img style="margin: 0 130px 0 110px;" src="//suxnix-dev.myshopify.com/cdn/shop/files/features_product02.png?v=1736661941" alt="" width="auto" height="auto" loading="lazy">                        </div>
+                        <div class="col-md-6 order-md-1">
+                            <h3 class="fw-bold text-uppercase mb-2" style="font-size: clamp(28px, 4vw, 42px);">PROTEIN WHEY</h3>
+                            <p class="fw-semibold mb-2" style="color: #1f2937;">High-strength , 4000 IU</p>
+                            <p class="text-muted mb-3" style="line-height: 1.6;">
+                                High-calorie mass gainer with premium protein blend. Designed for hard gainers who need serious calories to build muscle mass.
+                            </p>
+                            <div class="d-flex flex-wrap align-items-center gap-3">
+                                <div>
+                                    <span class="fw-bold" style="font-size: 24px;">Tk 59.99</span>
+                                    <span class="text-decoration-line-through ms-2" style="color: #f59e0b;">Tk 79.99</span>
+                                </div>
+                                <button class="btn btn-success rounded-pill px-4" onclick="addToCart('Serious Mass 2KG', 3299)">
+                                    <i></i>Shop Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6">
+                            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/features_product03.png?v=1736661972" alt="" width="auto" height="auto" loading="lazy">                        </div>
+                        <div class="col-md-6">
+                            <h3 class="fw-bold text-uppercase mb-2" style="font-size: clamp(28px, 4vw, 42px);">MAX MASS 3XL</h3>
+                            <p class="fw-semibold mb-2" style="color: #1f2937;">High-strength ,  4000 IU</p>
+                            <p class="text-muted mb-3" style="line-height: 1.6;">
+                                Premium whey protein isolate for maximum muscle growth and recovery. Perfect for post-workout nutrition with enhanced absorption.
+                            </p>
+                            <div class="d-flex flex-wrap align-items-center gap-3">
+                                <div>
+                                    <span class="fw-bold" style="font-size: 24px;">Tk 69.99</span>
+                                    <span class="text-decoration-line-through ms-2" style="color: #f59e0b;">Tk 89.99</span>
+                                </div>
+                                <button class="btn btn-success rounded-pill px-4" onclick="addToCart('Seriour mass',89.99)">
+                                    <i></i>Shop Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Carousel -->
+            <div class="position-relative mt-5">
+                <button class="btn btn-success rounded-circle position-absolute top-50 translate-middle-y" style="left: -20px; width: 40px; height: 40px; z-index: 10; padding: 0;" onclick="scrollCarousel(-1)">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                
+                <div class="overflow-hidden">
+                    <div id="productCarousel" class="d-flex gap-3 py-3" style="overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none;">
+                        <!-- Product Card 1 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px; transition: transform 0.3s;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb01.png?v=1737721978" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">ANTIAGING AND LONGETIVITY</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="text-muted ms-1">(4.5)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 49.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('Antiaging and longetivity', 49.99)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Box Full of Muscles" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">BOX FULL OF MUSCLES</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <span class="text-muted ms-1">(4.0)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 85.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('box full of muscles', 85.99)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb04.png?v=1738166199" alt="Protein Powder 2kg" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">PROTEIN POWDER 2KG</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span class="text-muted ms-1">(5.0)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 85.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('Protein Powder 2kg', 85.99)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Whey Protein Powder" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">WHEY PROTEIN POWDER</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="text-muted ms-1">(4.5)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 49.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('Pre-Workout', 1799)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+<!-- *************************************************************************************************  -->
+
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px; transition: transform 0.3s;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb01.png?v=1737721978" alt="Antiaging and Longevity" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">ANTIAGING AND LONGETIVITY</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="text-muted ms-1">(4.5)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 49.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('Antiaging and longetivity', 49.99)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb03.png?v=1738166815" alt="Box Full of Muscles" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">BOX FULL OF MUSCLES</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <span class="text-muted ms-1">(4.0)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 85.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('box full of muscles', 85.99)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb04.png?v=1738166199" alt="Protein Powder 2kg" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">PROTEIN POWDER 2KG</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span class="text-muted ms-1">(5.0)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 85.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('Protein Powder 2kg', 85.99)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="flex-shrink-0 bg-white rounded-4 border p-3 shadow-sm" style="width: 260px;">
+                            <div class="d-flex align-items-center justify-content-center mb-3" style="height: 160px;">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/home_shop_thumb02.png?v=1738166857" alt="Whey Protein Powder" width="auto" height="auto" loading="lazy">                            </div>
+                            <h4 class="fw-bold text-uppercase mb-2" style="font-size: 18px;">WHEY PROTEIN POWDER</h4>
+                            <div class="d-flex align-items-center gap-1 mb-2" style="color: #f59e0b; font-size: 14px;">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="text-muted ms-1">(4.5)</span>
+                            </div>
+                            <p class="fw-bold mb-3">Tk 49.99</p>
+                            <button class="btn btn-success rounded-circle" style="width: 36px; height: 36px; padding: 0;" onclick="addToCart('Pre-Workout', 1799)">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+                    </DIV>
+
+                <button class="btn btn-success rounded-circle position-absolute top-50 translate-middle-y" style="right: -20px; width: 40px; height: 40px; z-index: 10; padding: 0;" onclick="scrollCarousel(1)">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+                </div>
+        </div>
+
+                <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <section class="position-relative overflow-hidden" style="background: #1a1a1a; min-height: 600px; padding: 0;">
+        
+        <!-- Top Brush Stroke Border -->
+        <div class="position-absolute top-0 start-0 w-100" style="height: 80px; margin-top: -1px;">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                <path d="M0 40 Q50 10, 100 35 Q150 55, 200 30 Q250 8, 300 40 Q350 60, 400 25 Q450 5, 500 38 Q550 58, 600 28 Q650 12, 700 42 Q750 62, 800 30 Q850 8, 900 40 Q950 58, 1000 32 Q1050 10, 1100 38 Q1150 55, 1200 28 Q1250 10, 1300 40 Q1350 60, 1400 30 Q1420 20, 1440 35 L1440 0 L0 0 Z" fill="white"/>
+            </svg>
+        </div>
+
+        <!-- Video Background Container -->
+        <div class="position-relative d-flex align-items-center justify-content-center" style="min-height: 600px; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&h=900&fit=crop') center/cover; background-color: #090909;">
+            
+            <!-- Diagonal Rope/Line Pattern Overlay -->
+            <div class="position-absolute w-100 h-100" style="background: linear-gradient(45deg, transparent 48%, rgba(139, 69, 19, 0.3) 48%, rgba(139, 69, 19, 0.3) 52%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(139, 69, 19, 0.2) 48%, rgba(139, 69, 19, 0.2) 52%, transparent 52%); background-size: 200px 200px; opacity: 0.3; pointer-events: none;"></div>
+
+            <!-- Green Leaves Decoration (Bottom Left) -->
+            <div class="position-absolute" style="bottom: -20px; left: 0; width: 200px; height: 200px; background: url('https://via.placeholder.com/200x200/transparent/0d6?text=🌿') no-repeat center; background-size: contain; z-index: 10;"></div>
+
+            <!-- Green Leaves Decoration (Bottom Right) -->
+            <div class="position-absolute" style="bottom: -20px; right: 0; width: 200px; height: 200px; background: url('https://via.placeholder.com/200x200/transparent/0d6?text=🌿') no-repeat center; background-size: contain; transform: scaleX(-1); z-index: 10;"></div>
+
+            <!-- Play Button -->
+            <div class="position-relative" style="z-index: 20;">
+                <button class="btn rounded-circle border-0 p-0 position-relative" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#videoModal"
+                        style="width: 120px; height: 120px; background: linear-gradient(135deg, #14cc65 0%, #0fb757 100%); box-shadow: 0 0 0 15px rgba(20, 204, 101, 0.3), 0 0 0 30px rgba(20, 204, 101, 0.2), 0 20px 40px rgba(0,0,0,0.4); transition: all 0.3s ease;">
+                    <i class="bi bi-play-fill text-white" style="font-size: 48px; margin-left: 8px;"></i>
+                    
+                    <!-- Pulsing Animation Rings -->
+                    <span class="position-absolute top-50 start-50 translate-middle rounded-circle" 
+                          style="width: 120px; height: 120px; border: 3px solid rgba(20, 204, 101, 0.6); animation: pulse 2s infinite;"></span>
+                </button>
+            </div>
+
+            <!-- Workout Equipment Silhouettes (Optional decorative elements) -->
+            <div class="position-absolute" style="top: 20%; right: 10%; opacity: 0.1; width: 150px; height: 150px;">
+                <i class="bi bi-activity" style="font-size: 120px; color: white;"></i>
+            </div>
+            
+            <div class="position-absolute" style="bottom: 20%; left: 10%; opacity: 0.1; width: 150px; height: 150px;">
+                <i class="bi bi-lightning" style="font-size: 120px; color: white;"></i>
+            </div>
+        </div>
+
+        <!-- Bottom Brush Stroke Border -->
+        <div class="position-absolute bottom-0 start-0 w-100" style="height: 80px; margin-bottom: -1px;">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                <path d="M0 40 Q50 55, 100 35 Q150 10, 200 45 Q250 65, 300 30 Q350 8, 400 42 Q450 60, 500 28 Q550 12, 600 40 Q650 58, 700 32 Q750 10, 800 42 Q850 62, 900 30 Q950 8, 1000 45 Q1050 60, 1100 32 Q1150 12, 1200 40 Q1250 58, 1300 30 Q1350 10, 1400 45 Q1420 55, 1440 35 L1440 80 L0 80 Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark border-0">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <!-- YouTube Embed - Replace VIDEO_ID with your actual YouTube video ID -->
+                    <div class="ratio ratio-16x9">
+                        <iframe id="youtubeVideo" 
+                                src="https://www.youtube.com/watch?v=HQfF5XRVXjU" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ************************************************************************************************************************************ -->
+
+    <!-- Statistics Section -->
+    <section class="bg-white py-5" style="margin-top: -80px; position: relative; z-index: 10;">
+        <div class="container" style="max-width: 1100px;">
+            <div class="row g-4 justify-content-center align-items-center">
+                
+                <!-- Stat 1: Active Members - 65% -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-4">
+                        <!-- Circular Progress -->
+                        <div class="position-relative d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
+                            <!-- Background Circle -->
+                            <svg width="100" height="100" style="transform: rotate(-90deg);">
+                                <circle cx="50" cy="50" r="40" stroke="#f0f0f0" stroke-width="8" fill="none"></circle>
+                                <!-- Progress Circle (65%) -->
+                                <circle cx="50" cy="50" r="40" stroke="#FAA432" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251.2" 
+                                        stroke-dashoffset="87.92" 
+                                        stroke-linecap="round"
+                                        style="transition: stroke-dashoffset 1s ease;">
+                                </circle>
+                            </svg>
+                            <!-- Percentage Text -->
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <span class="fw-bold" style="font-size: 20px; color: #1a1a1a;">65%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Text Content -->
+                        <div>
+                            <h3 class="fw-bold text-uppercase mb-2" style="font-size: 20px; color: #1a1a1a; letter-spacing: 0.5px;">
+                                ACTIVE MEMBERS
+                            </h3>
+                            <p class="text-muted mb-0" style="font-size: 14px;">
+                                Yes we did it asap software
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat 2: Projects Done - 90% -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-4">
+                        <!-- Circular Progress -->
+                        <div class="position-relative d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
+                            <!-- Background Circle -->
+                            <svg width="100" height="100" style="transform: rotate(-90deg);">
+                                <circle cx="50" cy="50" r="40" stroke="#f0f0f0" stroke-width="8" fill="none"></circle>
+                                <!-- Progress Circle (90%) -->
+                                <circle cx="50" cy="50" r="40" stroke="#FAA432" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251.2" 
+                                        stroke-dashoffset="25.12" 
+                                        stroke-linecap="round"
+                                        style="transition: stroke-dashoffset 1s ease;">
+                                </circle>
+                            </svg>
+                            <!-- Percentage Text -->
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <span class="fw-bold" style="font-size: 20px; color: #1a1a1a;">90%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Text Content -->
+                        <div>
+                            <h3 class="fw-bold text-uppercase mb-2" style="font-size: 20px; color: #1a1a1a; letter-spacing: 0.5px;">
+                                PROJECTS DONE
+                            </h3>
+                            <p class="text-muted mb-0" style="font-size: 14px;">
+                                Yes we did it asap software
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat 3: Get Rewards - 80% -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-4">
+                        <!-- Circular Progress -->
+                        <div class="position-relative d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
+                            <!-- Background Circle -->
+                            <svg width="100" height="100" style="transform: rotate(-90deg);">
+                                <circle cx="50" cy="50" r="40" stroke="#f0f0f0" stroke-width="8" fill="none"></circle>
+                                <!-- Progress Circle (80%) -->
+                                <circle cx="50" cy="50" r="40" stroke="#FAA432" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251.2" 
+                                        stroke-dashoffset="50.24" 
+                                        stroke-linecap="round"
+                                        style="transition: stroke-dashoffset 1s ease;">
+                                </circle>
+                            </svg>
+                            <!-- Percentage Text -->
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <span class="fw-bold" style="font-size: 20px; color: #1a1a1a;">80%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Text Content -->
+                        <div>
+                            <h3 class="fw-bold text-uppercase mb-2" style="font-size: 20px; color: #1a1a1a; letter-spacing: 0.5px;">
+                                GET REWARDS
+                            </h3>
+                            <p class="text-muted mb-0" style="font-size: 14px;">
+                                Yes we did it asap software
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--* ***************************************************************************************************************************************************************** -->
+
+    <!-- Ingridients section -->
+
+    <section id="ingredient" class="bg-light py-5" style="min-height: 700px;">
+        <div class="container" style="max-width: 1200px;">
+            <div class="row align-items-center g-5">
+                
+                <!-- Left Side - Product Image -->
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <!-- Main Product Image -->
+                        <div class="text-center">
+                            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/ingredients_img_935aff4a-681c-4796-b32f-2c04b1334309.png?v=1737135850" alt="" width="auto" height="auto" loading="lazy">
+                        </div>
+                        
+                        <!-- Green Leaf Decoration - Top Left -->
+                        <div class="position-absolute" style="top: -20px; left: -40px; width: 120px; height: 120px; z-index: -1;">
+                            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/ingredients_shape_3fd21533-6d88-4ac8-af2f-415082b53a2c.png?v=1737135925" alt="" class="shape" width="auto" height="auto" loading="lazy">                        </div>
+                        
+                        <!-- Green Leaf Decoration - Bottom Left -->
+                        <div class="position-absolute" style="bottom: 50px; left: -30px; width: 150px; height: 150px; z-index: -1;">
+                            <img src="https://via.placeholder.com/150x150/transparent/0d6?text=🌿" alt="Leaf" style="width: 100%; opacity: 0.8; transform: rotate(-45deg);">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Ingredients Content -->
+                <div class="col-lg-6">
+                    <!-- Section Title -->
+                    <div class="mb-4">
+                        <p class="text-uppercase fw-bold mb-2" style="color: #FAA432; font-size: 15px; letter-spacing: 0.1em;">
+                            .. INCREASED ENERGY WITH SUXNIX ..
+                        </p>
+                        <h2 class="fw-bold text-uppercase mb-4" style="font-size: clamp(32px, 4vw, 48px); color: #1a1a1a; line-height: 1.2;">
+                            SUXNIX INGREDIENTS
+                        </h2>
+                    </div>
+
+                    <!-- Ingredients Grid -->
+                    <div class="row g-4">
+                        
+                        <!-- Ingredient 1: Helps You Stick To Your Diet -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column">
+                                <!-- Hexagon Image -->
+                                <div class="mb-3 position-relative" style="width: 100px; height: 100px;">
+                                    <div style="width: 100px; height: 86.6px; background: #1a1a1a; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); overflow: hidden;">
+                                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/ingredients_item01_e2ff04ee-49fd-4493-8a4a-3c4ab47d124f.png?v=1737135924" alt="Helps You Stick To Your Diet" width="auto" height="auto" loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div>
+                                    <h3 class="fw-bold text-uppercase mb-2 d-flex align-items-start gap-2" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                        <span style="color: #FAA432; font-size: 20px;">|</span>
+                                        HELPS YOU STICK TO YOUR DIET
+                                    </h3>
+                                    <p class="text-muted mb-0" style="font-size: 14px; line-height: 1.6;">
+                                        A thing added to something else in order to complete or enhance it.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ingredient 2: Only 3g Net Carbs in Every Jar -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column">
+                                <!-- Hexagon Image -->
+                                <div class="mb-3 position-relative" style="width: 100px; height: 100px;">
+                                    <div style="width: 100px; height: 86.6px; background: #14cc65; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); overflow: hidden;">
+                                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/ingredients_item02.png?v=1737135925" alt="Only 3g Net Carbs In Every Jar" width="auto" height="auto" loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div>
+                                    <h3 class="fw-bold text-uppercase mb-2 d-flex align-items-start gap-2" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                        <span style="color: #FAA432; font-size: 20px;">|</span>
+                                        ONLY 3G NET CARBS IN EVERY JAR
+                                    </h3>
+                                    <p class="text-muted mb-0" style="font-size: 14px; line-height: 1.6;">
+                                        A thing added to something else in order to complete or enhance it.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ingredient 3: Ingredients to Fuel Your Body -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column">
+                                <!-- Hexagon Image -->
+                                <div class="mb-3 position-relative" style="width: 100px; height: 100px;">
+                                    <div style="width: 100px; height: 86.6px; background: #333; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); overflow: hidden;">
+                                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/ingredients_item03.png?v=1737135924" alt="Ingredients To Fuel Your Body" width="auto" height="auto" loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div>
+                                    <h3 class="fw-bold text-uppercase mb-2 d-flex align-items-start gap-2" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                        <span style="color: #FAA432; font-size: 20px;">|</span>
+                                        INGREDIENTS TO FUEL YOUR BODY
+                                    </h3>
+                                    <p class="text-muted mb-0" style="font-size: 14px; line-height: 1.6;">
+                                        A thing added to something else in order to complete or enhance it.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ingredient 4: Clean Ingredients Only -->
+                        <div class="col-md-6 col-sm-8">
+                            <div class="d-flex flex-column">
+                                <!-- Hexagon Image -->
+                                <div class="mb-3 position-relative" style="width: 100px; height: 100px;">
+                                    <div style="width: 100px; height: 86.6px; background: #87CEEB; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); overflow: hidden;">
+                                        <img src="//suxnix-dev.myshopify.com/cdn/shop/files/ingredients_item04.png?v=1737135925" alt="Clean Ingredients Only" width="auto" height="auto" loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div>
+                                    <h3 class="fw-bold text-uppercase mb-2 d-flex align-items-start gap-2" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                        <span style="color: #FAA432; font-size: 20px;">|</span>
+                                        CLEAN INGREDIENTS ONLY
+                                    </h3>
+                                    <p class="text-muted mb-0" style="font-size: 14px; line-height: 1.6;">
+                                        A thing added to something else in order to complete or enhance it.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Formula Section -->
+    <section class="bg-light position-relative overflow-hidden" style="min-height: 600px; padding: 80px 0;">
+        <div class="container" style="max-width: 1200px;">
+            <div class="row align-items-center g-5">
+                
+                <!-- Left Side - Text Content -->
+                <div class="col-lg-6">
+                    <div class="pe-lg-5">
+                        <!-- Eyebrow Text -->
+                        <p class="text-uppercase fw-bold mb-3" style="color: #14cc65; font-size: 14px; letter-spacing: 0.15em;">
+                            .. SUXNIX FORMULA ..
+                        </p>
+                        
+                        <!-- Main Heading -->
+                        <h2 class="fw-bold text-uppercase mb-4" style="font-size: clamp(36px, 5vw, 56px); color: #1a1a1a; line-height: 1.1;">
+                            WHY WE CHOSE THIS FORMULA
+                        </h2>
+                        
+                        <!-- Call to Action Button -->
+                        <a href="#formula" class="btn text-white text-uppercase fw-bold px-5 py-3 rounded-pill" style="background: linear-gradient(135deg, #14cc65 0%, #0fb757 100%); font-size: 14px; letter-spacing: 0.05em; box-shadow: 0 10px 30px rgba(20, 204, 101, 0.3); transition: all 0.3s ease;">
+                            KNOW MORE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side - Circular Image -->
+                <div class="col-lg-6">
+                    <div class="position-relative d-flex justify-content-center align-items-center">
+                        
+                        <!-- Main Circular Container -->
+                        <div class="position-relative" style="width: 100%; max-width: 550px;">
+                            
+                            <!-- Large Circle with Image -->
+                            <div class="rounded-circle position-relative" style="width: 100%; padding-bottom: 100%; background: #f8f9fa; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+                                <div class="position-absolute top-0 start-0 w-100 h-100">
+                                    <img src="//suxnix-dev.myshopify.com/cdn/shop/files/formula_img.png?v=1737136420" alt="" width="auto" height="auto" loading="lazy">
+                                </div>
+                            </div>
+
+                            <!-- Green Leaf Decoration - Top Left -->
+                            <div class="position-absolute" style="top: 10%; left: -60px; width: 100px; height: 100px; z-index: 5;">
+                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                                    <path d="M20 50 Q30 20, 50 30 Q70 40, 80 20 L75 30 Q65 50, 50 45 Q35 40, 20 60 Z" fill="#14cc65" opacity="0.8"/>
+                                    <ellipse cx="40" cy="40" rx="15" ry="25" fill="#0fb757" opacity="0.7" transform="rotate(-30 40 40)"/>
+                                </svg>
+                            </div>
+
+                            <!-- Green Leaf Decoration - Bottom Left -->
+                            <div class="position-absolute" style="bottom: 15%; left: -50px; width: 120px; height: 120px; z-index: 5;">
+                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                    <path d="M30 60 Q40 30, 60 40 Q80 50, 90 30 L85 40 Q75 60, 60 55 Q45 50, 30 70 Z" fill="#14cc65" opacity="0.8"/>
+                                    <ellipse cx="50" cy="50" rx="18" ry="30" fill="#0fb757" opacity="0.7" transform="rotate(-30 50 50)"/>
+                                    <path d="M25 70 Q35 50, 50 55 Q65 60, 70 45 L67 52 Q60 65, 50 62 Q40 58, 25 75 Z" fill="#14cc65" opacity="0.6"/>
+                                </svg>
+                            </div>
+
+                            <!-- Green Leaf Decoration - Inside Circle Top -->
+                            <div class="position-absolute" style="top: 12%; left: 15%; width: 80px; height: 80px; z-index: 8;">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <ellipse cx="40" cy="40" rx="15" ry="35" fill="#14cc65" opacity="0.9" transform="rotate(25 40 40)"/>
+                                    <ellipse cx="40" cy="40" rx="10" ry="30" fill="#0fb757" opacity="0.8" transform="rotate(25 40 40)"/>
+                                </svg>
+                            </div>
+
+                            <!-- Green Leaf Decoration - Inside Circle Bottom -->
+                            <div class="position-absolute" style="bottom: 18%; left: 20%; width: 90px; height: 90px; z-index: 8;">
+                                <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+                                    <ellipse cx="45" cy="45" rx="18" ry="40" fill="#14cc65" opacity="0.9" transform="rotate(-15 45 45)"/>
+                                    <ellipse cx="45" cy="45" rx="12" ry="35" fill="#0fb757" opacity="0.8" transform="rotate(-15 45 45)"/>
+                                </svg>
+                            </div>
+
+                            <!-- Decorative Dots Pattern -->
+                            <div class="position-absolute" style="top: 50%; right: -100px; width: 100px; height: 100px; opacity: 0.3;">
+                                <svg width="100" height="100" viewBox="0 0 100 100">
+                                    <circle cx="10" cy="10" r="3" fill="#14cc65"/>
+                                    <circle cx="30" cy="10" r="3" fill="#14cc65"/>
+                                    <circle cx="50" cy="10" r="3" fill="#14cc65"/>
+                                    <circle cx="70" cy="10" r="3" fill="#14cc65"/>
+                                    <circle cx="10" cy="30" r="3" fill="#14cc65"/>
+                                    <circle cx="30" cy="30" r="3" fill="#14cc65"/>
+                                    <circle cx="50" cy="30" r="3" fill="#14cc65"/>
+                                    <circle cx="70" cy="30" r="3" fill="#14cc65"/>
+                                    <circle cx="10" cy="50" r="3" fill="#14cc65"/>
+                                    <circle cx="30" cy="50" r="3" fill="#14cc65"/>
+                                    <circle cx="50" cy="50" r="3" fill="#14cc65"/>
+                                    <circle cx="70" cy="50" r="3" fill="#14cc65"/>
+                                </svg>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ************************************************************************************************************ -->
+    <!-- Pricing -->
+
+    <section id="pricing" class="bg-light py-5" style="min-height: 100vh;">
+        <div class="container" style="max-width: 1200px;">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold mb-2" style="color: #FAA432; font-size: 14px; letter-spacing: 0.15em;">
+                    .. SUXNIX PLANS ..
+                </p>
+                <h2 class="fw-bold text-uppercase" style="font-size: clamp(32px, 5vw, 48px); color: #1a1a1a;">
+                    SUPPLEMENT PACKAGES
+                </h2>
+            </div>
+
+            <!-- Pricing Cards Row -->
+            <div class="row g-4 align-items-stretch">
+                
+                <!-- Package 1: Basic -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm" style="border-radius: 20px; overflow: hidden;">
+                        <!-- Card Body -->
+                        <div class="card-body text-center p-4">
+                            <div class="position-absolute top-0 start-50 translate-middle-x" style="width: calc(100% - 30px); z-index: 10;">
+                        </div>
+                            <!-- Package Title -->
+                            <h3 class="fw-normal mb-1" style="font-size: 16px; color: #1a1a1a;">1 BOTTLE OF</h3>
+                            <h2 class="fw-bold text-uppercase mb-1" style="font-size: 36px; color: #1a1a1a;">SUXNIX</h2>
+                            <p class="text-muted mb-4" style="font-size: 14px;">(1 X 250 Veggie Caps Bottle)</p>
+                            
+                            <!-- Product Image -->
+                            <div class="mb-4 py-3">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/pricing_01.png?v=1737217949" alt="Suxnix" width="auto" height="auto" loading="lazy">
+                            </div>
+                            
+                            <!-- Pricing -->
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+                                    <h3 class="fw-bold mb-0" style="font-size: 48px; color: #1a1a1a;">$69</h3>
+                                    <div class="text-start">
+                                        <small class="d-block" style="color: #666; font-size: 14px;">Per</small>
+                                        <small class="d-block" style="color: #666; font-size: 14px;">Bottle</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2" style="font-size: 14px;">($69 TOTAL)</p>
+                                <p class="fw-bold mb-1" style="color: #FAA432; font-size: 20px;">SAVE 14%</p>
+                                <p class="fw-bold" style="color: #FAA432; font-size: 14px;">+ Free Shipping</p>
+                            </div>
+                            
+                            <!-- Buy Button -->
+                            <button class="btn w-100 text-white fw-bold text-uppercase py-3 rounded-pill" style="background: linear-gradient(135deg, #FAA432 0%, #f59e0b 100%); font-size: 16px; letter-spacing: 0.05em;">
+                                BUY NOW
+                                <div class="small mt-1" style="font-size: 10px; font-weight: 500; letter-spacing: 0.02em;">365 DAY FULL MONEY BACK GUARANTEED</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2: Most Popular -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-lg position-relative" style="border-radius: 20px; overflow: visible;">
+                        <!-- Most Popular Badge -->
+                        <div class="position-absolute top-0 start-50 translate-middle-x" style="width: calc(100% - 30px); z-index: 10;">
+                            <div class="text-white text-center fw-bold py-2 px-3 text-uppercase" style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%); border-radius: 10px; font-size: 14px; letter-spacing: 0.1em; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                                ★ MOST POPULAR ★
+                            </div>
+                        </div>
+                        
+                        <!-- Card Body -->
+                        <div class="card-body text-center p-4" style="padding-top: 3.5rem !important;">
+                            <!-- Package Title -->
+                            <h3 class="fw-normal mb-1" style="font-size: 16px; color: #1a1a1a;">1 BOTTLE OF</h3>
+                            <h2 class="fw-bold text-uppercase mb-1" style="font-size: 36px; color: #1a1a1a;">SUXNIX</h2>
+                            <p class="text-muted mb-4" style="font-size: 14px;">(1 X 250 Veggie Caps Bottle)</p>
+                            
+                            <!-- Product Image -->
+                            <div class="mb-4 py-3">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/pricing_02.png?v=1737217949" alt="Suxnix" width="auto" height="auto" loading="lazy">
+                            </div>
+                            
+                            <!-- Pricing -->
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+                                    <h3 class="fw-bold mb-0" style="font-size: 48px; color: #1a1a1a;">$69</h3>
+                                    <div class="text-start">
+                                        <small class="d-block" style="color: #666; font-size: 14px;">Per</small>
+                                        <small class="d-block" style="color: #666; font-size: 14px;">Bottle</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2" style="font-size: 14px;">($69 TOTAL)</p>
+                                <p class="fw-bold mb-1" style="color: #FAA432; font-size: 20px;">SAVE 14%</p>
+                                <p class="fw-bold" style="color: #FAA432; font-size: 14px;">+ Free Shipping</p>
+                            </div>
+                            
+                            <!-- Buy Button -->
+                            <button class="btn w-100 text-white fw-bold text-uppercase py-3 rounded-pill" style="background: linear-gradient(135deg, #FAA432 0%, #f59e0b 100%); font-size: 16px; letter-spacing: 0.05em;">
+                                BUY NOW
+                                <div class="small mt-1" style="font-size: 10px; font-weight: 500; letter-spacing: 0.02em;">365 DAY FULL MONEY BACK GUARANTEED</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3: Best Value -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-lg position-relative" style="border-radius: 20px; overflow: visible; border: 3px solid #FAA432;">
+                        <!-- Best Value Badge -->
+                        <div class="position-absolute top-0 start-50 translate-middle-x" style="width: calc(100% - 30px); z-index: 10;">
+                            <div class="text-white text-center fw-bold py-2 px-3 text-uppercase" style="background: linear-gradient(135deg, #FAA432 0%, #f59e0b 100%); border-radius: 10px; font-size: 14px; letter-spacing: 0.1em; box-shadow: 0 4px 12px rgba(250,164,50,0.3);">
+                                ✓ BEST VALUE
+                            </div>
+                        </div>
+                        
+                        <!-- Card Body -->
+                        <div class="card-body text-center p-4" style="padding-top: 3.5rem !important;">
+                            <!-- Package Title -->
+                            <h3 class="fw-normal mb-1" style="font-size: 16px; color: #1a1a1a;">1 BOTTLE OF</h3>
+                            <h2 class="fw-bold text-uppercase mb-1" style="font-size: 36px; color: #1a1a1a;">SUXNIX</h2>
+                            <p class="text-muted mb-4" style="font-size: 14px;">(1 X 250 Veggie Caps Bottle)</p>
+                            
+                            <!-- Product Image -->
+                            <div class="mb-4 py-3">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/files/pricing_03.png?v=1737217949" alt="Suxnix" width="auto" height="auto" loading="lazy">
+                            </div>
+                            
+                            <!-- Pricing -->
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+                                    <h3 class="fw-bold mb-0" style="font-size: 48px; color: #FAA432;">$69</h3>
+                                    <div class="text-start">
+                                        <small class="d-block" style="color: #FAA432; font-size: 14px; font-weight: 600;">Per</small>
+                                        <small class="d-block" style="color: #FAA432; font-size: 14px; font-weight: 600;">Bottle</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2" style="font-size: 14px;">($69 TOTAL)</p>
+                                <p class="fw-bold mb-1" style="color: #FAA432; font-size: 20px;">SAVE 14%</p>
+                                <p class="fw-bold" style="color: #FAA432; font-size: 14px;">+ Free Shipping</p>
+                            </div>
+                            
+                            <!-- Buy Button -->
+                            <button class="btn w-100 text-white fw-bold text-uppercase py-3 rounded-pill" style="background: linear-gradient(135deg, #FAA432 0%, #f59e0b 100%); font-size: 16px; letter-spacing: 0.05em;">
+                                BUY NOW
+                                <div class="small mt-1" style="font-size: 10px; font-weight: 500; letter-spacing: 0.02em;">365 DAY FULL MONEY BACK GUARANTEED</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="position-relative overflow-hidden" style="background: #1a1a1a; min-height: 600px; padding: 0;">
+        
+        <!-- Top Brush Stroke Border -->
+        <div class="position-absolute top-0 start-0 w-100" style="height: 60px; margin-top: -1px; z-index: 10;">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                <path d="M0 30 Q50 10, 100 35 Q150 50, 200 25 Q250 5, 300 38 Q350 52, 400 22 Q450 8, 500 35 Q550 48, 600 26 Q650 10, 700 38 Q750 50, 800 24 Q850 8, 900 36 Q950 50, 1000 28 Q1050 10, 1100 35 Q1150 48, 1200 26 Q1250 10, 1300 38 Q1350 50, 1400 28 Q1420 20, 1440 32 L1440 0 L0 0 Z" fill="white"/>
+            </svg>
+        </div>
+
+        <!-- Testimonial Carousel -->
+        <div id="testimonialCarousel" class="carousel slide position-relative" data-bs-ride="carousel" data-bs-interval="5000" style="padding: 80px 0;">
+            
+            <!-- Quote Icon - Left -->
+            <div class="position-absolute top-50 start-0 translate-middle-y ms-5 d-none d-lg-block" style="z-index: 20;">
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; background: rgba(20, 204, 101, 0.2); border: 3px solid #14cc65;">
+                    <i class="bi bi-person" style="font-size: 40px; color: #14cc65;"></i>
+                </div>
+            </div>
+
+            <!-- Quote Icon - Right -->
+            <div class="position-absolute top-50 end-0 translate-middle-y me-5 d-none d-lg-block" style="z-index: 20;">
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; background: rgba(20, 204, 101, 0.2); border: 3px solid #14cc65;">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path d="M10 20 L18 28 L30 12" stroke="#14cc65" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="20" cy="20" r="18" stroke="#14cc65" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+                
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="container text-center" style="max-width: 900px; padding: 40px 20px;">
+                        <!-- Stars -->
+                        <div class="mb-4">
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                        </div>
+
+                        <!-- Testimonial Text -->
+                        <p class="text-white mb-5 fst-italic" style="font-size: clamp(16px, 2vw, 22px); line-height: 1.8; max-width: 800px; margin: 0 auto 2rem;">
+                            Becoming more involved in administration within the (MidMichigan) health system over the years, I had been researching options for further education that would assist in this transition and fit my busy schedule
+                        </p>
+
+                        <!-- Author Image -->
+                        <div class="mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                 alt="Lempor Kooper" 
+                                 class="rounded-circle border border-3 border-white" 
+                                 style="width: 80px; height: 80px; object-fit: cover;">
+                        </div>
+
+                        <!-- Author Name -->
+                        <h4 class="text-white fw-bold text-uppercase mb-0" style="font-size: 18px; letter-spacing: 0.1em;">
+                            LEMPOR KOOPER
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="container text-center" style="max-width: 900px; padding: 40px 20px;">
+                        <!-- Stars -->
+                        <div class="mb-4">
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                        </div>
+
+                        <!-- Testimonial Text -->
+                        <p class="text-white mb-5 fst-italic" style="font-size: clamp(16px, 2vw, 22px); line-height: 1.8; max-width: 800px; margin: 0 auto 2rem;">
+                            The quality of Suxnix supplements has completely transformed my workout routine. I've seen incredible results in just a few weeks. Highly recommended for anyone serious about their fitness goals!
+                        </p>
+
+                        <!-- Author Image -->
+                        <div class="mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                                 alt="Sarah Johnson" 
+                                 class="rounded-circle border border-3 border-white" 
+                                 style="width: 80px; height: 80px; object-fit: cover;">
+                        </div>
+
+                        <!-- Author Name -->
+                        <h4 class="text-white fw-bold text-uppercase mb-0" style="font-size: 18px; letter-spacing: 0.1em;">
+                            SARAH JOHNSON
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="container text-center" style="max-width: 900px; padding: 40px 20px;">
+                        <!-- Stars -->
+                        <div class="mb-4">
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                            <i class="bi bi-star-fill" style="color: #FAA432; font-size: 28px;"></i>
+                        </div>
+
+                        <!-- Testimonial Text -->
+                        <p class="text-white mb-5 fst-italic" style="font-size: clamp(16px, 2vw, 22px); line-height: 1.8; max-width: 800px; margin: 0 auto 2rem;">
+                            As a professional athlete, I need supplements I can trust. Suxnix delivers every time with their clean ingredients and powerful formulas. This is the only brand I recommend to my clients.
+                        </p>
+
+                        <!-- Author Image -->
+                        <div class="mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" 
+                                 alt="Mike Thompson" 
+                                 class="rounded-circle border border-3 border-white" 
+                                 style="width: 80px; height: 80px; object-fit: cover;">
+                        </div>
+
+                        <!-- Author Name -->
+                        <h4 class="text-white fw-bold text-uppercase mb-0" style="font-size: 18px; letter-spacing: 0.1em;">
+                            MIKE THOMPSON
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Indicators -->
+            <div class="carousel-indicators position-relative" style="bottom: -20px; margin-bottom: 0;">
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 12px; height: 12px; border-radius: 50%; background-color: white; opacity: 0.5; border: none; margin: 0 5px;"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2" style="width: 12px; height: 12px; border-radius: 50%; background-color: white; opacity: 0.5; border: none; margin: 0 5px;"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3" style="width: 12px; height: 12px; border-radius: 50%; background-color: white; opacity: 0.5; border: none; margin: 0 5px;"></button>
+            </div>
+
+            <!-- Controls (Hidden but functional) -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="opacity: 0;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="opacity: 0;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Bottom Brush Stroke Border -->
+        <div class="position-absolute bottom-0 start-0 w-100" style="height: 60px; margin-bottom: -1px; z-index: 10;">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                <path d="M0 30 Q50 45, 100 28 Q150 10, 200 38 Q250 52, 300 24 Q350 8, 400 36 Q450 48, 500 26 Q550 10, 600 38 Q650 50, 700 26 Q750 10, 800 36 Q850 50, 900 26 Q950 10, 1000 38 Q1050 52, 1100 26 Q1150 10, 1200 36 Q1250 48, 1300 26 Q1350 10, 1400 38 Q1420 46, 1440 32 L1440 60 L0 60 Z" fill="white"/>
+            </svg>
+        </div>
+
+    </section>
+
+    <!-- ******************************************************************************************************************************** -->
+
+    <!-- news -->
+    <!-- News & FAQ Section -->
+    <section id="news" class="bg-light py-5">
+        <div class="container" style="max-width: 1200px;">
+            <div class="row g-5">
+                
+                <!-- Left Column - Latest News -->
+                <div class="col-lg-6">
+                    <!-- Section Header -->
+                    <div class="mb-4">
+                        <p class="text-uppercase fw-bold mb-2" style="color: #FAA432; font-size: 14px; letter-spacing: 0.15em;">
+                            .. SUXNIX NEWS ..
+                        </p>
+                        <h2 class="fw-bold text-uppercase" style="font-size: clamp(32px, 4vw, 42px); color: #1a1a1a;">
+                            LATEST NEWS
+                        </h2>
+                    </div>
+
+                    <!-- News Articles -->
+                    <div class="d-flex flex-column gap-4">
+                        
+                        <!-- Article 1 -->
+                        <div class="d-flex gap-3">
+                            <div class="flex-shrink-0">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb03.jpg?v=1737015386" 
+                                     alt="Workout" 
+                                     class="rounded-3" 
+                                     style="width: 130px; height: 130px; object-fit: cover;">
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="badge text-dark mb-2" style="background: #e9ecef; font-size: 11px; font-weight: 600; padding: 4px 10px;">business</span>
+                                <h3 class="fw-bold mb-2 text-uppercase" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                    LABORIS NISI UT ALIQUIP EX EA COMMOD...
+                                </h3>
+                                <div class="d-flex align-items-center gap-3 text-muted" style="font-size: 13px;">
+                                    <small>
+                                        <i class="bi bi-clock me-1"></i>
+                                        January 16, 2025
+                                    </small>
+                                </div>
+                                <div class="mt-2 d-flex align-items-center gap-3 text-muted" style="font-size: 13px;">
+                                    <small>Posted by - <span style="color: #FAA432;">Web Developer</span></small>
+                                    <small><i class="bi bi-envelope me-1"></i>0</small>
+                                    <small><i class="bi bi-eye me-1"></i>k</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Article 2 -->
+                        <div class="d-flex gap-3">
+                            <div class="flex-shrink-0">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb02.jpg?v=1737015311" 
+                                     alt="Workout" 
+                                     class="rounded-3" 
+                                     style="width: 130px; height: 130px; object-fit: cover;">
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="badge text-dark mb-2" style="background: #e9ecef; font-size: 11px; font-weight: 600; padding: 4px 10px;">business</span>
+                                <h3 class="fw-bold mb-2 text-uppercase" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                    ADIPISICING ELIT SED DO EIUSMOD TEMP...
+                                </h3>
+                                <div class="d-flex align-items-center gap-3 text-muted" style="font-size: 13px;">
+                                    <small>
+                                        <i class="bi bi-clock me-1"></i>
+                                        January 16, 2025
+                                    </small>
+                                </div>
+                                <div class="mt-2 d-flex align-items-center gap-3 text-muted" style="font-size: 13px;">
+                                    <small>Posted by - <span style="color: #FAA432;">Web Developer</span></small>
+                                    <small><i class="bi bi-envelope me-1"></i>0</small>
+                                    <small><i class="bi bi-eye me-1"></i>k</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Article 3 -->
+                        <div class="d-flex gap-3">
+                            <div class="flex-shrink-0">
+                                <img src="//suxnix-dev.myshopify.com/cdn/shop/articles/inner_blog_thumb01.jpg?v=1737015111" 
+                                     alt="Workout" 
+                                     class="rounded-3" 
+                                     style="width: 130px; height: 130px; object-fit: cover;">
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="badge text-dark mb-2" style="background: #e9ecef; font-size: 11px; font-weight: 600; padding: 4px 10px;">desgin</span>
+                                <h3 class="fw-bold mb-2 text-uppercase" style="font-size: 16px; color: #1a1a1a; line-height: 1.3;">
+                                    LOREM IPSUM DOLOR SIT AMET CONSECTE...
+                                </h3>
+                                <div class="d-flex align-items-center gap-3 text-muted" style="font-size: 13px;">
+                                    <small>
+                                        <i class="bi bi-clock me-1"></i>
+                                        January 16, 2025
+                                    </small>
+                                </div>
+                                <div class="mt-2 d-flex align-items-center gap-3 text-muted" style="font-size: 13px;">
+                                    <small>Posted by - <span style="color: #FAA432;">Web Developer</span></small>
+                                    <small><i class="bi bi-envelope me-1"></i>0</small>
+                                    <small><i class="bi bi-eye me-1"></i>k</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Column - FAQ Accordion -->
+                <div class="col-lg-6">
+                    <!-- Section Header -->
+                    <div class="mb-4">
+                        <p class="text-uppercase fw-bold mb-2" style="color: #FAA432; font-size: 14px; letter-spacing: 0.15em;">
+                            .. COMMON QUESTIONS ..
+                        </p>
+                        <h2 class="fw-bold text-uppercase" style="font-size: clamp(32px, 4vw, 42px); color: #1a1a1a; line-height: 1.2;">
+                            FREQUENTLY ASKED<br>QUESTIONS
+                        </h2>
+                    </div>
+
+                    <!-- Accordion -->
+                    <div class="accordion" id="faqAccordion">
+                        
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item border-0 mb-3" style="border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" style="background: white; color: #1a1a1a; font-size: 15px; padding: 18px 20px; border: none; box-shadow: none;">
+                                    <span style="color: #FAA432; font-weight: 700; margin-right: 12px;">01.</span>
+                                    SUXNIX INGREDIENTS PROVIDES A SEARCHABLE ?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" style="padding: 0 20px 20px 50px; color: #666; font-size: 14px; line-height: 1.8;">
+                                    There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item border-0 mb-3" style="border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" style="background: white; color: #1a1a1a; font-size: 15px; padding: 18px 20px; border: none; box-shadow: none;">
+                                    <span style="color: #FAA432; font-weight: 700; margin-right: 12px;">02.</span>
+                                    HOW TO EDIT SUXNIX THEMES ?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" style="padding: 0 20px 20px 50px; color: #666; font-size: 14px; line-height: 1.8;">
+                                    There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item border-0 mb-3" style="border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" style="background: white; color: #1a1a1a; font-size: 15px; padding: 18px 20px; border: none; box-shadow: none;">
+                                    <span style="color: #FAA432; font-weight: 700; margin-right: 12px;">03.</span>
+                                    SUXNIX APP IS A POWERFUL APPLICATION ?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" style="padding: 0 20px 20px 50px; color: #666; font-size: 14px; line-height: 1.8;">
+                                    There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="accordion-item border-0 mb-3" style="border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" style="background: white; color: #1a1a1a; font-size: 15px; padding: 18px 20px; border: none; box-shadow: none;">
+                                    <span style="color: #FAA432; font-weight: 700; margin-right: 12px;">04.</span>
+                                    LATEST VERSION THOROUGH SUXNIX POWERFUL ?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" style="padding: 0 20px 20px 50px; color: #666; font-size: 14px; line-height: 1.8;">
+                                    There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="accordion-item border-0 mb-3" style="border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" style="background: white; color: #1a1a1a; font-size: 15px; padding: 18px 20px; border: none; box-shadow: none;">
+                                    <span style="color: #FAA432; font-weight: 700; margin-right: 12px;">05.</span>
+                                    HOW TO TRACK MY ORDER ?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" style="padding: 0 20px 20px 50px; color: #666; font-size: 14px; line-height: 1.8;">
+                                    There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- *************************************************************************************************************************************************** -->
+    
+    <!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <!-- Wave top -->
+  <div class="position-relative" style="height:60px;margin-top:-1px;">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <path d="M0 30 Q50 10,100 35 Q150 50,200 25 Q250 5,300 38 Q350 52,400 22 Q450 8,500 35 Q550 48,600 26 Q650 10,700 38 Q750 50,800 24 Q850 8,900 36 Q950 50,1000 28 Q1050 10,1100 35 Q1150 48,1200 26 Q1250 10,1300 38 Q1350 50,1400 28 Q1420 20,1440 32 L1440 0 L0 0 Z" fill="#f9f9f9"/>
+    </svg>
+  </div>
+
+  <!-- Instagram Carousel -->
+  <div class="insta-carousel-wrap">
+    <div class="insta-carousel">
+      <!-- Original set -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post06_ec34de05-56ce-4943-96eb-fdbc6f239030.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post01_e129213d-f718-4e47-a5f4-d6ec8f7ab64d.jpg?v=1737134057" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post02_a85b661a-67ea-4a36-ad29-c9e84ee797ae.jpg?v=1737134121" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post03_8902567f-4641-4a0d-8a5d-d9ab44870ead.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post04_f36edf63-f2ee-407c-ad8f-24edd6fcf69d.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+      <div class="insta-carousel-item"><img src="//suxnix-dev.myshopify.com/cdn/shop/files/instagram_post05_076fdf6c-6ffe-45f7-8388-6900702b3b4b.jpg?v=1737134471" alt="" width="auto" height="auto" loading="lazy"><div class="insta-hover-overlay"><i class="bi bi-instagram" style="font-size:3rem;color:#fff;"></i></div></div>
+    </div>
+  </div>
+
+  <!-- Footer Content -->
+  <div class="container py-5" style="position:relative;z-index:10;">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+         <img src="//suxnix-dev.myshopify.com/cdn/shop/files/white_logo.png?v=1737133588" alt="suxnix dev" height="auto" width="auto" loading="lazy">
+        </div>
+        <p style="color:#999;font-size:14px;line-height:1.8;">Making beauty especially relating complot especial common questions tend to recur through posts or queries standards vary orem donor command tei.</p>
+        <div class="d-flex gap-3 mt-4">
+          <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-pinterest"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">About Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Shop</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Product</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Support</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="#" class="footer-link">Home</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blogs</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Blog Post</a></li>
+          <li class="mb-3"><a href="#" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h4 class="fw-bold text-uppercase mb-4" style="font-size:18px;">Contact Us</h4>
+        <ul class="list-unstyled">
+          <li class="mb-3" style="color:#999;font-size:14px;">4140 Parker Rd. Allentown, New Mexico 31134</li>
+          <li class="mb-3"><a href="tel:+13165550116" class="footer-link" style="color:var(--green);"><i class="bi bi-telephone-fill me-2"></i>+1 31-6555-0116</a></li>
+          <li class="mb-3"><a href="mailto:Suxnix@example.com" class="footer-link" style="color:var(--green);"><i class="bi bi-envelope-fill me-2"></i>Suxnix@example.com</a></li>
+          <li class="mb-3"><a href="#" class="footer-link" style="color:var(--green);"><i class="bi bi-globe me-2"></i>www.suxnixdomain.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="border-top py-4" style="border-color:rgba(255,255,255,.1)!important;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+          <p class="mb-0" style="color:#999;font-size:13px;">Copyright © 2025 Suxnix. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <img src="//suxnix-dev.myshopify.com/cdn/shop/files/card_img_7d7d11a3-0daa-4469-956c-846a4c9b8acf.png?v=1737133834" alt="payment methods" width="auto" height="auto" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- ******************************************************************************************************************************* -->
+    <!-- Shopping Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItems" class="mb-3"></div>
+            <div class="border-top pt-3 mt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <strong>Subtotal:</strong>
+                    <strong id="cartSubtotal">Tk 0.00</strong>
+                </div>
+                <a href="cartpage.html" class="btn btn-dark w-100 mb-2 rounded-3">View Cart</a>
+                <a href="checkout.html" class="btn btn-success w-100 rounded-3">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-body p-4">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <div class="d-flex gap-2 mt-4">
+                        <input type="search" class="form-control rounded-3" placeholder="Enter your keyword..." id="searchInput">
+                        <button class="btn btn-success rounded-3" onclick="performSearch()">
+                            <i class="bi bi-search me-2"></i>Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apps/Social Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="appsOffcanvas" style="width: 500px;">
+    <div class="offcanvas-header position-absolute top-0 end-0 p-3" style="z-index: 10;">
+        <button type="button" class="btn rounded-circle border-0" data-bs-dismiss="offcanvas"
+            style="width: 45px; height: 45px; background-color: #f0faf4; color: #14cc65; font-size: 18px;">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-4 pt-5 d-flex flex-column justify-content-center">
+
+        <!-- Heading -->
+        <h1 class="fw-black text-uppercase mb-4" style="font-size: 2.4rem; line-height: 1.15; letter-spacing: 1px;">
+            GETTING ALL OF THE
+            <span style="color: #14cc65;">NUTRIENTS</span> YOU NEED
+            SIMPLY CANNOT BE DONE
+            WITHOUT SUPPLEMENTS.
+        </h1>
+
+        <!-- Description -->
+        <p class="text-muted mb-5" style="font-size: 0.95rem; line-height: 1.7;">
+            Nam libero tempore, cum soluta nobis eligendi cumque quod placeat facere possimus assumenda omnis dolor
+            repellendu sautem temporibus officiis
+        </p>
+
+        <!-- Contact Info -->
+        <div class="mt-3">
+            <h3 class="fw-bold mb-1" style="font-size: 1.8rem;">+1 599 162 4545</h3>
+            <h4 class="fw-bold text-uppercase mb-3" style="font-size: 1.2rem;">INFO@EXAMPLE.COM</h4>
+            <p class="text-muted mb-4" style="font-size: 0.9rem;">5689 Lotaso Terrace, Culver City, CA, United States</p>
+
+            <!-- Social Icons -->
+            <div class="d-flex gap-2">
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center justify-content-center rounded-circle text-white"
+                    style="width: 42px; height: 42px; background-color: #1a1a2e; text-decoration: none;">
+                    <i class="bi bi-vimeo"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Mobile Navigation Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav" style="width: 280px; max-width: 100%;">
+    
+    <!-- Header with Logo + Close -->
+    <div class="offcanvas-header border-bottom pb-3">
+        <a href="#" class="text-decoration-none d-flex align-items-center gap-2">
+            <img src="//suxnix-dev.myshopify.com/cdn/shop/files/logo.png?v=1735561122" alt="Suxnix" height="45" style="max-width: 130px;">
+        </a>
+        <button type="button" data-bs-dismiss="offcanvas"
+            style="background: none; border: none; font-size: 1.4rem; color: #f97316; line-height: 1; cursor: pointer;">
+            ✕
+        </button>
+    </div>
+
+    <div class="offcanvas-body p-0" style="overflow-y: auto;">
+        <ul class="list-unstyled mb-0">
+
+            <!-- Home (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileHome">
+                    Home
+                    <i class="bi bi-chevron-left" id="homeArrow" style="font-size: .75rem; color: #888; transition: transform .2s;"></i>
+                </button>
+                <div class="collapse" id="mobileHome">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="index.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home One</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Home Two</a></li>
+                        <li><a href="#" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Home Three</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Features -->
+            <li class="border-bottom">
+                <a href="index.html#features" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Features</a>
+            </li>
+
+            <!-- Product -->
+            <li class="border-bottom">
+                <a href="index.html#product" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Product</a>
+            </li>
+
+            <!-- Ingredient -->
+            <li class="border-bottom">
+                <a href="index.html#ingredient" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Ingredient</a>
+            </li>
+
+            <!-- Pricing -->
+            <li class="border-bottom">
+                <a href="index.html#pricing" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Pricing</a>
+            </li>
+
+            <!-- Shop (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileShop">
+                    Shop
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileShop">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourshop.html"     class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Shop</a></li>
+                        <li><a href="shopdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Shop Details</a></li>
+                        <li><a href="cartpage.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Cart Page</a></li>
+                        <li><a href="loginpage.html"   class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Login Page</a></li>
+                        <li><a href="register.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Register</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- News (collapsible) -->
+            <li class="border-bottom">
+                <button class="d-flex justify-content-between align-items-center w-100 px-4 py-3 bg-transparent border-0 fw-500"
+                    style="font-size: .95rem; color: #1a1a2e;"
+                    data-bs-toggle="collapse" data-bs-target="#mobileNews">
+                    News
+                    <i class="bi bi-chevron-left" style="font-size: .75rem; color: #888;"></i>
+                </button>
+                <div class="collapse" id="mobileNews">
+                    <ul class="list-unstyled mb-0" style="background: #fafafa;">
+                        <li><a href="ourblog.html"    class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444; border-bottom: 1px solid #f0f0f0;">Our Blog</a></li>
+                        <li><a href="blogdetails.html" class="d-block px-5 py-2 text-decoration-none" style="font-size: .9rem; color: #444;">Blog Details</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Contacts -->
+            <li>
+                <a href="contact.html" class="d-block px-4 py-3 text-decoration-none fw-500" style="font-size: .95rem; color: #1a1a2e;">Contacts</a>
+            </li>
+
+        </ul>
+
+        <!-- Social Icons at Bottom -->
+        <div class="d-flex gap-2 justify-content-center py-4 border-top mt-2">
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;"><i class="bi bi-vimeo"></i></a>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Toast Container -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="toastContainer"></div>
+    </div>
+
+    <!-- Bootstrap 5.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
